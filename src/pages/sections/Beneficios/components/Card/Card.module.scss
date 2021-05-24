@@ -1,0 +1,28 @@
+@use 'styles/breakpoints' as *;
+
+.container {
+  background: #232323;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  padding: 47px 24px;
+  margin: 0 13px;
+  min-height: 250px;
+
+  .text {
+    display: block;
+    font-size: 1.6rem;
+    line-height: 1.7;
+    color: #fff;
+
+    &.title {
+      font-weight: bold;
+      margin-top: 13px;
+    }
+  }
+}
+
+@include from720 {
+  .container {
+    margin: 0;
+  }
+}

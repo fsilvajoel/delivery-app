@@ -1,0 +1,77 @@
+@use 'styles/variables' as *;
+@use 'styles/breakpoints' as *;
+
+.container {
+  position: relative;
+  flex-direction: column;
+  padding: 34px 0 89px;
+  background-color: #fff;
+
+  .bgGray {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 50%;
+    background-color: #313131;
+  }
+
+  .afyaVector {
+    position: absolute;
+    right: 0;
+    top: 35%;
+    display: none;
+    z-index: 1;
+  }
+
+  .title {
+    font-size: 4rem;
+    text-align: center;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: $primary;
+    margin: 0 0 55px;
+  }
+
+  .cardsWrapper {
+    position: relative;
+    width: 89%;
+    max-width: 350px;
+    margin: 0 auto;
+  }
+}
+
+@include from720 {
+  .container {
+    .bgGray {
+      top: 25%;
+    }
+
+    .cardsWrapper {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      justify-content: center;
+      gap: 42px;
+      max-width: 1060px;
+    }
+  }
+}
+
+@include from1024 {
+  .container {
+    padding: 89px 0;
+
+    .bgGray {
+      top: 35%;
+    }
+
+    .afyaVector {
+      display: block;
+    }
+
+    .cardsWrapper {
+      width: 80%;
+      grid-template-columns: repeat(3, 1fr);
+    } 
+  }
+}

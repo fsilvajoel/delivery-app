@@ -1,0 +1,21 @@
+@import 'styles/breakpoints';
+
+.container {
+  width: 100%;
+  position: relative;
+
+  .paginationContainer {
+    margin-top: 13px;
+
+    .dotsList {
+      width: fit-content;
+      margin: 0 auto;
+    }
+  }
+}
+
+@include from1280 {
+  .container {
+    max-width: 480px;
+  }
+}

@@ -1,0 +1,29 @@
+//TODO: importar variáveis do escopo global
+
+.section {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  font-size: 2rem;
+  padding: 1.2rem;
+}
+
+.bkgdDarkGray {
+  background-color: #232323;
+}
+
+.bkgdGray {
+  background-color: #313131;
+}
+
+.bkgdLightGray {
+  background-color: #efefef;
+}
+
+.bkgdWhite {
+  background-color: #fff;
+}
+
+.noPadding {
+  padding: 0 !important;
+}

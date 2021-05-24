@@ -1,0 +1,110 @@
+@use 'styles/breakpoints' as *;
+
+.container {
+  position: relative;
+  padding: 55px 21px;
+
+  .afyaVector {
+    position: absolute;
+    right: 0;
+    top: 7px;
+    display: none;
+  }
+
+  .cardsContainer {
+    margin: 0 auto;
+    z-index: 2;
+
+    .card {
+      opacity: 0.9;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      margin: 39px auto;
+      padding: 30px;
+      border-radius: 4px;
+      background: radial-gradient(83.88% 83.88% at 50% 50%, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.025) 72.4%, rgba(255, 255, 255, 0.03) 100%);
+
+      .cardText {
+        font-size: 1.6rem;
+        max-width: 300px;
+        line-height: 24px;
+        font-weight: 700;
+        color: #fff;
+      }
+
+      .btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 18px 20px;
+
+        .btnText {
+          padding-top: 10px;
+          width: 200px;
+          line-height: 17px;
+        }
+
+        .icon {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+@include from600() {
+  .container {
+    .cardsContainer {
+      .card {
+        max-width: 100%;
+
+        .cardText {
+          font-size: 3rem;
+          max-width: 500px;
+          line-height: 42px;
+          margin-right: 50px;
+        }
+
+        .btn {
+          padding: 12px 95px;
+
+          .btnText {
+            width: auto;
+            padding: auto;
+          }
+
+          .icon {
+            display: block;
+          }
+        }
+
+        .cardButton {
+          max-width: 458px;
+          height: 62px;
+          margin: 0 auto;
+        }
+      }
+    }
+  }
+}
+
+@include from1024() {
+  .container {
+    .afyaVector {
+      display: block;
+    }
+
+    .cardsContainer {
+      display: flex;
+      justify-content: center;
+
+      .card {
+        max-width: 596px;
+        margin-right: 50px;
+
+        .btn {
+          padding: 12px 68px;
+        }
+      }
+    }
+  }
+}

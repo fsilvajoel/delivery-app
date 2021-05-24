@@ -1,0 +1,55 @@
+@use '../../../styles/breakpoints' as *;
+
+.companies {
+  padding: 30px 0;
+  margin: 0 auto;
+
+  .title {
+    color: #979797;
+    text-align: center;
+    font-weight: 700;
+    font-size: 2rem;
+    max-width: 80%;
+    margin: 0 auto;
+  }
+
+  .logos {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+  
+    svg {
+      margin: 1.5rem auto;
+    }
+  }
+}
+
+@include from600 {
+  .companies {
+    .title {
+      font-size: 3rem;
+      padding-bottom: 60px;
+    }
+  
+    .logos {        
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+@include from720 {
+  .companies {
+    .logos {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}
+
+@include from1280 {
+  .companies {
+    .title {
+      font-size: 4rem;
+      max-width: 60%;
+    }
+  }  
+}

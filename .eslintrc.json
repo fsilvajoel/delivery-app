@@ -1,0 +1,88 @@
+{
+    "env": {
+        "browser": true,
+        "node": true,
+        "es2021": true,
+        "jest": true
+    },
+    "extends": [
+        "plugin:react/recommended",
+        "airbnb",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:prettier/recommended"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": 12,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        }
+    },
+    "plugins": [
+        "react",
+        "@typescript-eslint",
+        "react-hooks",
+        "prettier",
+        "jsx-a11y",
+        "import",
+        "import-helpers"
+    ],
+    "rules": {
+        "prettier/prettier": "error",
+        "react/destructuring-assignment": "off",
+        "import/no-extraneous-dependencies": ["error", {"devDependencies": false, "optionalDependencies": false, "peerDependencies": false}],
+        "react/react-in-jsx-scope": "off",
+        "react/jsx-props-no-spreading": "off",
+        "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
+        "react/no-danger": "off",
+        "react/prop-types": "off",
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "error",
+        "no-shadow": "off",
+        "import/prefer-default-export": "off",
+        "@typescript-eslint/no-shadow": ["error"],
+        "@typescript-eslint/explicit-module-boundary-types": "off",
+        "@typescript-eslint/no-explicit-any": "off",
+        "import/extensions": [
+            "error",
+            "ignorePackages",
+            {
+              "ts": "never",
+              "tsx": "never"
+            }
+        ],
+        "import-helpers/order-imports": [
+          "warn",
+          {
+            "newlinesBetween": "always",
+            "groups": [
+              "/^next/",
+              "module", 
+              ["parent", "sibling", "index"]
+            ],
+            "alphabetize": { "order": "asc", "ignoreCase": true }
+          }
+        ]
+    },
+    "overrides": [
+        {
+            "files": ["*.ts", "*.tsx"], 
+            "parserOptions": {
+                "project": ["./tsconfig.json"]
+            } 
+        },
+        {
+            "files": ["*.js"],
+            "rules": {
+                "no-console": "off",
+                "@typescript-eslint/no-var-requires": "off"
+            }
+        }
+    ],
+    "settings": {
+        "import/resolver": {
+          "typescript": {}
+        }
+    }
+}
