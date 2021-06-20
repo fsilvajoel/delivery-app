@@ -1457,7 +1457,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_document__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_document__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _snippets_html5shiv__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ~snippets/html5shiv */ "./src/snippets/html5shiv.ts");
 
-var _jsxFileName = "D:\\personal_projects\\delivery-app\\src\\pages\\_document.page.tsx";
+var _jsxFileName = "/mnt/d/personal_projects/delivery-app/src/pages/_document.page.tsx";
 
 
 

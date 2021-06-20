@@ -33,6 +33,7 @@
       "~hooks/*":["src/hooks/*"],
       "~constants/*":["src/constants/*"],
       "~public/*" :["public/*"],
+      "~zustand/*" :["src/zustand/*"]
     }
   },
   "include": [
