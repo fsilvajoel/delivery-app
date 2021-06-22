@@ -1,6 +1,7 @@
 import { Router } from 'next/router';
 
 import { useEffect } from 'react';
+import 'fontsource-roboto';
 import '~styles/globals.scss';
 
 function App({ Component, pageProps }: { Component: any; pageProps: any }) {
