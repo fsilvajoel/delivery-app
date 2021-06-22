@@ -1,0 +1,53 @@
+@use 'styles/breakpoints' as *;
+
+.root {
+  height: 100vh;
+
+  .image {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-image: url('https://scontent.fpfb1-1.fna.fbcdn.net/v/t1.6435-9/116886108_2616899858569989_5962210162175989851_n.jpg?_nc_cat=102&ccb=1-3&_nc_sid=e3f864&_nc_eui2=AeEi8kFb4pL2p0rDuicWHNLuT0ugPupF2ixPS6A-6kXaLJDHiwcH_yQl_sulCZvmd7LyJtyrpNp5DlcBP0ksbFF0&_nc_ohc=CJiJnt5dkOgAX_Mglj9&_nc_ht=scontent.fpfb1-1.fna&oh=6e3583c85beb1987462b754c05074148&oe=60D57B23');
+  }
+  .loading {
+    z-index: 2;
+    background-color: #1f1c1cb2;
+    color: #fff;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  .logo {
+    height: 20vh;
+  }
+  .title {
+    font-weight: 400;
+    font-size: 2.5rem;
+  }
+
+  .paper {
+    margin-top: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .form {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    div,
+    button {
+      margin-bottom: 1.5rem;
+      font-size: 1.2rem;
+    }
+    label {
+      font-size: 1.2rem;
+    }
+  }
+}
