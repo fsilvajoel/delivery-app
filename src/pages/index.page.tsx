@@ -1,5 +1,7 @@
 import Head from 'next/head';
 
+import MenuApp from '~components/Layout/Menu/Menu';
+
 import TabCategories from './components/Tab';
 import BannerIntro from './Delivery/BannerIntro';
 import styles from './Home.module.scss';
@@ -11,6 +13,7 @@ export default function Home() {
       <Head>
         <title>zeferino</title>
       </Head>
+      <MenuApp />
       <main className={styles.main}>
         <TabCategories
           food={server?.categories}
