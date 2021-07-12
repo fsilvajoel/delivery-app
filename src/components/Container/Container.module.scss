@@ -1,29 +1,42 @@
-//TODO: importar variáveis do escopo global
+@use 'styles/colors.module.scss' as *;
 
 .section {
-  display: flex;
-  flex-direction: row;
   width: 100%;
+
   font-size: 2rem;
-  padding: 1.2rem;
-}
 
-.bkgdDarkGray {
-  background-color: #232323;
-}
+  &.backgroundGray900 {
+    background-color: $gray900;
+  }
 
-.bkgdGray {
-  background-color: #313131;
-}
+  &.backgroundGray800 {
+    background-color: $gray800;
+  }
 
-.bkgdLightGray {
-  background-color: #efefef;
-}
+  &.backgroundGrayGradient {
+    background: $backgroundGraygradient;
+  }
 
-.bkgdWhite {
-  background-color: #fff;
-}
+  &.backgroundIce {
+    background-color: $whiteIce;
+  }
 
-.noPadding {
-  padding: 0 !important;
+  &.backgroundWhite {
+    background-color: $white;
+  }
+
+  &.backgroundBlack {
+    background-color: $black;
+  }
+
+  &.noPadding {
+    padding: 0;
+  }
+
+  .content {
+    width: 87%;
+    max-width: 1200px;
+
+    margin: 0 auto;
+  }
 }

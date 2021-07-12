@@ -1,29 +1,27 @@
-/* eslint-disable react/destructuring-assignment */
-import styles from './Container.module.scss';
+import { TContainerProps } from './types';
 
-export enum listBackground {
-  bkgdDarkGray = 'bkgdDarkGray',
-  bkgdGray = 'bkgdGray',
-  bkgdLightGray = 'kgdLightGray',
-  bkgdWhite = 'bkgdWhite',
-}
+import scss from './Container.module.scss';
 
-interface ContainerProps {
-  backgroundColor: keyof typeof listBackground;
-  className?: string;
-  children: React.ReactNode;
-  id: string;
-  noPadding?: boolean;
-}
+const Container: React.FC<TContainerProps> = (props) => {
+  const containerClass = [scss.section];
 
-const Container: React.FC<ContainerProps> = (props) => {
-  const ContainerClass = [styles.section, styles[props.backgroundColor]];
-  if (props.className) ContainerClass.push(props.className);
-  if (props.noPadding) ContainerClass.push(styles.noPadding);
-  return (
-    <section id={props.id} className={ContainerClass.join(' ')}>
-      {props.children}
+  const renderContent = () => (
+    <div className={scss.content}>{props.children}</div>
+  );
+
+  const renderDiv = () => (
+    <div className={containerClass.join(' ')}>{renderContent()}</div>
+  );
+
+  const renderSection = () => (
+    <section id={props.id} className={containerClass.join(' ')}>
+      {renderContent()}
     </section>
   );
+
+  if (props.className) containerClass.push(props.className);
+  if (props.backgroundColor) containerClass.push(scss[props.backgroundColor]);
+
+  return props.id ? renderSection() : renderDiv();
 };
 export default Container;
