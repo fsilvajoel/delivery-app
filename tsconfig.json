@@ -40,7 +40,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "src/pages/Delivery/data.js"  ],
   "exclude": [
     "node_modules"
   ]
