@@ -9,18 +9,20 @@ import { server } from './mock.js';
 
 export default function Home() {
   return (
-    <div className={styles.container}>
+    <>
       <Head>
         <title>zeferino</title>
       </Head>
       <MenuApp />
-      <main className={styles.main}>
-        <TabCategories
-          food={server?.categories}
-          // drink={server?.categories}
-        />
-        <BannerIntro />
-      </main>
-    </div>
+      <div className={styles.container}>
+        <main className={styles.main}>
+          <TabCategories
+            food={server?.categories}
+            // drink={server?.categories}
+          />
+          <BannerIntro />
+        </main>
+      </div>
+    </>
   );
 }
