@@ -1,0 +1,19 @@
+@use 'styles/breakpoints' as *;
+.root {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  align-content: space-between;
+  padding: 0 1rem;
+}
+.iconButton {
+  padding: 10px;
+}
+@include from1024 {
+  .root {
+    input {
+      padding: 0 10rem;
+      margin-left: 2rem;
+    }
+  }
+}
