@@ -30,11 +30,11 @@ const Login = () => {
           <h1 className={styles.title}>Entrar</h1>
           <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
             <Controller
-              name="username"
+              name="mail"
               control={control}
               defaultValue=""
               render={({ field }) => (
-                <TextField id="username" label="Usuário" {...field} />
+                <TextField id="mail" label="e-mail" {...field} />
               )}
             />
             <Controller
