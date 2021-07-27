@@ -10,7 +10,7 @@ module.exports = withOptimizedImages(
       cssModules: true,
       includePaths: ['./src'],
     },
-    handleImages: ['jpeg', 'png', 'webp', 'jpg'],
+    handleImages: ['jpeg', 'gif', 'png', 'webp', 'jpg'],
     pageExtensions: ['page.tsx'],
     webpack(config) {
       config.module.rules.push({
