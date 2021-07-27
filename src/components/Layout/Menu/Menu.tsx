@@ -15,7 +15,7 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import Address from '~components/Address/index';
 import ShoppingCart from '~components/ShoppingCart/ShoppingCart';
 import { links } from '~constants/links';
-import logoDesktop from '~public/images//logo.png';
+import logoDesktop from '~public/images/logo.png';
 import logoMobile from '~public/images/logoMobile.png';
 
 import SearchBar from './Components/SearchBar/SearchBar';
