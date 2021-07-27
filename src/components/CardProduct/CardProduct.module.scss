@@ -1,0 +1,30 @@
+.card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.cardMedia {
+  padding-top: 56.25%; // 16:9
+}
+.cardContent {
+  flex-grow: 1;
+  text-align: center;
+}
+.description {
+  height: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  text-align: justify;
+}
+.cardTitle {
+  font-weight: 300;
+  font-size: 1.5rem;
+  text-align: center;
+}
+.price {
+  font-weight: 300;
+  color: #2cb74a;
+  font-size: 1.1rem;
+}
