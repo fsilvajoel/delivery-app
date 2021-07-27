@@ -1,5 +1,7 @@
 import Head from 'next/head';
 
+import { Container, Grid } from '@material-ui/core';
+import CardProduct from '~components/CardProduct/CardProduct';
 import MenuApp from '~components/Layout/Menu/Menu';
 
 import TabCategories from './components/Tab';
@@ -20,6 +22,26 @@ export default function Home() {
             food={server?.categories}
             // drink={server?.categories}
           />
+          <Container maxWidth="md">
+            <Grid container spacing={4}>
+              <CardProduct />
+              <CardProduct />
+              <CardProduct />
+              <CardProduct />
+              <CardProduct />
+              <CardProduct />
+              <CardProduct />
+              <CardProduct />
+              <CardProduct />
+              <CardProduct />
+              <CardProduct />
+              <CardProduct />
+              <CardProduct />
+              <CardProduct />
+              <CardProduct />
+              <CardProduct />
+            </Grid>
+          </Container>
           <BannerIntro />
         </main>
       </div>
