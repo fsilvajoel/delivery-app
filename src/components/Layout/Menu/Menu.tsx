@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useWindowSize } from 'react-use';
 
 import AppBar from '@material-ui/core/AppBar';
@@ -10,15 +10,15 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import LocationOnIcon from '@material-ui/icons/LocationOn';
-import MailIcon from '@material-ui/icons/Mail';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import Address from '~components/Address/index';
+import ShoppingCart from '~components/ShoppingCart/ShoppingCart';
+import { links } from '~constants/links';
 import logoDesktop from '~public/images//logo.png';
 import logoMobile from '~public/images/logoMobile.png';
 
 import SearchBar from './Components/SearchBar/SearchBar';
-import { links } from './Data';
 import classes from './Menu.module.scss';
 
 export default function MenuApp() {
@@ -30,8 +30,10 @@ export default function MenuApp() {
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
   const [isDesktop, setIsDesktop] = useState(false);
   const { width } = useWindowSize();
-  if (width >= 1280 && !isDesktop) setIsDesktop(true);
-  if (width < 1280 && isDesktop) setIsDesktop(false);
+
+  useEffect(() => {
+    setIsDesktop(() => width >= 1280);
+  }, [width]);
 
   const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -50,7 +52,7 @@ export default function MenuApp() {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
-  const menuId = 'primary-search-account-menu';
+  const menuId = 'menu-delivery-app';
   const renderMenu = (
     <Menu
       anchorEl={anchorEl}
@@ -67,7 +69,7 @@ export default function MenuApp() {
     </Menu>
   );
 
-  const mobileMenuId = 'primary-search-account-menu-mobile';
+  const mobileMenuId = 'mobile-menu';
   const renderMobileMenu = (
     <Menu
       anchorEl={mobileMoreAnchorEl}
@@ -123,17 +125,8 @@ export default function MenuApp() {
           <div>
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
-              <IconButton aria-label="show 4 new mails" color="inherit">
-                <LocationOnIcon />
-                <span>endereços</span>
-              </IconButton>
-
-              <IconButton aria-label="carrinho" color="inherit">
-                <Badge badgeContent={5} color="secondary">
-                  <ShoppingCartIcon />
-                  <span>carrinho</span>
-                </Badge>
-              </IconButton>
+              <Address />
+              <ShoppingCart />
               <IconButton
                 edge="end"
                 aria-label="account of current user"
