@@ -1,1 +1,0 @@
-{"ast":null,"code":"export const gtmButtonClass = 'gtm-link-event';","map":{"version":3,"sources":["D:/personal_projects/delivery-app/src/constants/gtmButtonClass.ts"],"names":["gtmButtonClass"],"mappings":"AAAA,OAAO,MAAMA,cAAc,GAAG,gBAAvB","sourcesContent":["export const gtmButtonClass = 'gtm-link-event';\n"]},"metadata":{},"sourceType":"module"}
