@@ -1,5 +1,8 @@
 import Carousel from 'react-elastic-carousel';
 
+import Loading from '~components/Loading/Loading';
+import { useAllCategoryes } from '~hooks/useProducts';
+
 import scss from './Carrousel.module.scss';
 import Item from './Item';
 import { ICarousel } from './type';
@@ -11,11 +14,13 @@ const breakPoints = [
   { width: 768, itemsToShow: 7 },
   { width: 1200, itemsToShow: 10 },
 ];
-const CarrrouselCategories = (props: { data: any }) => {
-  const { data } = props;
+const CarrrouselCategories = () => {
+  const data = useAllCategoryes();
+
+  console.log('data', data);
   return (
     <div className={scss.carrousel}>
-      {data ? (
+      {data !== 'loading' ? (
         <Carousel
           isRTL={false}
           breakPoints={breakPoints}
@@ -23,7 +28,7 @@ const CarrrouselCategories = (props: { data: any }) => {
           itemsToShow={2}
           className={scss.carrousel}
         >
-          {data[0].products?.map((category: ICarousel) => {
+          {data?.map((category: ICarousel) => {
             return (
               <Item
                 key={category.slug}
@@ -36,7 +41,7 @@ const CarrrouselCategories = (props: { data: any }) => {
         </Carousel>
       ) : (
         <>
-          <h1>Ainda não há produtos disponíveis nesta categoria</h1>
+          <Loading />
         </>
       )}
     </div>
