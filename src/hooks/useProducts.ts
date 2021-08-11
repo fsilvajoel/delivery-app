@@ -9,7 +9,7 @@ export function useAllProducts() {
   const { isLoading, error, data } = useQuery('productsData', () =>
     getAllProductsData()
   );
-  if (isLoading) return 'Loading...';
+  if (isLoading) return 'loading';
 
   if (error) return console.log('houve um erro', error);
   return data;
