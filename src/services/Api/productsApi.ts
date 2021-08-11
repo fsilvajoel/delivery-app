@@ -1,14 +1,21 @@
+/* eslint-disable consistent-return */
 import axios from 'axios';
+
 import { apiUrl, partner } from './apiConstants';
 
-export const getAllProductsData = async () => {
-  const response = await fetch(`${apiUrl}/parceiro/${partner}/produtos/`);
+export const getAllCategories = async () => {
+  const response = await fetch(`${apiUrl}/produtos${partner}/categorias/`);
   const data = await response.json();
-  // console.log(data)
   return data;
 };
 
-export async function getProductBySearch(search) {
+export const getAllProductsData = async () => {
+  const response = await fetch(`${apiUrl}/produtos${partner}/`);
+  const data = await response.json();
+  return data;
+};
+
+export async function getProductBySearch(search: string) {
   try {
     const response = await axios.get(`${apiUrl}${partner}/produtos/`, {
       params: {
