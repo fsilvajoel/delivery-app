@@ -6,8 +6,9 @@ import Link from '@material-ui/core/Link';
 import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
 
-import styles from './components/login/Login.module.scss';
-import { IFormInput } from './components/login/type';
+import LogoZeferino from '../components/login/images/logozeferino.png';
+import styles from '../components/login/Login.module.scss';
+import { IFormInput } from '../components/login/type';
 
 const Login = () => {
   const { control, handleSubmit } = useForm<IFormInput>();
@@ -22,11 +23,7 @@ const Login = () => {
       {/* TODO: fazer um .join no className com o caminho da imagem correta */}
       <Grid component={Paper} elevation={6} item md={5} sm={8} square xs={12}>
         <div className={styles.paper}>
-          <img
-            className={styles.logo}
-            src="https://i.picsum.photos/id/868/200/200.jpg?hmac=TH6VPbfiRO1pMY4ZYWqECwlH8wSnlxN_KlCVOzTpbe8"
-            alt="Logo"
-          />
+          <img className={styles.logo} src={LogoZeferino} alt="Logo" />
           <h1 className={styles.title}>Entrar</h1>
           <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
             <Controller

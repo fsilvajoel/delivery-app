@@ -10,8 +10,9 @@ import TextField from '@material-ui/core/TextField';
 
 // import Copyright from '../../Components/Layout/Copyright';
 // import { registration } from '../../shared/services/Api/loginApi';
-import logoMorita from './components/login/images/logozeferino.png';
-import styles from './components/login/Login.module.scss';
+import LogoZeferino from '../components/login/images/logozeferino.png';
+import styles from '../components/login/Login.module.scss';
+import { IFormInput } from '../components/login/type';
 import { IFormRegister } from './components/login/type';
 // import backgroundLogin from './login/images/backgroundLogin.jpg';
 
@@ -35,7 +36,7 @@ export default function SignUp() {
       )}
       <Grid component={Paper} elevation={6} item md={5} sm={8} square xs={12}>
         <div className={styles.paper}>
-          <img className={styles.logo} src={logoMorita} alt="Logo" />
+          <img className={styles.logo} src={LogoZeferino} alt="Logo" />
           <h1 className={styles.title}>Cadastrar-se</h1>
           <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
             <Controller
