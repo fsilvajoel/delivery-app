@@ -22,10 +22,9 @@ function TabPanel(props: ITabPanelProps) {
   );
 }
 
-export default function TabCategories(props: { food: Array<any> }) {
-  const { food } = props;
-  console.log('food', food);
-  // const { drink } = props;
+export default function TabCategories() {
+  // const { food } = props;
+
   const [value, setValue] = useState(0);
 
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
@@ -42,12 +41,12 @@ export default function TabCategories(props: { food: Array<any> }) {
         // textColor="primary"
         // centered
       >
-        <Tab label="Comidas" />
+        <Tab label="Produtos" />
         <Tab label="Bebidas" />
       </Tabs>
       <TabPanel value={value} index={0}>
         {/* <h1>teste1</h1> */}
-        <CarrrouselCategories data={food} />
+        <CarrrouselCategories data={categories} />
       </TabPanel>
       <TabPanel value={value} index={1}>
         <h1>teste2</h1>
