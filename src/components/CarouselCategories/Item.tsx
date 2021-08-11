@@ -1,20 +1,11 @@
-// import { useDispatch, useSelector } from 'react-redux';
-
-// import { makeStyles } from '@material-ui/core/styles';
+import { setCategorySelected } from '~hooks/useProductStore';
 
 import scss from './Carrousel.module.scss';
 import { ICarousel } from './type';
-// import { setCurrentCategory } from '../../shared/Redux/Store/Products/ProductsDucks';
 
 const Item = (props: ICarousel) => {
-  // console.log('item', props);
-  // const dispatch = useDispatch();
-  // const { img, title, link } = props;
-  // const classes = useStyles();
-
-  function handleSelect(data: any) {
-    console.log('selecionado', data);
-    // dispatch(setCurrentCategory(data));
+  function handleSelect(data: string) {
+    setCategorySelected(data);
   }
 
   return (
