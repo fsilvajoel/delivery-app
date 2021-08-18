@@ -1,13 +1,15 @@
+import { IProducts } from 'src/types/products';
+// eslint-disable-next-line import-helpers/order-imports
 import CreateStore from '~zustand/index';
 
 type TProductsState = {
-  currentCategory: string;
-  // productsInCurrentCategory: Array<any>;
+  currentCategory: number;
+  productsInCurrentCategory: Array<IProducts>;
 };
 
 const initialStore = {
-  currentCategory: '',
-  // productsInCurrentCategory: {},
+  currentCategory: 0,
+  productsInCurrentCategory: [],
 };
 
 export const useProductStore = CreateStore<TProductsState>(
@@ -15,6 +17,9 @@ export const useProductStore = CreateStore<TProductsState>(
   'productStore'
 );
 
-export const setCategorySelected = (state: string) => {
+export const setCategorySelected = (state: number) => {
   useProductStore.setState({ currentCategory: state });
+};
+export const setProductsInCurrentCategory = (state: Array<IProducts>) => {
+  useProductStore.setState({ productsInCurrentCategory: state });
 };
