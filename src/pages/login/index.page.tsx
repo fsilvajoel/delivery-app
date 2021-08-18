@@ -31,7 +31,7 @@ const Login = () => {
               control={control}
               defaultValue=""
               render={({ field }) => (
-                <TextField id="mail" label="e-mail" {...field} />
+                <TextField id="mail" label="E-mail" {...field} />
               )}
             />
             <Controller

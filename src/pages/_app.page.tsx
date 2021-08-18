@@ -7,8 +7,6 @@ import 'fontsource-roboto';
 import '~styles/globals.scss';
 import { ReactQueryDevtools } from 'react-query/devtools';
 
-import ContextProviders from 'src/ContextProviders';
-
 const queryClient = new QueryClient();
 
 function App({ Component, pageProps }: { Component: any; pageProps: any }) {
@@ -24,9 +22,8 @@ function App({ Component, pageProps }: { Component: any; pageProps: any }) {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* <ContextProviders> */}
       <ReactQueryDevtools initialIsOpen={false} />
-      <Component {...pageProps} />;{/* </ContextProviders> */}
+      <Component {...pageProps} />;
     </QueryClientProvider>
   );
 }
