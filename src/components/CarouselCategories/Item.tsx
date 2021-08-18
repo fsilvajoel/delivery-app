@@ -4,13 +4,13 @@ import scss from './Carrousel.module.scss';
 import { ICarousel } from './type';
 
 const Item = (props: ICarousel) => {
-  function handleSelect(data: string) {
+  function handleSelect(data: number) {
     setCategorySelected(data);
   }
 
   return (
     <>
-      <button type="button" onClick={() => handleSelect(props.slug)}>
+      <button type="button" onClick={() => handleSelect(props.id)}>
         <div className={scss.root}>
           <div className={scss.card}>
             <img className={scss.img} src={props.image} alt={props.name} />

@@ -16,10 +16,9 @@ const breakPoints = [
 ];
 const CarrrouselCategories = () => {
   const data = useAllCategoryes();
-
-  console.log('data', data);
   return (
     <div className={scss.carrousel}>
+      {/* //TODO: Usar lodash com verificação e componente de loading */}
       {data !== 'loading' ? (
         <Carousel
           isRTL={false}
@@ -35,6 +34,7 @@ const CarrrouselCategories = () => {
                 image={category.image}
                 slug={category.slug}
                 name={category.name}
+                id={category.id}
               />
             );
           })}
