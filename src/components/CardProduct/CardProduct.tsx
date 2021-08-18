@@ -8,6 +8,7 @@ import {
 // import { IProducts } from 'src/types/products';
 
 import classes from './CardProduct.module.scss';
+import ModalProductInfo from './ModalProductInfo/Modal';
 import noMedia from './nophoto.png';
 
 const CardProduct: React.FC = (props) => {
@@ -29,8 +30,7 @@ const CardProduct: React.FC = (props) => {
         </p>
       </CardContent>
       <CardActions style={{ justifyContent: 'center' }}>
-        <Button>Ver detalhes</Button>
-        {/* <ModalProduct data={props.data} /> */}
+        <ModalProductInfo data={props.data} />
       </CardActions>
     </Card>
   );

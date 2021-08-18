@@ -1,20 +1,12 @@
 import { useState } from 'react';
 
+import { Button } from '@material-ui/core';
 import Modal from '@material-ui/core/Modal';
 
 import scss from './Modal.module.scss';
 
-function getModalStyle() {
-  return {
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-  };
-}
-
-export default function SimpleModal() {
+function ModalProductInfo() {
   // getModalStyle is not a pure function, we roll the style only on the first render
-  const [modalStyle] = useState(getModalStyle);
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => {
@@ -26,20 +18,22 @@ export default function SimpleModal() {
   };
 
   const body = (
-    <div style={modalStyle} className={scss.paper}>
+    <div
+      style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}
+      className={scss.paper}
+    >
       <h2 id="simple-modal-title">Text in a modal</h2>
       <p id="simple-modal-description">
         Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
       </p>
-      <SimpleModal />
+      {/* <ModalProductInfo /> */}
     </div>
   );
 
   return (
     <div>
-      <button type="button" onClick={handleOpen}>
-        Open Modal
-      </button>
+      <Button onClick={handleOpen}>Ver detalhes</Button>
+      {/* <button type="button">Ver detalhes</button> */}
       <Modal
         open={open}
         onClose={handleClose}
@@ -51,3 +45,4 @@ export default function SimpleModal() {
     </div>
   );
 }
+export default ModalProductInfo;
