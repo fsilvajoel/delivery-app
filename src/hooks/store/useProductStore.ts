@@ -8,7 +8,7 @@ type TProductsState = {
 };
 
 const initialStore = {
-  currentCategory: 0,
+  currentCategory: -1,
   productsInCurrentCategory: [],
 };
 
