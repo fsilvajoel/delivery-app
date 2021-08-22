@@ -6,8 +6,8 @@ import { Container, Grid } from '@material-ui/core';
 import CardProduct from '~components/CardProduct/CardProduct';
 import CarrrouselCategories from '~components/CarouselCategories/CarouselCategories';
 import MenuApp from '~components/Layout/Menu/Menu';
-import { useAllProducts } from '~hooks/useProducts';
-import { useProductStore } from '~hooks/useProductStore';
+import { useAllProducts } from '~hooks/query/useProducts';
+import { useProductStore } from '~hooks/store/useProductStore';
 
 import BannerIntro from './Delivery/BannerIntro';
 import styles from './Home.module.scss';
@@ -39,7 +39,7 @@ export default function Home() {
         <main className={styles.main}>
           <CarrrouselCategories />
           <Container maxWidth="md">
-            {selectedProduct !== 0 ? (
+            {selectedProduct !== -1 ? (
               <Grid container spacing={4}>
                 {showProductFilter()}
               </Grid>
