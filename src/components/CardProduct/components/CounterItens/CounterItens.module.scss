@@ -1,0 +1,33 @@
+.title {
+  font-size: 1rem;
+}
+.counertItens {
+  display: flex;
+  text-align: center;
+  border: 1px solid #f2f2f2;
+  border-radius: 4px;
+  padding: 0 4px;
+
+  .button {
+    width: 25%;
+
+    .icon {
+      padding: 2px;
+      font-size: 2.4rem;
+      color: #000;
+      & .red {
+        color: #a75050;
+      }
+      & .green {
+        color: #50a773;
+      }
+    }
+  }
+
+  .counter {
+    width: 50%;
+    align-self: center;
+    font-size: 2.2rem;
+    font-weight: 300;
+  }
+}

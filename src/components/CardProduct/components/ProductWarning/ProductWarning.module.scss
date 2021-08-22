@@ -1,0 +1,15 @@
+.productWarning {
+  display: flex;
+
+  padding: 0.5rem;
+  border-top: 1pt solid #e2dfdf;
+  .icon {
+    font-size: 24px;
+    color: #717171;
+    padding: 0.5rem;
+  }
+  .textInfo {
+    font-size: 1.2rem;
+    text-align: justify;
+  }
+}

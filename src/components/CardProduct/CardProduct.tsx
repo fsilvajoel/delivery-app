@@ -1,10 +1,4 @@
-import {
-  Card,
-  CardContent,
-  CardActions,
-  CardMedia,
-  Button,
-} from '@material-ui/core';
+import { Card, CardContent, CardActions, CardMedia } from '@material-ui/core';
 // import { IProducts } from 'src/types/products';
 
 import classes from './CardProduct.module.scss';
@@ -13,7 +7,6 @@ import noMedia from './nophoto.png';
 
 const CardProduct: React.FC = (props) => {
   const { data } = props;
-  console.log(data);
 
   return (
     <Card className={classes.card}>
@@ -30,7 +23,7 @@ const CardProduct: React.FC = (props) => {
         </p>
       </CardContent>
       <CardActions style={{ justifyContent: 'center' }}>
-        <ModalProductInfo data={props.data} />
+        <ModalProductInfo data={data} />
       </CardActions>
     </Card>
   );

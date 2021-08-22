@@ -1,4 +1,4 @@
-import { setCategorySelected } from '~hooks/useProductStore';
+import { setCategorySelected } from '~hooks/store/useProductStore';
 
 import scss from './Carrousel.module.scss';
 import { ICarousel } from './type';

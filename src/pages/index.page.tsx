@@ -14,6 +14,7 @@ import styles from './Home.module.scss';
 
 export default function Home() {
   const products = useAllProducts();
+  console.log({ products });
   const selectedProduct = useProductStore((state) => state.currentCategory);
 
   const showProductFilter = useCallback(() => {
@@ -22,9 +23,9 @@ export default function Home() {
         (category: { category: number }) =>
           category.category === selectedProduct
       )
-      .map((product: any) => (
+      .map((product: any, key) => (
         <Grid item md={4} sm={6} xs={12}>
-          <CardProduct data={product} />
+          <CardProduct key={key} data={product} />
         </Grid>
       ));
   }, [selectedProduct, products]);
@@ -39,7 +40,7 @@ export default function Home() {
         <main className={styles.main}>
           <CarrrouselCategories />
           <Container maxWidth="md">
-            {selectedProduct !== -1 ? (
+            {selectedProduct !== -1 && products !== 'loading' ? (
               <Grid container spacing={4}>
                 {showProductFilter()}
               </Grid>

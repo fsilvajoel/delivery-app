@@ -1,7 +1,7 @@
 import Carousel from 'react-elastic-carousel';
 
 import Loading from '~components/Loading/Loading';
-import { useAllCategoryes } from '~hooks/useProducts';
+import { useAllCategoryes } from '~hooks/query/useProducts';
 
 import scss from './Carrousel.module.scss';
 import Item from './Item';
