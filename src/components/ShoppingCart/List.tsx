@@ -9,26 +9,25 @@ import {
   Typography,
 } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
-import { useCartStore } from '~hooks/store/UseCartStore';
+import { removeProductsInCart, useCartStore } from '~hooks/store/UseCartStore';
 
 import scss from './ShoppingCart.module.scss';
 
 const ListCart = () => {
   const cart = useCartStore((state) => state.cart);
-  const [total, setTotal] = useState<number>(10);
-  console.log({ cart });
+  const totalPrice = useCartStore((state) => state.totalPrice);
+  // console.log({ cart });
 
   const ShowItensInCart = () => {
     return (
       <>
         {cart.map((item, key) => {
-          // setTotal(total + item.unitaryValue * item.quantity);
           return (
             <>
               <ListItem className={scss.listItem} key={item.productId}>
                 <IconButton
                   className={scss.iconDelete}
-                  // onClick={() => dropProduct(key)}
+                  onClick={() => removeProductsInCart(key)}
                   aria-label="delete"
                 >
                   <DeleteIcon />
@@ -46,7 +45,7 @@ const ListCart = () => {
                 <ListItemText className="resume" primary="Total pedido" />
                 <Typography variant="subtitle1" className={scss.total}>
                   R$
-                  {total.toFixed(2)}
+                  {totalPrice.toFixed(2)}
                 </Typography>
               </ListItem>
             </>

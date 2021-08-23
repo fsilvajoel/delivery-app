@@ -6,8 +6,8 @@ import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import CloseIcon from '@material-ui/icons/Close';
 import DoneIcon from '@material-ui/icons/Done';
 import Alert from '@material-ui/lab/Alert';
-import { IProductsInCart } from 'src/types/cart';
 import { setProductsInCart } from '~hooks/store/UseCartStore';
+import { IProductsInCart } from 'src/types/cart';
 
 import NoPhoto from '../alecrim.jpg';
 import CounterItens from '../components/CounterItens/CounterItens';
@@ -28,16 +28,14 @@ function ModalProductInfo(props) {
   };
   const handleSelectProduct = () => {
     // console.log('entrei');
-    const item: IProductsInCart = [
-      {
-        productId: 1,
-        name: data.name,
-        unitaryValue: 2,
-        quantity: 300,
-        observation: 'observação',
-        unity: 'quantasVem',
-      },
-    ];
+    const item: IProductsInCart = {
+      productId: 1,
+      name: data.name,
+      unitaryValue: 2,
+      quantity: 300,
+      observation: 'observação',
+      unity: 'quantasVem',
+    };
     setProductsInCart(item);
   };
 
