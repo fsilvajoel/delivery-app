@@ -1,5 +1,6 @@
 export interface IProductsInCart {
-  product: number;
+  name: string;
+  productId: number;
   unitaryValue: number;
   quantity: number;
   observation: string;

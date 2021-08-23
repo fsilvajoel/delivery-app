@@ -6,8 +6,8 @@ import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import CloseIcon from '@material-ui/icons/Close';
 import DoneIcon from '@material-ui/icons/Done';
 import Alert from '@material-ui/lab/Alert';
-import { setProductsInCart } from '~hooks/store/UseCartStore';
 import { IProductsInCart } from 'src/types/cart';
+import { setProductsInCart } from '~hooks/store/UseCartStore';
 
 import NoPhoto from '../alecrim.jpg';
 import CounterItens from '../components/CounterItens/CounterItens';
@@ -16,8 +16,8 @@ import scss from './Modal.module.scss';
 
 function ModalProductInfo(props) {
   const { data } = props;
-  console.log({ dentroMODAL: data });
-  const [open, setOpen] = useState(false);
+  // console.log({ dentroMODAL: data });
+  const [open, setOpen] = useState<boolean>(false);
 
   const handleOpen = () => {
     setOpen(true);
@@ -27,14 +27,17 @@ function ModalProductInfo(props) {
     setOpen(false);
   };
   const handleSelectProduct = () => {
-    console.log('entrei');
-    const item: IProductsInCart = {
-      product: 1,
-      unitaryValue: 2,
-      quantity: 300,
-      observation: 'observação',
-      unity: 'quantasVem',
-    };
+    // console.log('entrei');
+    const item: IProductsInCart = [
+      {
+        productId: 1,
+        name: data.name,
+        unitaryValue: 2,
+        quantity: 300,
+        observation: 'observação',
+        unity: 'quantasVem',
+      },
+    ];
     setProductsInCart(item);
   };
 

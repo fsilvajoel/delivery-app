@@ -14,6 +14,7 @@ import {
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import { links } from '~constants/links';
 
+import ListCart from './List';
 import scss from './ShoppingCart.module.scss';
 
 export default function ShoppingCart() {
@@ -29,14 +30,14 @@ export default function ShoppingCart() {
 
   const CardToList = () => {
     return (
-      <Card className={scss.root}>
+      <Card className={scss.cardList}>
         <CardContent>
-          <h2>Listagem de pedidos</h2>
-          {/* <BagCard products={products} /> */}
+          <h2>Itens no pedidos</h2>
+          <ListCart />
         </CardContent>
         <CardActions style={{ flexDirection: 'row-reverse' }}>
-          <Link href={links.home}>
-            <Button variant="outlined" size="medium">
+          <Link href={links.checkout}>
+            <Button variant="outlined" size="large">
               Finalizar
             </Button>
           </Link>

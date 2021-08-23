@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import {
   Divider,
   IconButton,
@@ -7,46 +9,61 @@ import {
   Typography,
 } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
+import { useCartStore } from '~hooks/store/UseCartStore';
+
+import scss from './ShoppingCart.module.scss';
 
 const ListCart = () => {
+  const cart = useCartStore((state) => state.cart);
+  const [total, setTotal] = useState<number>(10);
+  console.log({ cart });
+
+  const ShowItensInCart = () => {
+    return (
+      <>
+        {cart.map((item, key) => {
+          // setTotal(total + item.unitaryValue * item.quantity);
+          return (
+            <>
+              <ListItem className={scss.listItem} key={item.productId}>
+                <IconButton
+                  className={scss.iconDelete}
+                  // onClick={() => dropProduct(key)}
+                  aria-label="delete"
+                >
+                  <DeleteIcon />
+                </IconButton>
+                <ListItemText primary={item.name} secondary={item.quantity} />
+                <h5 className="product-price">
+                  {(item.unitaryValue * item.quantity).toLocaleString('pt-br', {
+                    style: 'currency',
+                    currency: 'BRL',
+                  })}
+                </h5>
+              </ListItem>
+              <Divider />
+              <ListItem className={scss.listItem}>
+                <ListItemText className="resume" primary="Total pedido" />
+                <Typography variant="subtitle1" className={scss.total}>
+                  R$
+                  {total.toFixed(2)}
+                </Typography>
+              </ListItem>
+            </>
+          );
+        })}
+        ;
+      </>
+    );
+  };
   return (
     <List disablePadding>
-      {products < 1 ? (
+      {cart.length < 1 ? (
         <>
-          <h3 className={classes.centerText}>A sacola está vazia</h3>
+          <h3 className={scss.centerText}>A sacola está vazia</h3>
         </>
       ) : (
-        <>
-          {products?.map((product, key) => {
-            total = Number(total) + Number(product.totalPrice);
-            return (
-              <>
-                <ListItem className={classes.listItem} key={product.name}>
-                  <IconButton
-                    className={classes.iconDelete}
-                    onClick={() => dropProduct(key)}
-                    aria-label="delete"
-                  >
-                    <DeleteIcon />
-                  </IconButton>
-                  <ListItemText
-                    primary={product.name}
-                    secondary={product.desc}
-                  />
-                  <h5 className="product-price">{product.totalPrice}</h5>
-                </ListItem>
-                <Divider />
-              </>
-            );
-          })}
-
-          <ListItem className={classes.listItem}>
-            <ListItemText className="resume" primary="Total pedido" />
-            <Typography variant="subtitle1" className={classes.total}>
-              R${total.toFixed(2)}
-            </Typography>
-          </ListItem>
-        </>
+        <ShowItensInCart />
       )}
     </List>
   );
