@@ -2,8 +2,7 @@ import { Card, CardContent, CardActions, CardMedia } from '@material-ui/core';
 // import { IProducts } from 'src/types/products';
 
 import classes from './CardProduct.module.scss';
-import ModalProductInfo from './ModalProductInfo/Modal';
-import noMedia from './nophoto.png';
+import ModalProductInfo from './components/ModalProductInfo/Modal';
 
 const CardProduct: React.FC = (props) => {
   const { data } = props;
@@ -12,7 +11,7 @@ const CardProduct: React.FC = (props) => {
     <Card className={classes.card}>
       <CardMedia
         className={classes.cardMedia}
-        image={noMedia}
+        image={data.image_url}
         title={data.title}
       />
       <CardContent className={classes.CardContent}>

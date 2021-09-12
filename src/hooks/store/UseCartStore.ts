@@ -19,8 +19,10 @@ export const useCartStore = CreateStore<TProductsState>(
   'cartStore'
 );
 
-export const setQuantityItens = (state: number) => {
-  useCartStore.setState({ numberOfItens: state });
+export const setQuantityItens = () => {
+  useCartStore.setState((prevState) => ({
+    numberOfItens: prevState.cart.length,
+  }));
 };
 
 export const setProductsInCart = (state: IProductsInCart) => {
@@ -28,6 +30,7 @@ export const setProductsInCart = (state: IProductsInCart) => {
     cart: [...prevState.cart, state],
     totalPrice: prevState.totalPrice + state.quantity * state.unitaryValue,
   }));
+  setQuantityItens();
 };
 export const removeProductsInCart = (id) => {
   useCartStore.setState((prevState) => {
