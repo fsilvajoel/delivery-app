@@ -59,8 +59,10 @@
             "groups": [
               "/^next/",
               "/^react/",
-              "module", 
-              ["parent", "sibling", "index"]
+              "module",
+              "/^~hooks/",
+              ["parent", "sibling", "index"],
+              "/~public/"
             ],
             "alphabetize": { "order": "asc", "ignoreCase": true }
           }

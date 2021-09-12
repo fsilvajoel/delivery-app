@@ -15,6 +15,7 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import Address from '~components/Address/index';
 import ShoppingCart from '~components/ShoppingCart/ShoppingCart';
 import { links } from '~constants/links';
+import { useCartStore } from '~hooks/store/UseCartStore';
 import logoDesktop from '~public/images/logo.png';
 import logoMobile from '~public/images/logoMobile.png';
 
@@ -30,6 +31,7 @@ export default function MenuApp() {
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
   const [isDesktop, setIsDesktop] = useState(false);
   const { width } = useWindowSize();
+  const contItensCart = useCartStore((state) => state.numberOfItens);
 
   useEffect(() => {
     setIsDesktop(() => width >= 1280);
@@ -81,8 +83,8 @@ export default function MenuApp() {
       onClose={handleMobileMenuClose}
     >
       <MenuItem>
-        <IconButton aria-label="show 11 new notifications" color="inherit">
-          <Badge badgeContent={11} color="secondary">
+        <IconButton color="inherit">
+          <Badge badgeContent={contItensCart} color="secondary">
             <ShoppingCartIcon />
           </Badge>
         </IconButton>
