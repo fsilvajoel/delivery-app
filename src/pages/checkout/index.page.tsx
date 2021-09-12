@@ -10,9 +10,10 @@ import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import Stepper from '@material-ui/core/Stepper';
 import Typography from '@material-ui/core/Typography';
+import MenuApp from '~components/Layout/Menu/Menu';
 
 import scss from './Checkout.module.scss';
-import AddressForm from './Complements';
+import CheckoutList from './components/CheckoutList';
 import Finished from './Finished';
 import PaymentForm from './Resume';
 import Review from './Review';
@@ -22,7 +23,7 @@ const steps = ['Complementos', 'Revisão do pedido', 'Finalizar'];
 function getStepContent(step: number) {
   switch (step) {
     case 0:
-      return <AddressForm />;
+      return <CheckoutList />;
     case 1:
       return <PaymentForm />;
     case 2:
@@ -45,44 +46,51 @@ export default function Checkout() {
 
   return (
     <main className={scss.layout}>
-      <Paper className={scss.paper}>
-        <Typography align="center" component="h1" variant="h4">
+      <MenuApp />
+      <div className={scss.container}>
+        <Typography
+          align="center"
+          component="h1"
+          variant="h4"
+          className={scss.title}
+        >
           Finalizar Pedido
         </Typography>
-        <Stepper activeStep={activeStep} className={scss.stepper}>
-          {steps.map((label) => (
-            <Step key={label}>
-              <StepLabel>{label}</StepLabel>
-            </Step>
-          ))}
-        </Stepper>
-        <>
-          {activeStep === steps.length ? (
-            <Finished />
-          ) : (
-            <>
-              {getStepContent(activeStep)}
-              <div className={scss.buttons}>
-                {activeStep !== 0 && (
-                  <Button className={scss.button} onClick={handleBack}>
-                    Voltar
+        <Paper className={scss.paper}>
+          <Stepper activeStep={activeStep} className={scss.stepper}>
+            {steps.map((label) => (
+              <Step key={label}>
+                <StepLabel>{label}</StepLabel>
+              </Step>
+            ))}
+          </Stepper>
+          <>
+            {activeStep === steps.length ? (
+              <Finished />
+            ) : (
+              <>
+                {getStepContent(activeStep)}
+                <div className={scss.buttons}>
+                  {activeStep !== 0 && (
+                    <Button className={scss.button} onClick={handleBack}>
+                      Voltar
+                    </Button>
+                  )}
+                  <Button
+                    className={scss.button}
+                    onClick={handleNext}
+                    variant="contained"
+                  >
+                    {activeStep === steps.length - 1
+                      ? 'Confirmar Pedido'
+                      : 'Avançar'}
                   </Button>
-                )}
-                <Button
-                  className={scss.button}
-                  color="primary"
-                  onClick={handleNext}
-                  variant="contained"
-                >
-                  {activeStep === steps.length - 1
-                    ? 'Confirmar Pedido'
-                    : 'Avançar'}
-                </Button>
-              </div>
-            </>
-          )}
-        </>
-      </Paper>
+                </div>
+              </>
+            )}
+          </>
+        </Paper>
+      </div>
     </main>
   );
 }

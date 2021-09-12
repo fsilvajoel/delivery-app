@@ -1,7 +1,44 @@
+@use 'styles/breakpoints' as *;
+
 .layout {
-  width: auto;
-  margin-left: 2rem;
-  margin-right: 2rem;
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+
+    .title {
+      margin-top: 4rem;
+      margin-bottom: 2rem;
+    }
+
+    .paper {
+      margin-top: 3rem;
+      margin-bottom: 3rem;
+      padding: 2rem;
+      margin: 1rem;
+
+      // [theme.breakpoints.up(600 + 3rem; * 2)]: {
+      //   margin-top: 6rem;
+      //   margin-bottom: 6rem;
+      //   padding: 3rem;
+      // }
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-around;
+
+      .button {
+        margin-top: 3rem;
+        margin-left: 1rem;
+      }
+    }
+  }
+
+  // margin-left: 2rem;
+  // margin-right: 2rem;
   // [theme.breakpoints.up(600 + theme.spacing(2) * 2)]: {
   //   width: 600px,
   //   marginLeft: 'auto',
@@ -9,30 +46,9 @@
   // }
 }
 
-.paper {
-  margin-top: 3rem;
-  margin-bottom: 3rem;
-  padding: 2rem;
-  // [theme.breakpoints.up(600 + 3rem; * 2)]: {
-  //   margin-top: 6rem;
-  //   margin-bottom: 6rem;
-  //   padding: 3rem;
-  // }
-}
-
-.stepper {
-  padding: 3rem 0 5rem;
-}
-
-.buttons {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.button {
-  margin-top: 3rem;
-  margin-left: 1rem;
-}
+// .stepper {
+//   padding: 3rem 0 5rem;
+// }
 
 .icon {
   display: flex;
@@ -42,5 +58,17 @@
     font-size: 200px;
     height: 200px;
     color: #359217;
+  }
+}
+@include from1024 {
+  .layout {
+    .container {
+      .paper {
+        margin-top: 3rem;
+        margin-bottom: 3rem;
+        padding: 2rem;
+        width: 50%;
+      }
+    }
   }
 }
