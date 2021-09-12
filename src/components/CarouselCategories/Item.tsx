@@ -14,7 +14,7 @@ const Item = (props: ICarousel) => {
         <div className={scss.root}>
           <div className={scss.card}>
             <img className={scss.img} src={props.image} alt={props.name} />
-            <span className={scss.title}>{props.name}</span>
+            <p className={scss.title}>{props.name}</p>
           </div>
         </div>
       </button>
