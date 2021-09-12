@@ -16,7 +16,6 @@ import scss from './ShoppingCart.module.scss';
 const ListCart = () => {
   const cart = useCartStore((state) => state.cart);
   const totalPrice = useCartStore((state) => state.totalPrice);
-  // console.log({ cart });
 
   const ShowItensInCart = () => {
     return (
@@ -59,7 +58,9 @@ const ListCart = () => {
     <List disablePadding>
       {cart.length < 1 ? (
         <>
-          <h3 className={scss.centerText}>A sacola está vazia</h3>
+          <div className={scss.emptCart}>
+            <h3 className={scss.text}>A sacola está vazia</h3>
+          </div>
         </>
       ) : (
         <ShowItensInCart />

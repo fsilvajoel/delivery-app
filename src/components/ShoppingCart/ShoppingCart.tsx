@@ -13,13 +13,14 @@ import {
 } from '@material-ui/core';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import { links } from '~constants/links';
+import { useCartStore } from '~hooks/store/UseCartStore';
 
 import ListCart from './List';
 import scss from './ShoppingCart.module.scss';
 
 export default function ShoppingCart() {
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
-
+  const numberOfItens = useCartStore((state) => state.numberOfItens);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
@@ -52,7 +53,7 @@ export default function ShoppingCart() {
   return (
     <div>
       <IconButton onClick={handleClick} aria-label="carrinho" color="inherit">
-        <Badge badgeContent={5} color="secondary">
+        <Badge badgeContent={numberOfItens} color="secondary">
           <ShoppingCartIcon />
           <span>carrinho</span>
         </Badge>

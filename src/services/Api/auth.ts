@@ -20,6 +20,14 @@ export interface ICredentialsData {
   password: string;
 }
 
+export interface IRegistersData {
+  firstName: string;
+  lastName: string;
+  email: string;
+  password1: string;
+  password2: string;
+}
+
 // TODO: ajustar retorno
 export interface IMeResponseData {
   id: string;
@@ -29,7 +37,6 @@ export interface IMeResponseData {
 
 export const authMe = async (): Promise<IMeResponseData> => {
   const response = await instance.get<IMeResponseData>('/rest-auth/user/');
-
   return response.data;
 };
 
@@ -41,6 +48,19 @@ export const authLogin = async (
     data
   );
 
+  console.log('responseAPI', response);
+  return response.data;
+};
+
+export const register = async (
+  data: ICredentialsData
+): Promise<ILoginResponseData> => {
+  const response = await instance.post<ILoginResponseData>(
+    `${deliveryRestAuth}/login`,
+    data
+  );
+
+  console.log('responseAPI', response);
   return response.data;
 };
 // TODO: revisar
