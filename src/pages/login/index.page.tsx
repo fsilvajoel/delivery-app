@@ -5,16 +5,20 @@ import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
 import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
+// import { useLogin } from '~hooks/useUser';
+
+import { authLogin, ICredentialsData } from '~services/Api/auth';
 
 import LogoZeferino from '../components/login/images/logozeferino.png';
 import styles from '../components/login/Login.module.scss';
-import { IFormInput } from '../components/login/type';
+// import { IFormInput } from '../components/login/type';
 
 const Login = () => {
-  const { control, handleSubmit } = useForm<IFormInput>();
+  const { control, handleSubmit } = useForm<ICredentialsData>();
 
-  const onSubmit: SubmitHandler<IFormInput> = (data) => {
+  const onSubmit: SubmitHandler<ICredentialsData> = (data) => {
     console.log(data);
+    authLogin(data);
   };
 
   return (
@@ -57,7 +61,10 @@ const Login = () => {
             </Button>
             <Grid container>
               <Grid item xs>
-                <Link href="/#" variant="h5">
+                <Link
+                  href="https://delivery.growtechnologies.com.br/rest-auth/password/reset/"
+                  variant="h5"
+                >
                   Esqueceu sua senha?
                 </Link>
               </Grid>

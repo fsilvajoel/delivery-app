@@ -14,7 +14,6 @@ import styles from './Home.module.scss';
 
 export default function Home() {
   const products = useAllProducts();
-  console.log({ products });
   const selectedProduct = useProductStore((state) => state.currentCategory);
 
   const showProductFilter = useCallback(() => {
@@ -23,9 +22,9 @@ export default function Home() {
         (category: { category: number }) =>
           category.category === selectedProduct
       )
-      .map((product: any, key) => (
+      .map((product: any) => (
         <Grid item md={4} sm={6} xs={12}>
-          <CardProduct key={key} data={product} />
+          <CardProduct data={product} />
         </Grid>
       ));
   }, [selectedProduct, products]);

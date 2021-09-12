@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
 
+import { Checkbox } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Grid from '@material-ui/core/Grid';
@@ -10,19 +11,21 @@ import TextField from '@material-ui/core/TextField';
 
 // import Copyright from '../../Components/Layout/Copyright';
 // import { registration } from '../../shared/services/Api/loginApi';
+import { IRegistersData } from '~services/Api/auth';
+
 import LogoZeferino from '../components/login/images/logozeferino.png';
 import styles from '../components/login/Login.module.scss';
-import { IFormInput } from '../components/login/type';
-import { IFormRegister } from './components/login/type';
+// import { IFormInput } from '../components/login/type';
+// import { IFormRegister } from './components/login/type';
 // import backgroundLogin from './login/images/backgroundLogin.jpg';
 
 export default function SignUp() {
   // const classes = useStyles();
-  const { control, handleSubmit } = useForm<IFormRegister>();
+  const { control, handleSubmit } = useForm<IRegistersData>();
 
   // const { register, handleSubmit, watch, errors } = useForm();
 
-  const onSubmit: SubmitHandler<IFormRegister> = (data) => {
+  const onSubmit: SubmitHandler<IRegistersData> = (data) => {
     console.log(data);
   };
 
@@ -69,7 +72,6 @@ export default function SignUp() {
                 />
               )}
             />
-
             <Controller
               name="email"
               control={control}
@@ -114,6 +116,12 @@ export default function SignUp() {
                 />
               )}
             />
+            <div>
+              <Checkbox
+                inputProps={{ 'aria-label': 'uncontrolled-checkbox' }}
+              />
+              Li e concordo com os Termos de Serviço
+            </div>
             <Button
               fullWidth
               className={styles.submit}
