@@ -1,7 +1,13 @@
 import { useState } from 'react';
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
 
-import { Checkbox } from '@material-ui/core';
+import {
+  Checkbox,
+  FormControlLabel,
+  FormHelperText,
+  Radio,
+  RadioGroup,
+} from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Grid from '@material-ui/core/Grid';
@@ -10,40 +16,39 @@ import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
 
 // import Copyright from '../../Components/Layout/Copyright';
-// import { registration } from '../../shared/services/Api/loginApi';
-import { IRegistersData } from '~services/Api/auth';
+import { IRegistersData, register } from '~services/Api/auth';
 
 import LogoZeferino from '../components/login/images/logozeferino.png';
-import styles from '../components/login/Login.module.scss';
-// import { IFormInput } from '../components/login/type';
-// import { IFormRegister } from './components/login/type';
-// import backgroundLogin from './login/images/backgroundLogin.jpg';
+import scss from '../components/login/Login.module.scss';
+import TermsOfService from './TermsOfService';
 
 export default function SignUp() {
-  // const classes = useStyles();
-  const { control, handleSubmit } = useForm<IRegistersData>();
-
-  // const { register, handleSubmit, watch, errors } = useForm();
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<IRegistersData>();
 
   const onSubmit: SubmitHandler<IRegistersData> = (data) => {
     console.log(data);
+    register(data);
   };
 
   const [loading, setLoading] = useState<boolean>(false);
   return (
-    <Grid container component="main" className={styles.root}>
+    <Grid container component="main" className={scss.root}>
       {loading && (
-        <div className={styles.loading}>
+        <div className={scss.loading}>
           <CircularProgress color="secondary" />
         </div>
       )}
       <Grid component={Paper} elevation={6} item md={5} sm={8} square xs={12}>
-        <div className={styles.paper}>
-          <img className={styles.logo} src={LogoZeferino} alt="Logo" />
-          <h1 className={styles.title}>Cadastrar-se</h1>
-          <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+        <div className={scss.paper}>
+          <img className={scss.logo} src={LogoZeferino} alt="Logo" />
+          <h1 className={scss.title}>Cadastrar-se</h1>
+          <form className={scss.form} onSubmit={handleSubmit(onSubmit)}>
             <Controller
-              name="firstname"
+              name="first_name"
               control={control}
               defaultValue=""
               render={({ field }) => (
@@ -51,6 +56,7 @@ export default function SignUp() {
                   autoComplete="Nome"
                   autoFocus
                   fullWidth
+                  required
                   label="Seu primeiro nome"
                   margin="normal"
                   {...field}
@@ -58,7 +64,7 @@ export default function SignUp() {
               )}
             />
             <Controller
-              name="lastname"
+              name="last_name"
               control={control}
               defaultValue=""
               render={({ field }) => (
@@ -66,6 +72,7 @@ export default function SignUp() {
                   autoComplete="Nome"
                   autoFocus
                   fullWidth
+                  required
                   label="Sobrenome"
                   margin="normal"
                   {...field}
@@ -80,6 +87,7 @@ export default function SignUp() {
                 <TextField
                   autoFocus
                   fullWidth
+                  required
                   label="Endereço de E-mail"
                   margin="normal"
                   {...field}
@@ -87,13 +95,14 @@ export default function SignUp() {
               )}
             />
             <Controller
-              name="password"
+              name="password1"
               control={control}
               defaultValue=""
               render={({ field }) => (
                 <TextField
                   autoFocus
                   fullWidth
+                  required
                   label="Senha"
                   margin="normal"
                   type="password"
@@ -109,6 +118,7 @@ export default function SignUp() {
                 <TextField
                   autoFocus
                   fullWidth
+                  required
                   label="Confirmar Senha"
                   margin="normal"
                   type="password"
@@ -116,29 +126,87 @@ export default function SignUp() {
                 />
               )}
             />
-            <div>
+            <Controller
+              name="phone"
+              defaultValue=""
+              control={control}
+              render={({ field }) => (
+                <TextField
+                  autoFocus
+                  fullWidth
+                  required
+                  label="Telefone"
+                  margin="normal"
+                  type="phone"
+                  {...field}
+                />
+              )}
+            />
+
+            <Controller
+              name="legal_identity"
+              control={control}
+              defaultValue="cpf"
+              render={() => <></>}
+              // render={({ field }) => (
+              //   <RadioGroup row {...field}>
+              //     <FormControlLabel
+              //       value="cpf"
+              //       control={<Radio />}
+              //       label="CPF"
+              //       labelPlacement="bottom"
+              //     />
+              //     <FormControlLabel
+              //       value="cnpj"
+              //       control={<Radio />}
+              //       label="CNPJ"
+              //       labelPlacement="bottom"
+              //     />
+              //   </RadioGroup>
+              // )}
+            />
+
+            <Controller
+              name="document_number"
+              control={control}
+              defaultValue=""
+              render={({ field }) => (
+                <TextField
+                  autoComplete="000.000.000-00"
+                  autoFocus
+                  fullWidth
+                  required
+                  label="CPF"
+                  margin="normal"
+                  {...field}
+                />
+              )}
+            />
+            <div className={scss.termsOfService}>
               <Checkbox
+                required
                 inputProps={{ 'aria-label': 'uncontrolled-checkbox' }}
               />
-              Li e concordo com os Termos de Serviço
+              <p>Li e concordo com os</p>
+              <TermsOfService />
             </div>
             <Button
               fullWidth
-              className={styles.submit}
+              className={scss.submit}
               type="submit"
               variant="contained"
             >
               Pronto
             </Button>
-            <Button
+            {/* <Button
               fullWidth
               color="primary"
-              className={styles.submit}
+              className={scss.submit}
               type="submit"
               variant="contained"
             >
               Cadastrar com Facebook
-            </Button>
+            </Button> */}
             <Grid container>
               <Grid item xs />
               <Grid item>
@@ -150,7 +218,7 @@ export default function SignUp() {
           </form>
         </div>
       </Grid>
-      <Grid item xs={false} sm={4} md={7} className={styles.image} />
+      <Grid item xs={false} sm={4} md={7} className={scss.image} />
     </Grid>
   );
 }

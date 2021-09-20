@@ -5,20 +5,19 @@ import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
 import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
-// import { useLogin } from '~hooks/useUser';
+import { ICredentialsData } from '~services/Api/auth';
 
-import { authLogin, ICredentialsData } from '~services/Api/auth';
+import { UseLogin } from '~hooks/useUser';
 
 import LogoZeferino from '../components/login/images/logozeferino.png';
 import styles from '../components/login/Login.module.scss';
-// import { IFormInput } from '../components/login/type';
 
 const Login = () => {
   const { control, handleSubmit } = useForm<ICredentialsData>();
 
   const onSubmit: SubmitHandler<ICredentialsData> = (data) => {
     console.log(data);
-    authLogin(data);
+    UseLogin(data);
   };
 
   return (
@@ -31,7 +30,7 @@ const Login = () => {
           <h1 className={styles.title}>Entrar</h1>
           <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
             <Controller
-              name="mail"
+              name="email"
               control={control}
               defaultValue=""
               render={({ field }) => (
