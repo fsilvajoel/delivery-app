@@ -50,4 +50,16 @@
       font-size: 1.2rem;
     }
   }
+  .termsOfService {
+    display: flex;
+    align-items: center;
+    div,
+    button {
+      background-color: transparent;
+      border: 0;
+      margin-bottom: 0;
+      font-size: 1.4rem;
+      color: #3f51b5;
+    }
+  }
 }
