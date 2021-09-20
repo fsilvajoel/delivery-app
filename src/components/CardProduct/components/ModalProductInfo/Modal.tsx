@@ -7,7 +7,6 @@ import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import CloseIcon from '@material-ui/icons/Close';
 import DoneIcon from '@material-ui/icons/Done';
 import Alert from '@material-ui/lab/Alert';
-import NoPhoto from '~public/images/nophoto.png';
 import { IProductsInCart } from 'src/types/cart';
 
 import { setProductsInCart } from '~hooks/store/UseCartStore';
@@ -15,6 +14,8 @@ import { setProductsInCart } from '~hooks/store/UseCartStore';
 import CounterItens from '../CounterItens/CounterItens';
 import ProductWarning from '../ProductWarning/ProductWarning';
 import scss from './Modal.module.scss';
+
+import NoPhoto from '~public/images/nophoto.png';
 
 function ModalProductInfo(props) {
   const { data } = props;
