@@ -6,5 +6,8 @@ export const getAccessToken = (): string | null =>
 export const clearAccessToken = (): void =>
   localStorage.removeItem(ACCESS_TOKEN);
 
-export const setAccessToken = (token: string): void =>
+export const setAccessToken = async (token: string): Promise<void> => {
   localStorage.setItem(ACCESS_TOKEN, token);
+};
+
+export const clearAllLocalStorage = (): void => localStorage.clear();

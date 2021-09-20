@@ -1,21 +1,21 @@
 import axios from 'axios';
 
-import { getAccessToken } from '../auth/auth';
+// import { getAccessToken } from '../localStorage/auth';
 import { apiUrl } from './apiConstants';
 
 const instance = axios.create({ baseURL: apiUrl });
 
-instance.interceptors.request.use((config) => {
-  const token = getAccessToken();
+// instance.interceptors.request.use((config) => {
+//   const token = getAccessToken();
 
-  return {
-    ...config,
-    headers: {
-      ...config.headers,
-      Authorization: token ? `Bearer ${token}` : '',
-    },
-  };
-});
+//   return {
+//     ...config,
+//     headers: {
+//       ...config.headers,
+//       Authorization: token ? `Bearer ${token}` : '',
+//     },
+//   };
+// });
 
 // instance.interceptors.response.use(
 //   (response) => response,

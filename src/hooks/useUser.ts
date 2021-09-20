@@ -1,10 +1,7 @@
-import { authLogin, logout, authMe } from '~services/Api/auth';
-import { setAccessToken, getAccessToken } from '~services/auth/auth';
+import { authLogin, ICredentialsData } from '~services/Api/auth';
+import { setAccessToken } from '~services/localStorage/auth';
 
-export const useLogin = (info) => {
-  const response = authLogin(info);
-  // setAccessToken(response);
-  console.log('resposta', response);
+export const UseLogin = async (info: ICredentialsData) => {
+  const response = await authLogin(info);
+  setAccessToken(response);
 };
-// const useLogout = () => {};
-// const useUser = () => {};

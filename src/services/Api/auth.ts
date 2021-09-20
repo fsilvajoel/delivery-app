@@ -1,19 +1,7 @@
+/* eslint-disable camelcase */
+
 import { deliveryRestAuth } from './apiConstants';
 import instance from './http';
-
-// import { updateToken } from '../../../core/auth/autorization';
-
-// export async function registration(Userdata) {
-//   const response = await axios
-//   .post(`${deliveryPathRegistration}`, Userdata)
-//   .catch((err) => Promise.reject(new Error(err)));
-//   console.log('response', response);
-//   return response;
-// }
-
-export interface ILoginResponseData {
-  accessToken: string;
-}
 
 export interface ICredentialsData {
   email: string;
@@ -21,11 +9,14 @@ export interface ICredentialsData {
 }
 
 export interface IRegistersData {
-  firstName: string;
-  lastName: string;
+  first_name: string;
+  last_name: string;
   email: string;
   password1: string;
   password2: string;
+  legal_identity: string;
+  document_number: string;
+  phone: string;
 }
 
 // TODO: ajustar retorno
@@ -40,11 +31,9 @@ export const authMe = async (): Promise<IMeResponseData> => {
   return response.data;
 };
 
-export const authLogin = async (
-  data: ICredentialsData
-): Promise<ILoginResponseData> => {
-  const response = await instance.post<ILoginResponseData>(
-    `${deliveryRestAuth}/login`,
+export const authLogin = async (data: ICredentialsData): Promise<string> => {
+  const response = await instance.post<string>(
+    `${deliveryRestAuth}/login/`,
     data
   );
 
@@ -53,10 +42,10 @@ export const authLogin = async (
 };
 
 export const register = async (
-  data: ICredentialsData
-): Promise<ILoginResponseData> => {
-  const response = await instance.post<ILoginResponseData>(
-    `${deliveryRestAuth}/login`,
+  data: IRegistersData
+): Promise<IRegistersData> => {
+  const response = await instance.post(
+    `${deliveryRestAuth}/registration/`,
     data
   );
 
@@ -73,29 +62,21 @@ export const logout = async (): Promise<IMeResponseData> => {
 };
 
 // /rest-auth/logout/
-// Calls Django logout method and delete the Token object
 // POST
 // /rest-auth/logout/
-// Calls Django logout method and delete the Token object
 // POST
 // /rest-auth/password/change/
-// Calls Django Auth SetPasswordForm save method.
 // POST
 // /rest-auth/password/reset/
-// Calls Django Auth PasswordResetForm save method.
 // POST
 // /rest-auth/password/reset/confirm/
-// Password reset e-mail link is confirmed, therefore
 // POST
 // /rest-auth/registration/
 // POST
 // /rest-auth/registration/verify-email/
 // GET
 // /rest-auth/user/
-// Reads and updates UserModel fields
 // PUT
 // /rest-auth/user/
-// Reads and updates UserModel fields
 // PATCH
 // /rest-auth/user/
-// Reads and updates UserModel fields

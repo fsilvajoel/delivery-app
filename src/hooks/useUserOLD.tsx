@@ -7,17 +7,17 @@ import {
 } from 'react-query';
 
 import {
+  setAccessToken,
+  clearAccessToken,
+  getAccessToken,
+} from '~services/localStorage/auth';
+import {
   authLogin,
   authMe,
   ICredentialsData,
   ILoginResponseData,
   IMeResponseData,
 } from 'src/services/Api/auth';
-import {
-  setAccessToken,
-  clearAccessToken,
-  getAccessToken,
-} from 'src/services/auth/auth';
 
 interface IUserContext {
   user: IMeResponseData | undefined;
