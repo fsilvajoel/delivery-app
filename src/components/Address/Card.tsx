@@ -10,7 +10,7 @@ import { makeStyles } from '@material-ui/core/styles';
 // import CardContent from "@material-ui/core/CardContent";
 import Typography from '@material-ui/core/Typography';
 
-import ModalAdress from './modal';
+import ModalFormAddress from './ModalFormAddress/Modal';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -54,7 +54,7 @@ export default function AdressCard() {
               aria-label="Cadastrar novo Endereço"
               component="span"
             >
-              <ModalAdress />
+              <ModalFormAddress />
             </IconButton>
           </Typography>
           <List disablePadding>

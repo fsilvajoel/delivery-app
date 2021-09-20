@@ -23,8 +23,8 @@ export default function Address() {
   const CardToList = () => {
     return (
       <Card className={scss.root}>
-        {/* <AdressCard /> */}
-        <h1>Endereços</h1>
+        <AdressCard />
+        {/* <h1>Endereços</h1> */}
       </Card>
     );
   };
