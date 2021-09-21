@@ -36,7 +36,17 @@
       }
     }
   }
-
+  .formControl {
+    font-family: 'Gotham';
+    .title {
+      font-weight: 300;
+      text-align: center;
+      font-size: 1.6rem;
+    }
+    span {
+      font-size: 1.6rem;
+    }
+  }
   // margin-left: 2rem;
   // margin-right: 2rem;
   // [theme.breakpoints.up(600 + theme.spacing(2) * 2)]: {

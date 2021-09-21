@@ -9,8 +9,8 @@ import { ICredentialsData } from '~services/Api/auth';
 
 import { UseLogin } from '~hooks/useUser';
 
-import LogoZeferino from '../components/login/images/logozeferino.png';
-import styles from '../components/login/Login.module.scss';
+import LogoZeferino from './components/login/images/logozeferino.png';
+import styles from './components/login/Login.module.scss';
 
 const Login = () => {
   const { control, handleSubmit } = useForm<ICredentialsData>();
