@@ -60,23 +60,3 @@ export const logout = async (): Promise<IMeResponseData> => {
 
   return response.data;
 };
-
-// /rest-auth/logout/
-// POST
-// /rest-auth/logout/
-// POST
-// /rest-auth/password/change/
-// POST
-// /rest-auth/password/reset/
-// POST
-// /rest-auth/password/reset/confirm/
-// POST
-// /rest-auth/registration/
-// POST
-// /rest-auth/registration/verify-email/
-// GET
-// /rest-auth/user/
-// PUT
-// /rest-auth/user/
-// PATCH
-// /rest-auth/user/
