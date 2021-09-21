@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import {
   Divider,
@@ -9,6 +9,7 @@ import {
   Typography,
 } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
+
 import { removeProductsInCart, useCartStore } from '~hooks/store/UseCartStore';
 
 import scss from './ShoppingCart.module.scss';
@@ -31,29 +32,36 @@ const ListCart = () => {
                 >
                   <DeleteIcon />
                 </IconButton>
-                <ListItemText primary={item.name} secondary={item.quantity} />
-                <h5 className="product-price">
+                <ListItemText
+                  primary={item.name}
+                  secondary={item.quantity}
+                  className={scss.listItemText}
+                />
+                <h5 className={scss.productPrice}>
                   {(item.unitaryValue * item.quantity).toLocaleString('pt-br', {
                     style: 'currency',
                     currency: 'BRL',
                   })}
                 </h5>
               </ListItem>
-              <Divider />
-              <ListItem className={scss.listItem}>
-                <ListItemText className="resume" primary="Total pedido" />
-                <Typography variant="subtitle1" className={scss.total}>
-                  R$
-                  {totalPrice.toFixed(2)}
-                </Typography>
-              </ListItem>
             </>
           );
         })}
-        ;
+        <Divider />
+        <ListItem className={scss.listItem}>
+          <ListItemText className={scss.resume} primary="Total pedido" />
+          <Typography variant="subtitle1" className={scss.total}>
+            R$⠀
+            {totalPrice.toFixed(2)}
+          </Typography>
+        </ListItem>
       </>
     );
   };
+  useEffect(() => {
+    // atualizar componente quando fazer ação de remover item do carrinnho
+    console.log('teste');
+  }, [cart]);
   return (
     <List disablePadding>
       {cart.length < 1 ? (
