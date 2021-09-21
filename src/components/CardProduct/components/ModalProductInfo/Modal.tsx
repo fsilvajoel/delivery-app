@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 
-import { useState } from 'react';
+import { useState, FocusEvent } from 'react';
 
 import { Button, IconButton, TextField, Modal } from '@material-ui/core';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
@@ -9,7 +9,11 @@ import DoneIcon from '@material-ui/icons/Done';
 import Alert from '@material-ui/lab/Alert';
 import { IProductsInCart } from 'src/types/cart';
 
-import { setProductsInCart } from '~hooks/store/UseCartStore';
+import {
+  setProductsInCart,
+  setQtdItens,
+  useSelectItensStore,
+} from '~hooks/store/UseCartStore';
 
 import CounterItens from '../CounterItens/CounterItens';
 import ProductWarning from '../ProductWarning/ProductWarning';
@@ -22,12 +26,14 @@ function ModalProductInfo(props) {
   const router = useRouter();
   // console.log({ dentroMODAL: data });
   const [open, setOpen] = useState<boolean>(false);
-
+  const qtdItens = useSelectItensStore((store) => store.selectedQtdItens);
+  const [observation, setObservation] = useState('');
   const handleOpen = () => {
     setOpen(true);
   };
 
   const handleClose = () => {
+    setQtdItens(0);
     setOpen(false);
   };
   const handleSelectProduct = () => {
@@ -35,9 +41,8 @@ function ModalProductInfo(props) {
       productId: data.id,
       name: data.name,
       unitaryValue: data.prices[0].price,
-      // TODO: adicionar quantidade com base no contador de quantidades
-      quantity: 1,
-      observation: 'observação',
+      quantity: qtdItens,
+      observation,
       unity: 'quantasVem',
     };
     setProductsInCart(item);
@@ -47,8 +52,13 @@ function ModalProductInfo(props) {
     handleClose();
   };
   const handleFinish = () => {
+    setQtdItens(0);
     router.push('/checkout');
     handleSelectProduct();
+  };
+
+  const handleObservation = (e: FocusEvent<HTMLInputElement>) => {
+    setObservation(e.currentTarget.value);
   };
 
   const Body = () => {
@@ -99,6 +109,7 @@ function ModalProductInfo(props) {
             <CounterItens />
             <div className={scss.wrapperObs}>
               <TextField
+                onBlur={handleObservation}
                 className={scss.textfield}
                 id="observation"
                 placeholder="alguma observação para esse produto?"
