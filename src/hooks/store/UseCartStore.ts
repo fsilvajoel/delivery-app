@@ -51,9 +51,8 @@ export const setProductsInCart = (state: IProductsInCart) => {
   setQuantityItens();
 };
 export const removeProductsInCart = (id: any) => {
-  useCartStore.setState((prevState) => {
-    const prevCart = prevState.cart;
-    prevCart.splice(id, 1);
-    return { cart: prevCart };
-  });
+  useCartStore.setState((prevState) => ({
+    cart: prevState.cart.filter((i) => i.productId !== id),
+  }));
+  setQuantityItens();
 };
