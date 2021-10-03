@@ -1,9 +1,26 @@
 import axios from 'axios';
+import { parseCookies } from 'nookies';
 
-// import { getAccessToken } from '../localStorage/auth';
 import { apiUrl } from './apiConstants';
 
-const instance = axios.create({ baseURL: apiUrl });
+const { 'deliveryApp-accessToken': token } = parseCookies();
+
+export const instance = axios.create({
+  baseURL: apiUrl,
+  // headers: { Authorization: `${getAccessToken()}` },
+});
+
+if (token) {
+  instance.defaults.headers.Authorization = `Token ${token}`;
+}
+
+// export const instanceLogged = axios.create({
+//   baseURL: apiUrl,
+//   headers: {
+//     Authorization: `Token ${getAccessToken()}`,
+//   },
+//   // 6c7666310cb49e31b5b30ce6998f6ddd0be62da9
+// });
 
 // instance.interceptors.request.use((config) => {
 //   const token = getAccessToken();
@@ -31,5 +48,3 @@ const instance = axios.create({ baseURL: apiUrl });
 //     window.location.href = '/login';
 //   }
 // );
-
-export default instance;

@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 
 import { deliveryRestAuth } from './apiConstants';
-import instance from './http';
+import { instance } from './http';
 
 export interface ICredentialsData {
   email: string;
@@ -32,13 +32,10 @@ export const authMe = async (): Promise<IMeResponseData> => {
 };
 
 export const authLogin = async (data: ICredentialsData): Promise<string> => {
-  const response = await instance.post<string>(
-    `${deliveryRestAuth}/login/`,
-    data
-  );
+  const response = await instance.post<any>(`${deliveryRestAuth}/login/`, data);
 
   console.log('responseAPI', response);
-  return response.data;
+  return response.data.key;
 };
 
 export const register = async (

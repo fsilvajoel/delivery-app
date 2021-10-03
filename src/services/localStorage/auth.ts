@@ -1,4 +1,4 @@
-export const ACCESS_TOKEN = '@deliveryApp-accessToken';
+export const ACCESS_TOKEN = 'deliveryApp-accessToken';
 
 export const getAccessToken = (): string | null =>
   localStorage.getItem(ACCESS_TOKEN);

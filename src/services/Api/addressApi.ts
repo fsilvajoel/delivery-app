@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import { deliveryAddress } from './apiConstants';
-import instance from './http';
+import { instance } from './http';
 
 interface IAddress {
   user: number;
