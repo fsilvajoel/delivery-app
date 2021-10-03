@@ -6,6 +6,7 @@ import ModalProductInfo from './components/ModalProductInfo/Modal';
 
 const CardProduct: React.FC = (props) => {
   const { data } = props;
+  // console.log(data);
 
   return (
     <Card className={classes.card}>

@@ -24,7 +24,7 @@ import NoPhoto from '~public/images/nophoto.png';
 function ModalProductInfo(props) {
   const { data } = props;
   const router = useRouter();
-  // console.log({ dentroMODAL: data });
+  console.log({ dentroMODAL: data });
   const [open, setOpen] = useState<boolean>(false);
   const qtdItens = useSelectItensStore((store) => store.selectedQtdItens);
   const [observation, setObservation] = useState('');
@@ -40,7 +40,8 @@ function ModalProductInfo(props) {
     const item: IProductsInCart = {
       productId: data.id,
       name: data.name,
-      unitaryValue: data.prices[0].price,
+      unitaryValue: 1,
+      // unitaryValue: data.prices[0].price,
       quantity: qtdItens,
       observation,
       unity: 'quantasVem',
@@ -89,7 +90,7 @@ function ModalProductInfo(props) {
                 {data.obs}
               </Alert>
             )}
-            {data.prices.map((price: any) => (
+            {/* {data.prices.map((price: any) => (
               <>
                 <p className={scss.price}>
                   {price.price.toLocaleString('pt-br', {
@@ -100,7 +101,7 @@ function ModalProductInfo(props) {
                 </p>
                 {price.unit === 'Kg' && <ProductWarning />}
               </>
-            ))}
+            ))} */}
 
             <p className={scss.itemDescription}>
               Descrição do produto por Lorem ipsum dolor sit amet consectetur
