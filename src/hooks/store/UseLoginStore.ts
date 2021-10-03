@@ -1,11 +1,13 @@
 import CreateStore from '~zustand/index';
 
 type TLoginState = {
-  key: string;
+  // key: string;
+  isLogged: boolean;
 };
 
 const initialStore = {
-  key: '',
+  // key: '',
+  isLogged: false,
 };
 
 export const useLoginStore = CreateStore<TLoginState>(
@@ -13,6 +15,10 @@ export const useLoginStore = CreateStore<TLoginState>(
   'LoginStore'
 );
 
-export const setHomeStore = (state: any) => {
-  useLoginStore.setState({ key: state });
+// export const setHomeStore = (state: any) => {
+//   useLoginStore.setState({ key: state });
+// };
+
+export const setIsLogged = (state: boolean) => {
+  useLoginStore.setState({ isLogged: state });
 };
