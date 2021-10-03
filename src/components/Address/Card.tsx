@@ -10,6 +10,8 @@ import { makeStyles } from '@material-ui/core/styles';
 // import CardContent from "@material-ui/core/CardContent";
 import Typography from '@material-ui/core/Typography';
 
+import { useUserData } from '~hooks/query/useUserData';
+
 import ModalFormAddress from './ModalFormAddress/Modal';
 
 const useStyles = makeStyles((theme) => ({
@@ -32,6 +34,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function AdressCard() {
+  const allUserData = useUserData();
+  console.log('allUserData', allUserData.data);
   const adresses = [
     {
       name: 'Endereço 1',
@@ -49,14 +53,10 @@ export default function AdressCard() {
         <>
           <Typography variant="h6" gutterBottom>
             Endereço de Entrega
-            <IconButton
-              color="primary"
-              aria-label="Cadastrar novo Endereço"
-              component="span"
-            >
-              <ModalFormAddress />
-            </IconButton>
           </Typography>
+
+          <ModalFormAddress />
+
           <List disablePadding>
             {adresses.map((address) => (
               <>

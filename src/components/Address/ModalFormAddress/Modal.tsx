@@ -9,13 +9,16 @@ import Input from '~components/Layout/Input/Input';
 import InputPhone from '~components/Layout/InputPhone/InputPhone';
 import { emailRegex, fullNameRegex } from '~utils/validation';
 
+import { useUserData } from '~hooks/query/useUserData';
+
 import scss from './Modal.module.scss';
-import { IAddressData } from './types';
+import { DataSendAddress, IAddressData } from './types';
 
 // import { setProductsInCart } from '~hooks/store/UseCartStore';
 
-function ModalFormAddress(props) {
-  const { data } = props;
+function ModalFormAddress() {
+  const allUserData = useUserData();
+  console.log('allUserData', allUserData);
   const router = useRouter();
   const {
     register,
@@ -38,8 +41,13 @@ function ModalFormAddress(props) {
     setOpen(false);
   };
 
-  const onSubmit = (fields: IAddressData) => {
+  const onSubmit = (fields: DataSendAddress) => {
+    const dataToSend = fields;
+    dataToSend.user = allUserData?.data.id;
     console.log(fields);
+  };
+  const findCep = (cep: string) => {
+    console.log('cep', cep);
   };
 
   const Body = () => {
@@ -57,149 +65,90 @@ function ModalFormAddress(props) {
               required
               type="text"
               name="name"
-              placeholder="Nome"
+              placeholder="Qual o nome deste endereço? (EX: Casa)"
               requiredMsg="Nome é um campo obrigatório"
-              patternMsg="É necessário ter nome e sobrenome"
               register={register}
               value={watch('name')}
-              pattern={fullNameRegex}
               errors={errors.name && true}
               errorMessage={errors.name?.message}
             />
             <Input
               required
               type="text"
-              name="email"
-              placeholder="E-mail"
-              requiredMsg="E-mail é um campo obrigatório"
-              patternMsg="É necessário ser um e-mail válido"
-              register={register}
-              pattern={emailRegex}
-              value={watch('email')}
-              errors={errors.email && true}
-              errorMessage={errors.email?.message}
-            />
-            <InputPhone
-              required
-              name="phone"
-              placeholder="Telefone"
-              errorMsg="Telefone é um campo obrigatório."
-              register={register}
-              value={watch('phone')}
-              errors={!!errors.phone}
-              onChangeDdiValue={(ddi: string) => setValue('ddi', ddi)}
-              onChangePhoneValue={(phone: string) => setValue('phone', phone)}
-            />
-            {/* <Controller
-              name="name"
-              control={control}
-              defaultValue=""
-              render={({ field }) => (
-                <TextField
-                  fullWidth
-                  label="Nome do novo Endereço"
-                  margin="normal"
-                  required
-                  variant="outlined"
-                  {...field}
-                />
-              )}
-            />
-
-            <Controller
-              name="street"
-              control={control}
-              defaultValue=""
-              render={({ field }) => (
-                <TextField
-                  fullWidth
-                  label="Rua ou logradouro"
-                  margin="normal"
-                  required
-                  variant="outlined"
-                  {...field}
-                />
-              )}
-            />
-
-            <Controller
-              name="number"
-              control={control}
-              defaultValue=""
-              render={({ field }) => (
-                <TextField
-                  fullWidth
-                  label="Número"
-                  margin="normal"
-                  required
-                  variant="outlined"
-                  {...field}
-                />
-              )}
-            />
-            <Controller
-              name="complement"
-              control={control}
-              defaultValue=""
-              render={({ field }) => (
-                <TextField
-                  fullWidth
-                  label="Complemento"
-                  margin="normal"
-                  required
-                  variant="outlined"
-                  {...field}
-                />
-              )}
-            />
-            <Controller
-              name="reference"
-              control={control}
-              defaultValue=""
-              render={({ field }) => (
-                <TextField
-                  fullWidth
-                  label="Referência"
-                  autoComplete="Ex: em frente ao mercado"
-                  margin="normal"
-                  required
-                  variant="outlined"
-                  {...field}
-                />
-              )}
-            />
-            <Controller
               name="cep"
-              control={control}
-              defaultValue=""
-              render={({ field }) => (
-                <TextField
-                  fullWidth
-                  label="cep"
-                  margin="normal"
-                  required
-                  variant="outlined"
-                  {...field}
-                />
-              )}
+              placeholder="CEP"
+              requiredMsg="CEP é obrigatório"
+              register={register}
+              onBlur={findCep}
+              // pattern="lala"
+              value={watch('cep')}
+              errors={errors.cep && true}
+              errorMessage={errors.cep?.message}
             />
-            <Controller
+            <Input
+              required
+              type="text"
+              name="street"
+              placeholder="Rua ou logradouro"
+              requiredMsg="Nome é um campo obrigatório"
+              register={register}
+              value={watch('street')}
+              errors={errors.street && true}
+              errorMessage={errors.street?.message}
+            />
+            <Input
+              required
+              type="number"
+              name="number"
+              placeholder="Número"
+              requiredMsg="Número é um campo obrigatório"
+              register={register}
+              value={watch('number')}
+              errors={errors.number && true}
+              errorMessage={errors.number?.message}
+            />
+            <Input
+              required
+              type="text"
+              name="complement"
+              placeholder="Complemento"
+              requiredMsg="Complemento é um campo obrigatório"
+              register={register}
+              value={watch('complement')}
+              errors={errors.complement && true}
+              errorMessage={errors.complement?.message}
+            />
+            <Input
+              required={false}
+              type="text"
+              name="reference"
+              placeholder="Referência (ex: em frente a Barbearia Navalha)"
+              register={register}
+              value={watch('reference')}
+              errors={errors.reference && true}
+              errorMessage={errors.reference?.message}
+            />
+            <Input
+              required
+              type="text"
               name="uf"
-              control={control}
-              defaultValue=""
-              render={({ field }) => (
-                <TextField
-                  fullWidth
-                  label="Sigla Estado"
-                  margin="normal"
-                  required
-                  variant="outlined"
-                  {...field}
-                />
-              )}
-            /> */}
-
-            <select>
+              placeholder="Sigla Estado"
+              register={register}
+              value={watch('uf')}
+              errors={errors.uf && true}
+              errorMessage={errors.uf?.message}
+            />
+            <Input
+              required
+              type="text"
+              name="district"
+              placeholder="Bairro"
+              register={register}
+              value={watch('district')}
+              errors={errors.district && true}
+              errorMessage={errors.district?.message}
+            />
+            {/* <select>
               <option>Cidade</option>
               <option>Cidade</option>
               <option>Cidade</option>
@@ -208,7 +157,7 @@ function ModalFormAddress(props) {
               <option>Bairro</option>
               <option>Bairro</option>
               <option>Bairro</option>
-            </select>
+            </select> */}
             <Button
               className={scss.submit}
               color="primary"
