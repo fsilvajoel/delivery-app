@@ -1,5 +1,3 @@
-import { Router } from 'next/router';
-
 import { useEffect } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
@@ -7,18 +5,18 @@ import 'fontsource-roboto';
 import '~styles/globals.scss';
 import { ReactQueryDevtools } from 'react-query/devtools';
 
+import { parseCookies } from 'nookies';
+
+import { setIsLogged } from '~hooks/store/UseLoginStore';
+
 const queryClient = new QueryClient();
-
 function App({ Component, pageProps }: { Component: any; pageProps: any }) {
+  const { 'deliveryApp-accessToken': token } = parseCookies();
   useEffect(() => {
-    Router.events.on('routeChangeStart', () => {
-      //
-    });
-
-    Router.events.on('routeChangeComplete', () => {
-      //
-    });
-  }, []);
+    if (token) {
+      setIsLogged(true);
+    }
+  }, [token]);
 
   return (
     <QueryClientProvider client={queryClient}>

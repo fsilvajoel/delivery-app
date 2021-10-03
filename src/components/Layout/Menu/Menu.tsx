@@ -15,12 +15,14 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import Address from '~components/Address/index';
 import ShoppingCart from '~components/ShoppingCart/ShoppingCart';
 import { links } from '~constants/links';
+
 import { useCartStore } from '~hooks/store/UseCartStore';
-import logoDesktop from '~public/images/logo.png';
-import logoMobile from '~public/images/logoMobile.png';
 
 import SearchBar from './Components/SearchBar/SearchBar';
 import classes from './Menu.module.scss';
+
+import logoDesktop from '~public/images/logo.png';
+import logoMobile from '~public/images/logoMobile.png';
 
 export default function MenuApp() {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -123,7 +125,7 @@ export default function MenuApp() {
               />
             </Link>
           </div>
-          <SearchBar />
+          {/* <SearchBar /> */}
           <div>
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>

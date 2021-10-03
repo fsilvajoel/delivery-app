@@ -1,24 +1,51 @@
+import Router from 'next/router';
+
+import { useEffect } from 'react';
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
 
-import Button from '@material-ui/core/Button';
-import Grid from '@material-ui/core/Grid';
-import Link from '@material-ui/core/Link';
-import Paper from '@material-ui/core/Paper';
-import TextField from '@material-ui/core/TextField';
+import { Button, Grid, Link, Paper } from '@material-ui/core';
+import Input from '~components/Layout/Input/Input';
 import { ICredentialsData } from '~services/Api/auth';
+import { emailRegex } from '~utils/validation';
 
-import { UseLogin } from '~hooks/useUser';
+import { useLoginStore } from '~hooks/store/UseLoginStore';
+import { UseAuthenticated } from '~hooks/UseAuthenticated';
 
 import LogoZeferino from './components/login/images/logozeferino.png';
 import styles from './components/login/Login.module.scss';
 
 const Login = () => {
-  const { control, handleSubmit } = useForm<ICredentialsData>();
+  const isLogged = useLoginStore((state) => state.isLogged);
+  console.log(isLogged);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    watch,
+    reset,
+    setValue,
+  } = useForm();
 
-  const onSubmit: SubmitHandler<ICredentialsData> = (data) => {
-    console.log(data);
-    UseLogin(data);
+  const handleLogin = async (data: ICredentialsData) => {
+    const res = await UseAuthenticated(data);
+    if (res) {
+      console.log('loguei!');
+      Router.push('/');
+    } else {
+      console.log('tente novamente!');
+    }
   };
+
+  const onSubmit: SubmitHandler<ICredentialsData> = (fields) => {
+    console.log(fields);
+    handleLogin(fields);
+  };
+
+  useEffect(() => {
+    if (isLogged) {
+      Router.push('/');
+    }
+  }, [isLogged]);
 
   return (
     <Grid className={styles.root} component="main" container>
@@ -29,27 +56,30 @@ const Login = () => {
           <img className={styles.logo} src={LogoZeferino} alt="Logo" />
           <h1 className={styles.title}>Entrar</h1>
           <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-            <Controller
+            <Input
+              required
+              type="text"
               name="email"
-              control={control}
-              defaultValue=""
-              render={({ field }) => (
-                <TextField id="mail" label="E-mail" {...field} />
-              )}
+              placeholder="E-mail"
+              requiredMsg="E-mail é um campo obrigatório"
+              patternMsg="É necessário ser um e-mail válido"
+              register={register}
+              pattern={emailRegex}
+              value={watch('email')}
+              errors={errors.email && true}
+              errorMessage={errors.email?.message}
             />
-            <Controller
+            <Input
+              required
+              type="password"
               name="password"
-              control={control}
-              defaultValue=""
-              render={({ field }) => (
-                <TextField
-                  autoComplete="user"
-                  id="password"
-                  label="Senha"
-                  type="password"
-                  {...field}
-                />
-              )}
+              placeholder="Senha"
+              requiredMsg="é necessário senha"
+              patternMsg="É necessário uma senha válida"
+              register={register}
+              value={watch('password')}
+              errors={errors.password && true}
+              errorMessage={errors.password?.message}
             />
 
             <Button fullWidth type="submit" variant="contained">

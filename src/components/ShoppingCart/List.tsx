@@ -60,7 +60,6 @@ const ListCart = () => {
   };
   useEffect(() => {
     // atualizar componente quando fazer ação de remover item do carrinnho
-    console.log('teste');
   }, [cart]);
   return (
     <List disablePadding>
