@@ -7,6 +7,7 @@ import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import CloseIcon from '@material-ui/icons/Close';
 import DoneIcon from '@material-ui/icons/Done';
 import Alert from '@material-ui/lab/Alert';
+import { convertBrlPrice } from '~utils/convertBrlPrice';
 import { IProductsInCart } from 'src/types/cart';
 
 import {
@@ -24,7 +25,7 @@ import NoPhoto from '~public/images/nophoto.png';
 function ModalProductInfo(props) {
   const { data } = props;
   const router = useRouter();
-  console.log({ dentroMODAL: data });
+  console.log({ data });
   const [open, setOpen] = useState<boolean>(false);
   const qtdItens = useSelectItensStore((store) => store.selectedQtdItens);
   const [observation, setObservation] = useState('');
@@ -40,8 +41,7 @@ function ModalProductInfo(props) {
     const item: IProductsInCart = {
       productId: data.id,
       name: data.name,
-      unitaryValue: 1,
-      // unitaryValue: data.prices[0].price,
+      unitaryValue: data.price,
       quantity: qtdItens,
       observation,
       unity: 'quantasVem',
@@ -90,18 +90,12 @@ function ModalProductInfo(props) {
                 {data.obs}
               </Alert>
             )}
-            {/* {data.prices.map((price: any) => (
-              <>
-                <p className={scss.price}>
-                  {price.price.toLocaleString('pt-br', {
-                    style: 'currency',
-                    currency: 'BRL',
-                  })}
-                  <span className={scss.priceUnit}> por {price.unit}</span>
-                </p>
-                {price.unit === 'Kg' && <ProductWarning />}
-              </>
-            ))} */}
+
+            <p className={scss.price}>
+              {convertBrlPrice(data.price)}
+              <span className={scss.priceUnit}> por {data.price_unit}</span>
+            </p>
+            {data.price_unit === 'Kg' && <ProductWarning />}
 
             <p className={scss.itemDescription}>
               Descrição do produto por Lorem ipsum dolor sit amet consectetur
@@ -116,17 +110,19 @@ function ModalProductInfo(props) {
                 placeholder="alguma observação para esse produto?"
               />
             </div>
-            <div className={scss.productDetailActions}>
-              <Button variant="contained" onClick={handleAddList}>
-                <AddShoppingCartIcon className={scss.icon} />
-                Adicionar a lista
-              </Button>
+            {qtdItens > 0 && (
+              <div className={scss.productDetailActions}>
+                <Button variant="contained" onClick={handleAddList}>
+                  <AddShoppingCartIcon className={scss.icon} />
+                  Adicionar a lista
+                </Button>
 
-              <Button variant="contained" onClick={handleFinish}>
-                <DoneIcon className={scss.icon} />
-                Adicionar e finalizar
-              </Button>
-            </div>
+                <Button variant="contained" onClick={handleFinish}>
+                  <DoneIcon className={scss.icon} />
+                  Adicionar e finalizar
+                </Button>
+              </div>
+            )}
           </div>
         </div>
       </div>
