@@ -1,3 +1,5 @@
+import { parseCookies } from 'nookies';
+
 import { deliveryRestAuth } from './apiConstants';
 import { instance } from './http';
 
@@ -9,8 +11,12 @@ interface IUser {
   documentNumber: number;
   legalIdentity: string;
 }
+const { 'deliveryApp-accessToken': token } = parseCookies();
 
 export const getUserData = async () => {
+  if (token) {
+    instance.defaults.headers.Authorization = `Token ${token}`;
+  }
   const response = await instance.get<any>(`${deliveryRestAuth}/user/`);
   return response.data;
 };

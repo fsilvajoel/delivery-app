@@ -7,8 +7,8 @@ import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import CloseIcon from '@material-ui/icons/Close';
 import DoneIcon from '@material-ui/icons/Done';
 import Alert from '@material-ui/lab/Alert';
-import { convertBrlPrice } from '~utils/convertBrlPrice';
 import { IProductsInCart } from 'src/types/cart';
+import { convertBrlPrice } from '~utils/convertBrlPrice';
 
 import {
   setProductsInCart,

@@ -1,4 +1,6 @@
-import { useState } from 'react';
+import Router from 'next/router';
+
+import { useEffect, useState } from 'react';
 
 // import CssBaseline from '@material-ui/core/CssBaseline';
 // import AppBar from '@material-ui/core/AppBar';
@@ -11,6 +13,8 @@ import StepLabel from '@material-ui/core/StepLabel';
 import Stepper from '@material-ui/core/Stepper';
 import Typography from '@material-ui/core/Typography';
 import MenuApp from '~components/Layout/Menu/Menu';
+
+import { useLoginStore } from '~hooks/store/UseLoginStore';
 
 import scss from './Checkout.module.scss';
 import CheckoutList from './components/CheckoutList';
@@ -33,7 +37,7 @@ function getStepContent(step: number) {
   }
 }
 export default function Checkout() {
-  // const scss = useStyles();
+  const isLogged = useLoginStore((state) => state.isLogged);
   const [activeStep, setActiveStep] = useState(0);
 
   const handleNext = () => {
@@ -43,6 +47,11 @@ export default function Checkout() {
   const handleBack = () => {
     setActiveStep(activeStep - 1);
   };
+  useEffect(() => {
+    if (!isLogged) {
+      Router.push('/login');
+    }
+  }, [isLogged]);
 
   return (
     <main className={scss.layout}>
