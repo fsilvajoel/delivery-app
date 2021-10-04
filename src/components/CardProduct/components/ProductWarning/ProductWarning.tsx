@@ -1,4 +1,3 @@
-// import { FaBalanceScale } from 'react-icons/fa';
 import scss from './ProductWarning.module.scss';
 
 import BalanceIcon from '~public/images/balanceador.png';
