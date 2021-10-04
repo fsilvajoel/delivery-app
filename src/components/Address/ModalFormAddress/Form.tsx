@@ -18,7 +18,7 @@ import { useDelliveryAddress } from '~hooks/query/useAddress';
 import { useUserStore } from '~hooks/store/UseUserStore';
 
 import scss from './Modal.module.scss';
-import { DataSendAddress, IAddress, IAddressData, ICepSearch } from './types';
+import { IAddress, ICepSearch } from './types';
 
 const AddressForm = () => {
   const userId = useUserStore((store) => store.id);
@@ -50,16 +50,16 @@ const AddressForm = () => {
     console.log('dataToSend', dataToSend);
     registerUserAddress(dataToSend);
   };
-  const renderDistricts = () =>
-    deliveryDistricts?.data?.map((p) => (
-      <Option
-        key={p.id}
-        value={p.district}
-        selected={watch('source') === p.district}
-      >
-        {p.district_name}
-      </Option>
-    ));
+  // const renderDistricts = () =>
+  //   deliveryDistricts?.data?.map((district: any) => (
+  //     <Option
+  //       key={district.id}
+  //       value={district.district}
+  //       selected={watch('source') === district.district}
+  //     >
+  //       {district.district_name}
+  //     </Option>
+  //   ));
 
   // const findCep = async (e: FocusEvent<HTMLInputElement>) => {
   //   if (streetInfo === '') {
@@ -87,7 +87,7 @@ const AddressForm = () => {
       <Input
         required
         type="number"
-        name="CEP"
+        name="cep"
         value={watch('cep')}
         placeholder="CEP (12.123-123)"
         requiredMsg="CEP é obrigatório"
@@ -124,11 +124,11 @@ const AddressForm = () => {
       <Input
         required
         type="number"
-        name="number"
+        name="AddressNumber"
         placeholder="Número"
         requiredMsg="Número é um campo obrigatório"
         register={register}
-        value={watch('number')}
+        value={watch('AddressNumber')}
         errors={errors.number && true}
         errorMessage={errors.number?.message}
       />

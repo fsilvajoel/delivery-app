@@ -87,7 +87,7 @@ function Input(props: IInputProps) {
           value={props.value}
           className={inputClass.join(' ')}
           placeholder={props.placeholder}
-          ref={props.register(getInputValidations())}
+          // ref={props.register(getInputValidations())}
           onBlur={handleBlur}
           onFocus={() => setIsFocused(true)}
         />

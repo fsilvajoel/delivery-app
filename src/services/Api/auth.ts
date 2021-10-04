@@ -38,7 +38,7 @@ export const authLogin = async (data: ICredentialsData): Promise<string> => {
   return response.data.key;
 };
 
-export const register = async (
+export const registerUser = async (
   data: IRegistersData
 ): Promise<IRegistersData> => {
   const response = await instance.post(

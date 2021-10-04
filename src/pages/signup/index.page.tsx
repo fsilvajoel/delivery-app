@@ -16,22 +16,30 @@ import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
 
 // import Copyright from '../../Components/Layout/Copyright';
-import { IRegistersData, register } from '~services/Api/auth';
+import Input from '~components/Layout/Input/Input';
+import { IRegistersData, registerUser } from '~services/Api/auth';
+import { emailRegex } from '~utils/validation';
 
-import LogoZeferino from '../components/login/images/logozeferino.png';
-import scss from '../components/login/Login.module.scss';
+import LogoZeferino from '../login/components/login/images/logozeferino.png';
+import scss from '../login/components/login/Login.module.scss';
 import TermsOfService from './TermsOfService';
 
 export default function SignUp() {
   const {
-    control,
+    register,
     handleSubmit,
+    // control,
     formState: { errors },
+    watch,
+    // reset,
+    // setValue,
   } = useForm<IRegistersData>();
 
   const onSubmit: SubmitHandler<IRegistersData> = (data) => {
     console.log(data);
-    register(data);
+    const dataSend = data;
+    dataSend.legal_identity = 'cpf';
+    registerUser(dataSend);
   };
 
   const [loading, setLoading] = useState<boolean>(false);
@@ -47,142 +55,94 @@ export default function SignUp() {
           <img className={scss.logo} src={LogoZeferino} alt="Logo" />
           <h1 className={scss.title}>Cadastrar-se</h1>
           <form className={scss.form} onSubmit={handleSubmit(onSubmit)}>
-            <Controller
+            <Input
+              type="text"
               name="first_name"
-              control={control}
-              defaultValue=""
-              render={({ field }) => (
-                <TextField
-                  autoComplete="Nome"
-                  autoFocus
-                  fullWidth
-                  required
-                  label="Seu primeiro nome"
-                  margin="normal"
-                  {...field}
-                />
-              )}
+              value={watch('first_name')}
+              placeholder="Seu primeiro nome"
+              requiredMsg="Nome é um campo obrigatório"
+              patternMsg="É necessário ter nome"
+              errors={errors.first_name && true}
+              errorMessage={errors.first_name?.message}
+              register={register}
+              required
             />
-            <Controller
+            <Input
+              type="text"
               name="last_name"
-              control={control}
-              defaultValue=""
-              render={({ field }) => (
-                <TextField
-                  autoComplete="Nome"
-                  autoFocus
-                  fullWidth
-                  required
-                  label="Sobrenome"
-                  margin="normal"
-                  {...field}
-                />
-              )}
+              value={watch('last_name')}
+              placeholder="Seu Sobrenome"
+              requiredMsg="Sobrenome é um campo obrigatório"
+              patternMsg="É necessário ter sobrenome"
+              errors={errors.last_name && true}
+              errorMessage={errors.last_name?.message}
+              register={register}
+              required
             />
-            <Controller
+            <Input
+              type="text"
               name="email"
-              control={control}
-              defaultValue=""
-              render={({ field }) => (
-                <TextField
-                  autoFocus
-                  fullWidth
-                  required
-                  label="Endereço de E-mail"
-                  margin="normal"
-                  {...field}
-                />
-              )}
+              value={watch('email')}
+              placeholder="E-mail"
+              requiredMsg="E-mail é um campo obrigatório"
+              patternMsg="É necessário ser um e-mail válido"
+              errors={errors.email && true}
+              errorMessage={errors.email?.message}
+              pattern={emailRegex}
+              register={register}
+              required
             />
-            <Controller
+            <Input
+              type="password"
               name="password1"
-              control={control}
-              defaultValue=""
-              render={({ field }) => (
-                <TextField
-                  autoFocus
-                  fullWidth
-                  required
-                  label="Senha"
-                  margin="normal"
-                  type="password"
-                  {...field}
-                />
-              )}
+              value={watch('password1')}
+              placeholder="Senha"
+              requiredMsg="Senha é obrigatório"
+              patternMsg="Senha é obrigatório"
+              errors={errors.password1 && true}
+              errorMessage={errors.password1?.message}
+              register={register}
+              required
             />
-            <Controller
+            <Input
+              type="password"
               name="password2"
-              control={control}
-              defaultValue=""
-              render={({ field }) => (
-                <TextField
-                  autoFocus
-                  fullWidth
-                  required
-                  label="Confirmar Senha"
-                  margin="normal"
-                  type="password"
-                  {...field}
-                />
-              )}
+              value={watch('password2')}
+              placeholder="Repita a Senha"
+              requiredMsg="Senha é obrigatório"
+              patternMsg="Senha é obrigatório"
+              errors={errors.password2 && true}
+              errorMessage={errors.password2?.message}
+              register={register}
+              required
             />
-            <Controller
+            <TextField
+              autoFocus
+              variant="outlined"
+              required
+              inputRef={register}
+              label="Telefone"
+              type="phone"
               name="phone"
-              defaultValue=""
-              control={control}
-              render={({ field }) => (
-                <TextField
-                  autoFocus
-                  fullWidth
-                  required
-                  label="Telefone"
-                  margin="normal"
-                  type="phone"
-                  {...field}
-                />
-              )}
             />
-
-            <Controller
-              name="legal_identity"
-              control={control}
-              defaultValue="cpf"
-              render={() => <></>}
-              // render={({ field }) => (
-              //   <RadioGroup row {...field}>
-              //     <FormControlLabel
-              //       value="cpf"
-              //       control={<Radio />}
-              //       label="CPF"
-              //       labelPlacement="bottom"
-              //     />
-              //     <FormControlLabel
-              //       value="cnpj"
-              //       control={<Radio />}
-              //       label="CNPJ"
-              //       labelPlacement="bottom"
-              //     />
-              //   </RadioGroup>
-              // )}
-            />
-
-            <Controller
+            <TextField
+              autoFocus
+              variant="outlined"
+              required
+              inputRef={register}
+              label="CPF"
+              // autoComplete="000.000.000-00"
+              type="number"
               name="document_number"
-              control={control}
-              defaultValue=""
-              render={({ field }) => (
-                <TextField
-                  autoComplete="000.000.000-00"
-                  autoFocus
-                  fullWidth
-                  required
-                  label="CPF"
-                  margin="normal"
-                  {...field}
-                />
-              )}
             />
             <div className={scss.termsOfService}>
+              {/* <Controller
+                as={Checkbox}
+                control={control}
+                name="termsOfService"
+                color="primary"
+                defaultValue={false}
+              /> */}
               <Checkbox
                 required
                 inputProps={{ 'aria-label': 'uncontrolled-checkbox' }}
@@ -198,15 +158,6 @@ export default function SignUp() {
             >
               Pronto
             </Button>
-            {/* <Button
-              fullWidth
-              color="primary"
-              className={scss.submit}
-              type="submit"
-              variant="contained"
-            >
-              Cadastrar com Facebook
-            </Button> */}
             <Grid container>
               <Grid item xs />
               <Grid item>

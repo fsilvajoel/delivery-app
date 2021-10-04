@@ -1,15 +1,3 @@
-export interface IAddressData {
-  name: string;
-  cep: string;
-  street: string;
-  number: string;
-  complement: string;
-  reference: string;
-  uf: string;
-  district: string;
-  main: boolean;
-}
-
 export interface IAddress {
   user: number;
   name: string;

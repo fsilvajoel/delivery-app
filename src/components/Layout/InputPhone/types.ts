@@ -1,7 +1,5 @@
 import { ChangeEvent } from 'react';
 
-import { ITheme } from '~interfaces/theme';
-
 export interface IDdi {
   name: string;
   ddi: string;
@@ -17,12 +15,18 @@ type TRefReturn =
   | null
   | undefined;
 
-export interface IInputPhoneProps extends Partial<ITheme> {
+export interface IInputPhoneProps {
   name: string;
   placeholder: string;
   required: boolean;
   value: string;
-  register: ({ required, minLength }: { required?: boolean; minLength?: number }) => TRefReturn;
+  register: ({
+    required,
+    minLength,
+  }: {
+    required?: boolean;
+    minLength?: number;
+  }) => TRefReturn;
   errors: boolean | undefined;
   errorMsg: string;
   onChangeDdiValue: (ddi: string) => void;

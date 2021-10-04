@@ -1,6 +1,4 @@
-import { ITheme } from '~interfaces/theme';
-
-export interface ISelectProps extends Partial<ITheme> {
+export interface ISelectProps {
   label?: string;
   value: string | number;
   errorMessage?: string;

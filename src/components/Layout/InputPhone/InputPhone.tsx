@@ -89,8 +89,6 @@ function InputPhone({ onChangeMinLength, ...props }: IInputPhoneProps) {
     setPhoneNumber(props.value);
   }, [props.value]);
 
-  if (props.theme) containerCss.push(scss[props.theme]);
-
   if (props.errors) {
     containerCss.push(scss.containerError);
     fieldsetCss.push(scss.fieldsetError);

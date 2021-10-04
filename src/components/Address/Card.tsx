@@ -42,16 +42,13 @@ export default function AdressCard() {
       <ModalFormAddress />
 
       <List disablePadding>
-        {allAddress?.data?.map((address: IAddress) => (
+        {/* {allAddress?.data?.map((address: IAddress) => (
           <ListItem className={classes.listItem} key={address.name}>
-            <Checkbox
-              onChange={() => setAddressToSend(address.id)}
-              name="jason"
-            />
+            <Checkbox onChange={() => setAddressToSend(address.id)} />
             <ListItemText primary={address.name} secondary={address.street} />
             <Typography variant="body2">{address.district}</Typography>
           </ListItem>
-        ))}
+        ))} */}
       </List>
     </CardContent>
   );

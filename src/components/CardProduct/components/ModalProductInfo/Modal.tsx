@@ -22,10 +22,8 @@ import scss from './Modal.module.scss';
 
 import NoPhoto from '~public/images/nophoto.png';
 
-function ModalProductInfo(props) {
-  const { data } = props;
+function ModalProductInfo({ data }: any) {
   const router = useRouter();
-  console.log({ data });
   const [open, setOpen] = useState<boolean>(false);
   const qtdItens = useSelectItensStore((store) => store.selectedQtdItens);
   const [observation, setObservation] = useState('');

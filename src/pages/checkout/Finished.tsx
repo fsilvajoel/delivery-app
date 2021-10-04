@@ -1,8 +1,7 @@
 import Typography from '@material-ui/core/Typography';
 
 import scss from './Checkout.module.scss';
-
-import CircleCheck from '~public/images/check.gif';
+import CircleCheck from './images/checkCircle.png';
 
 function Finished() {
   return (
