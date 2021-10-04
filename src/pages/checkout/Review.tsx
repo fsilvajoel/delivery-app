@@ -36,12 +36,6 @@ export default function Review() {
         {dataReview.produtosMock.map((products) => (
           <li>{products}</li>
         ))}
-        <Typography variant="h6" gutterBottom className={classes.title}>
-          Complementos
-        </Typography>
-        {dataReview.complementsMock.map((complements, key) => (
-          <li key={key}>{complements}</li>
-        ))}
       </Grid>
       <Grid item container direction="column" xs={12} sm={12}>
         <Typography variant="h6" gutterBottom>
@@ -52,9 +46,6 @@ export default function Review() {
         </Typography>
         <Typography gutterBottom>
           <b>Endereço:</b> {dataReview.addressMock}
-        </Typography>
-        <Typography gutterBottom>
-          <b>Forma de pagamento:</b> crédito
         </Typography>
         <Typography gutterBottom>
           <b>Retirada:</b> Delivery

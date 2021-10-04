@@ -22,18 +22,6 @@
   margin-bottom: 24px;
   letter-spacing: 0.1rem;
 
-  &.r3 {
-    @include apply-color($r3);
-  }
-
-  &.revalida {
-    @include apply-color($revalida);
-  }
-
-  &.titulos {
-    @include apply-color($titulos);
-  }
-
   &.containerError {
     color: $error;
   }

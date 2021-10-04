@@ -1,4 +1,5 @@
 import { useState, FocusEvent } from 'react';
+import InputMask from 'react-input-mask';
 
 import AlertIcon from './images/alert.svg';
 import scss from './Input.module.scss';
@@ -77,11 +78,13 @@ function Input(props: IInputProps) {
         <label htmlFor={props.name} className={labelClass.join(' ')}>
           {props.placeholder}
         </label>
-        <input
+        <InputMask
+          mask="99999-999"
           readOnly={props.readonly}
           type={props.type}
           id={props.name}
           name={props.name}
+          value={props.value}
           className={inputClass.join(' ')}
           placeholder={props.placeholder}
           ref={props.register(getInputValidations())}

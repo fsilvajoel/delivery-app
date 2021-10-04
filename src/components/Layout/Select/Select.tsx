@@ -11,10 +11,10 @@ import { ISelectProps } from './types';
 function Select(props: ISelectProps) {
   const [isFocused, setIsFocused] = useState(false);
 
-  const labelClass = [scss.label];
-  const legendClass = [scss.legend];
-  const fieldsetClass = [scss.fieldset];
   const containerClass = [scss.container];
+  const labelClass = [scss.label];
+  const fieldsetClass = [scss.fieldset];
+  const legendClass = [scss.legend];
   const legendTitleClass = [scss.legendTitle];
   const listItemsWrapperClass = [scss.listItemsWrapper];
 
@@ -63,7 +63,6 @@ function Select(props: ISelectProps) {
       </div>
     ));
 
-  if (props.theme) containerClass.push(scss[props.theme]);
   if (isFocused) listItemsWrapperClass.push(scss.listItemsWrapperVisible);
   if (props.label) legendTitleClass.push(scss.legendPadding);
   if (props.borderless) fieldsetClass.push(scss.borderless);
@@ -116,7 +115,6 @@ function Select(props: ISelectProps) {
             <span className={legendTitleClass.join(' ')}>{props.label}</span>
           </legend>
         </fieldset>
-        {props.arrow && <span className={scss.arrow} />}
       </div>
       {props.errors && renderErrorMessage()}
     </div>

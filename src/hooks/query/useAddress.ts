@@ -1,26 +1,17 @@
 import { useQuery } from 'react-query';
 
 import {
-  getAllCategories,
-  getAllProductsData,
-} from '~services/Api/productsApi';
+  getAllUserAddress,
+  getIsDeliveryAddress,
+} from '~services/Api/Address/addressApi';
 
-export function useAllProducts() {
-  const { isLoading, error, data } = useQuery('productsData', () =>
-    getAllProductsData()
-  );
-  if (isLoading) return 'loading';
-
-  if (error) return console.log('houve um erro', error);
-  return data;
+export function useAddressData() {
+  const addressData = useQuery('userAddressData', () => getAllUserAddress());
+  return addressData;
 }
-
-export function useAllCategoryes() {
-  const { isLoading, error, data } = useQuery('categoryesData', () =>
-    getAllCategories()
+export function useDelliveryAddress() {
+  const deliveryDistricts = useQuery('deliveryDistricts', () =>
+    getIsDeliveryAddress()
   );
-  if (isLoading) return 'loading';
-
-  if (error) return console.log('houve um erro', error);
-  return data;
+  return deliveryDistricts;
 }
