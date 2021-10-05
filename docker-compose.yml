@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  nextjs:
+    image: growtechnologies/zeferino-frontend
+    container_name: nextjs-zeferino
+    restart: always
+    networks:
+      - proxy
+
+  nginx:
+    container_name: nginx-zeferino
+    build: ./nginx
+    restart: always
+    environment:
+      - VIRTUAL_HOST=app.zeferinoalimentos.com.br
+      - VIRTUAL_NETWORK=nginx-proxy
+      - VIRTUAL_PORT=80
+      - LETSENCRYPT_HOST=app.zeferinoalimentos.com.br
+      - LETSENCRYPT_EMAIL=admin@growtechnologies.com.br
+    networks:
+      - proxy
+    ports:
+      - 80:80
+
+networks:
+  proxy:
+    external:
+      name: nginx-proxy
