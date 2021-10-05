@@ -9,7 +9,7 @@ services:
       - proxy
 
   nginx:
-    container_name: nginx-zeferino
+    container_name: nginx-nextjs-zeferino
     build: ./nginx
     restart: always
     environment:
