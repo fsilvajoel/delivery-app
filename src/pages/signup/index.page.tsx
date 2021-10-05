@@ -18,7 +18,7 @@ import TextField from '@material-ui/core/TextField';
 // import Copyright from '../../Components/Layout/Copyright';
 import Input from '~components/Layout/Input/Input';
 import { IRegistersData, registerUser } from '~services/Api/auth';
-import { emailRegex } from '~utils/validation';
+import { cepRegex, emailRegex } from '~utils/validation';
 
 import LogoZeferino from '../login/components/login/images/logozeferino.png';
 import scss from '../login/components/login/Login.module.scss';
@@ -130,11 +130,18 @@ export default function SignUp() {
               variant="outlined"
               required
               inputRef={register}
+              // inputRef={register({
+              //   required: true,
+              //   max: 9,
+              //   min: 9,
+              //   pattern: cepRegex,
+              // })}
               label="CPF"
               // autoComplete="000.000.000-00"
               type="number"
               name="document_number"
             />
+
             <div className={scss.termsOfService}>
               {/* <Controller
                 as={Checkbox}
