@@ -20,8 +20,6 @@ services:
       - LETSENCRYPT_EMAIL=admin@growtechnologies.com.br
     networks:
       - proxy
-    ports:
-      - 80:80
 
 networks:
   proxy:
