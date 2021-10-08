@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { authLogin, ICredentialsData } from '~services/Api/auth';
 import { instance } from '~services/Api/http';
 import { ACCESS_TOKEN } from '~services/localStorage/auth';
-import { setCookie, parseCookies } from 'nookies';
+import { setCookie, parseCookies, destroyCookie } from 'nookies';
 
 import { setIsLogged } from './store/UseLoginStore';
 
@@ -26,4 +26,7 @@ export const UseAuthenticated = async (info: ICredentialsData) => {
     return false;
   }
   return true;
+};
+export const UseExit = async () => {
+  destroyCookie(undefined, 'deliveryApp-accessToken');
 };
