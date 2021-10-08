@@ -78,8 +78,8 @@ export default function MenuApp() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Histórico de pedidos</MenuItem>
-      <MenuItem onClick={handleMenuClose}>Editar Dados</MenuItem>
+      {/* <MenuItem onClick={handleMenuClose}>Histórico de pedidos</MenuItem> */}
+      {/* <MenuItem onClick={handleMenuClose}>Editar Dados</MenuItem> */}
       <MenuItem onClick={handleExit}>Sair</MenuItem>
     </Menu>
   );
