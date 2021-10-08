@@ -20,10 +20,10 @@ const CardProduct: React.FC<ICardProduct> = ({ data }: any) => {
       />
       <CardContent className={classes.CardContent}>
         <h2 className={classes.cardTitle}>{data.name}</h2>
-        <p className={classes.description}>
+        {/* <p className={classes.description}>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis a
           tempora cumque labore illo illum laborum mollitia vero qui explicabo.
-        </p>
+        </p> */}
       </CardContent>
       <CardActions style={{ justifyContent: 'center' }}>
         <ModalProductInfo data={data} />

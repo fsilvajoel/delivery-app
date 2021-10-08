@@ -30,25 +30,23 @@ const useStyles = makeStyles((theme) => ({
 export default function AdressCard() {
   const allUserData = useUserData();
   const allAddress = useAddressData();
-  console.log('allUserData', allUserData.data);
-  console.log('allAddress', allAddress.data);
+  // console.log('allUserData', allUserData.data);
+  // console.log('allAddress', allAddress.data);
   const classes = useStyles();
   return (
     <CardContent className={classes.root}>
       <Typography variant="h6" gutterBottom>
         Endereço de Entrega
       </Typography>
-
       <ModalFormAddress />
-
       <List disablePadding>
-        {/* {allAddress?.data?.map((address: IAddress) => (
+        {allAddress?.data?.map((address: IAddress) => (
           <ListItem className={classes.listItem} key={address.name}>
             <Checkbox onChange={() => setAddressToSend(address.id)} />
             <ListItemText primary={address.name} secondary={address.street} />
             <Typography variant="body2">{address.district}</Typography>
           </ListItem>
-        ))} */}
+        ))}
       </List>
     </CardContent>
   );

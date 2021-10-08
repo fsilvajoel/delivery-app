@@ -52,8 +52,8 @@ function ModalProductInfo({ data }: any) {
   };
   const handleFinish = () => {
     setQtdItens(0);
-    router.push('/checkout');
     handleSelectProduct();
+    router.push('/checkout');
   };
 
   const handleObservation = (e: FocusEvent<HTMLInputElement>) => {
@@ -95,10 +95,10 @@ function ModalProductInfo({ data }: any) {
             </p>
             {data.price_unit === 'Kg' && <ProductWarning />}
 
-            <p className={scss.itemDescription}>
+            {/* <p className={scss.itemDescription}>
               Descrição do produto por Lorem ipsum dolor sit amet consectetur
               adipisicing elit. Delectus, a.{data.description}
-            </p>
+            </p> */}
             <CounterItens />
             <div className={scss.wrapperObs}>
               <TextField
