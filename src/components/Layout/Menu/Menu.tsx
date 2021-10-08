@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 import { useEffect, useState } from 'react';
 import { useWindowSize } from 'react-use';
@@ -16,25 +17,26 @@ import Address from '~components/Address/index';
 import ShoppingCart from '~components/ShoppingCart/ShoppingCart';
 import { links } from '~constants/links';
 
+import { usePartner } from '~hooks/query/usePartner';
 import { useCartStore } from '~hooks/store/UseCartStore';
+import { useLoginStore } from '~hooks/store/UseLoginStore';
+import { UseExit } from '~hooks/UseAuthenticated';
 
 import SearchBar from './Components/SearchBar/SearchBar';
 import classes from './Menu.module.scss';
-
-import logoDesktop from '~public/images/logo.png';
-import logoMobile from '~public/images/logoMobile.png';
 
 export default function MenuApp() {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =
     useState<null | HTMLElement>(null);
-
-  const isMenuOpen = Boolean(anchorEl);
-  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-  const [isDesktop, setIsDesktop] = useState(false);
+  const partner = usePartner();
+  const router = useRouter();
+  const isLogged = useLoginStore((state) => state.isLogged);
   const { width } = useWindowSize();
   const contItensCart = useCartStore((state) => state.numberOfItens);
-
+  const [isDesktop, setIsDesktop] = useState(false);
+  const isMenuOpen = Boolean(anchorEl);
+  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
   useEffect(() => {
     setIsDesktop(() => width >= 1280);
   }, [width]);
@@ -56,6 +58,15 @@ export default function MenuApp() {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
+  const handleExit = () => {
+    UseExit();
+    router.push('/');
+    handleMenuClose();
+  };
+  const handleLogin = () => {
+    router.push('/login');
+  };
+
   const menuId = 'menu-delivery-app';
   const renderMenu = (
     <Menu
@@ -69,7 +80,7 @@ export default function MenuApp() {
     >
       <MenuItem onClick={handleMenuClose}>Histórico de pedidos</MenuItem>
       <MenuItem onClick={handleMenuClose}>Editar Dados</MenuItem>
-      <MenuItem onClick={handleMenuClose}>Sair</MenuItem>
+      <MenuItem onClick={handleExit}>Sair</MenuItem>
     </Menu>
   );
 
@@ -120,7 +131,9 @@ export default function MenuApp() {
             <Link href={links.home}>
               <img
                 className={classes.logo}
-                src={isDesktop ? logoDesktop : logoMobile}
+                src={
+                  isDesktop ? partner?.data?.logo : partner?.data?.logo_mobile
+                }
                 alt="logo"
               />
             </Link>
@@ -131,17 +144,29 @@ export default function MenuApp() {
             <div className={classes.sectionDesktop}>
               <Address />
               <ShoppingCart />
-              <IconButton
-                edge="end"
-                aria-label="account of current user"
-                aria-controls={menuId}
-                aria-haspopup="true"
-                onClick={handleProfileMenuOpen}
-                color="inherit"
-              >
-                <AccountCircle />
-                <span>perfil</span>
-              </IconButton>
+              {isLogged ? (
+                <IconButton
+                  edge="end"
+                  aria-label="account of current user"
+                  aria-controls={menuId}
+                  aria-haspopup="true"
+                  onClick={handleProfileMenuOpen}
+                  color="inherit"
+                >
+                  <AccountCircle />
+                  <span>perfil</span>
+                </IconButton>
+              ) : (
+                <IconButton
+                  edge="end"
+                  aria-label="login"
+                  onClick={handleLogin}
+                  color="inherit"
+                >
+                  <AccountCircle />
+                  <span>Entrar</span>
+                </IconButton>
+              )}
             </div>
             <div className={classes.sectionMobile}>
               <IconButton

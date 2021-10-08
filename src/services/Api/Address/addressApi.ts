@@ -5,7 +5,7 @@ import { deliveryAddress, deliveryparner } from '../apiConstants';
 import { instance } from '../http';
 
 export const getAllUserAddress = async () => {
-  const response = await instance.get<string>(`${deliveryAddress}`, {
+  const response = await instance.get<any>(`${deliveryAddress}`, {
     // params: { city: 'Santa Maria' },
   });
   return response.data;

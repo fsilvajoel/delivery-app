@@ -7,6 +7,7 @@ import CardProduct from '~components/CardProduct/CardProduct';
 import CarrrouselCategories from '~components/CarouselCategories/CarouselCategories';
 import MenuApp from '~components/Layout/Menu/Menu';
 
+import { usePartner } from '~hooks/query/usePartner';
 import { useAllProducts } from '~hooks/query/useProducts';
 import { useProductStore } from '~hooks/store/useProductStore';
 
@@ -16,7 +17,7 @@ import styles from './Home.module.scss';
 export default function Home() {
   const products = useAllProducts();
   const selectedProduct = useProductStore((state) => state.currentCategory);
-
+  const partner = usePartner();
   const showProductFilter = useCallback(() => {
     return products
       .filter(
@@ -33,7 +34,8 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>zeferino</title>
+        <title>{partner?.data?.name}</title>
+        <link rel="icon" href={partner?.data?.favicon} />
       </Head>
       <MenuApp />
       <div className={styles.container}>
