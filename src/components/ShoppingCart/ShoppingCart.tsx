@@ -13,6 +13,7 @@ import {
 } from '@material-ui/core';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import { links } from '~constants/links';
+
 import { useCartStore } from '~hooks/store/UseCartStore';
 
 import ListCart from './List';
@@ -34,7 +35,7 @@ export default function ShoppingCart() {
       <Card className={scss.cardList}>
         <CardContent>
           <h2>Itens no pedidos</h2>
-          <ListCart />
+          <ListCart fixed={false} />
         </CardContent>
         <CardActions style={{ flexDirection: 'row-reverse' }}>
           <Link href={links.checkout}>

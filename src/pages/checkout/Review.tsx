@@ -1,6 +1,7 @@
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+import ListCart from '~components/ShoppingCart/List';
 // import List from '@material-ui/core/List'
 // import ListItem from '@material-ui/core/ListItem'
 // import ListItemText from '@material-ui/core/ListItemText'
@@ -33,9 +34,7 @@ export default function Review() {
         <Typography variant="h6" gutterBottom className={classes.title}>
           Produtos
         </Typography>
-        {dataReview.produtosMock.map((products) => (
-          <li>{products}</li>
-        ))}
+        <ListCart fixed={false} />
       </Grid>
       <Grid item container direction="column" xs={12} sm={12}>
         <Typography variant="h6" gutterBottom>

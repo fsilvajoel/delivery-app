@@ -23,7 +23,7 @@ export default function CheckoutList() {
           <span className={scss.textButton}>Adicionar mais produtos?</span>
         </Button>
       </div>
-      <ListCart />
+      <ListCart fixed={false} />
     </>
   );
 }

@@ -14,14 +14,6 @@ if (token) {
   instance.defaults.headers.Authorization = `Token ${token}`;
 }
 
-// export const instanceLogged = axios.create({
-//   baseURL: apiUrl,
-//   headers: {
-//     Authorization: `Token ${getAccessToken()}`,
-//   },
-//   // 6c7666310cb49e31b5b30ce6998f6ddd0be62da9
-// });
-
 // instance.interceptors.request.use((config) => {
 //   const token = getAccessToken();
 

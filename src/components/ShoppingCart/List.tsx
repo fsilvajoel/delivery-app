@@ -15,7 +15,7 @@ import { removeProductsInCart, useCartStore } from '~hooks/store/UseCartStore';
 
 import scss from './ShoppingCart.module.scss';
 
-const ListCart = () => {
+const ListCart = (fixed: boolean) => {
   const cart = useCartStore((state) => state.cart);
   const totalPrice = useCartStore((state) => state.totalPrice);
 
@@ -25,13 +25,15 @@ const ListCart = () => {
         return (
           <>
             <ListItem className={scss.listItem} key={item.productId}>
-              <IconButton
-                className={scss.iconDelete}
-                onClick={() => removeProductsInCart(item.productId)}
-                aria-label="delete"
-              >
-                <DeleteIcon />
-              </IconButton>
+              {fixed && (
+                <IconButton
+                  className={scss.iconDelete}
+                  onClick={() => removeProductsInCart(item.productId)}
+                  aria-label="delete"
+                >
+                  <DeleteIcon />
+                </IconButton>
+              )}
               <ListItemText
                 primary={item.name}
                 secondary={item.quantity}
