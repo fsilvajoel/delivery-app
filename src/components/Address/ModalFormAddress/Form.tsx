@@ -133,7 +133,7 @@ const AddressForm = () => {
         errorMessage={errors.number?.message}
       />
       <Input
-        required
+        required={false}
         type="text"
         name="complement"
         placeholder="Complemento"

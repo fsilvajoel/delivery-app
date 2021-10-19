@@ -7,7 +7,6 @@ const { 'deliveryApp-accessToken': token } = parseCookies();
 
 export const instance = axios.create({
   baseURL: apiUrl,
-  // headers: { Authorization: `${getAccessToken()}` },
 });
 
 if (token) {
@@ -17,13 +16,13 @@ if (token) {
 // export const instanceLogged = axios.create({
 //   baseURL: apiUrl,
 //   headers: {
-//     Authorization: `Token ${getAccessToken()}`,
+//     Authorization: `Token ${token}`,
 //   },
 //   // 6c7666310cb49e31b5b30ce6998f6ddd0be62da9
 // });
 
 // instance.interceptors.request.use((config) => {
-//   const token = getAccessToken();
+//   const token = token();
 
 //   return {
 //     ...config,

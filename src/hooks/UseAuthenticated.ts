@@ -1,13 +1,11 @@
 /* eslint-disable import/order */
-import { useEffect } from 'react';
-
 import { authLogin, ICredentialsData } from '~services/Api/auth';
 import { instance } from '~services/Api/http';
-import { ACCESS_TOKEN } from '~services/localStorage/auth';
 import { setCookie, parseCookies, destroyCookie } from 'nookies';
 
 import { setIsLogged } from './store/UseLoginStore';
 
+export const ACCESS_TOKEN = 'deliveryApp-accessToken';
 export const UseAuthenticated = async (info: ICredentialsData) => {
   const { 'deliveryApp-accessToken': token } = parseCookies();
   if (token) {
