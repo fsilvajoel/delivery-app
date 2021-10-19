@@ -30,8 +30,6 @@ const useStyles = makeStyles((theme) => ({
 export default function AdressCard() {
   const allUserData = useUserData();
   const allAddress = useAddressData();
-  // console.log('allUserData', allUserData.data);
-  // console.log('allAddress', allAddress.data);
   const classes = useStyles();
   return (
     <CardContent className={classes.root}>
@@ -40,6 +38,7 @@ export default function AdressCard() {
       </Typography>
       <ModalFormAddress />
       <List disablePadding>
+        {/* TODO: Refatorar para ser botóes de escolha tipo ifood */}
         {allAddress?.data?.map((address: IAddress) => (
           <ListItem className={classes.listItem} key={address.name}>
             <Checkbox onChange={() => setAddressToSend(address.id)} />

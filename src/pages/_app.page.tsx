@@ -5,6 +5,7 @@ import 'fontsource-roboto';
 import '~styles/globals.scss';
 import { ReactQueryDevtools } from 'react-query/devtools';
 
+import { instance } from '~services/Api/http';
 import { parseCookies } from 'nookies';
 
 import { setIsLogged } from '~hooks/store/UseLoginStore';
@@ -15,6 +16,9 @@ function App({ Component, pageProps }: { Component: any; pageProps: any }) {
   useEffect(() => {
     if (token) {
       setIsLogged(true);
+    }
+    if (token) {
+      instance.defaults.headers.Authorization = `Token ${token}`;
     }
   }, [token]);
 

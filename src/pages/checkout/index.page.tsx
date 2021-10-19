@@ -18,8 +18,8 @@ import { useLoginStore } from '~hooks/store/UseLoginStore';
 
 import scss from './Checkout.module.scss';
 import CheckoutList from './components/CheckoutList';
+import DeliveryMethod from './DeliveryMethod';
 import Finished from './Finished';
-import PaymentForm from './Resume';
 import Review from './Review';
 
 const steps = ['Complementos', 'Revisão do pedido', 'Finalizar'];
@@ -29,7 +29,7 @@ function getStepContent(step: number) {
     case 0:
       return <CheckoutList />;
     case 1:
-      return <PaymentForm />;
+      return <DeliveryMethod />;
     case 2:
       return <Review />;
     default:
