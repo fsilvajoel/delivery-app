@@ -37,6 +37,6 @@ export const getAllProductsData = async () => {
 // }
 
 export const sendDeliveryRequest = async (data: IDeliverySend) => {
-  const response = await instance.post<any>(`pedidos`, data);
+  const response = await instance.post<any>(`pedidos/`, data);
   return response.data;
 };

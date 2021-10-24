@@ -2,6 +2,10 @@ import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import ListCart from '~components/ShoppingCart/List';
+import { sendDeliveryRequest } from '~services/Api/Products/productsApi';
+import { IDeliverySend } from '~services/Api/Products/type';
+
+import { useUserData } from '~hooks/query/useUserData';
 import { useCartStore } from '~hooks/store/UseCartStore';
 import { useCheckoutStore } from '~hooks/store/UseCheckoutStore';
 // import { partner } from '~services/Api/apiConstants';
@@ -28,23 +32,27 @@ export default function Review() {
   const classes = useStyles();
   const productsInCart = useCartStore((state) => state.cart);
   const addressToSend = useCheckoutStore((state) => state.AddressToSendId);
-  const deliveryMethod = 1;
-  const user = 1;
-  const paymentMethod = 'Dinheiro';
+  const userData = useUserData();
+  const deliveryMethod = true;
+  const paymentmethod = 'Dinheiro';
   const partner = 'zeferino';
   console.log('produtos', productsInCart);
   console.log('endereço', addressToSend);
-  console.log('user', addressToSend);
+  console.log('user', userData?.data?.first_name);
 
-
-  const handleSend =() =>{
-    // partner
-    // user
-    // delivery
-    // address
-    // products
-    // obs?
-  }
+  const handleSend = () => {
+    const dataToSend: IDeliverySend = {
+      partner,
+      user: userData?.data!.id,
+      obs: '',
+      address: 1,
+      delivery: deliveryMethod,
+      paymentmethod,
+      products: productsInCart,
+    };
+    console.log('enviando pacote', dataToSend);
+    sendDeliveryRequest(dataToSend);
+  };
 
   return (
     <>
@@ -71,6 +79,9 @@ export default function Review() {
         <Typography gutterBottom>
           <b>Retirada:</b> Delivery
         </Typography>
+        <button type="button" onClick={handleSend}>
+          enviarTeste
+        </button>
       </Grid>
     </>
   );
