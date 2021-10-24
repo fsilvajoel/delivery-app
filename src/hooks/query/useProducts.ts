@@ -3,7 +3,7 @@ import { useQuery } from 'react-query';
 import {
   getAllCategories,
   getAllProductsData,
-} from '~services/Api/productsApi';
+} from '~services/Api/Products/productsApi';
 
 export function useAllProducts() {
   const { isLoading, error, data } = useQuery('productsData', () =>

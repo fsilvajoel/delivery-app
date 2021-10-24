@@ -85,9 +85,9 @@ const Login = () => {
             <Button fullWidth type="submit" variant="contained">
               Entrar
             </Button>
-            <Button color="primary" fullWidth type="submit" variant="contained">
+            {/* <Button color="primary" fullWidth type="submit" variant="contained">
               Entrar com Facebook
-            </Button>
+            </Button> */}
             <Grid container>
               <Grid item xs>
                 <Link

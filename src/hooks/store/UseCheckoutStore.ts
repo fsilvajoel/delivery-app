@@ -1,12 +1,12 @@
 // eslint-disable-next-line import-helpers/order-imports
 import CreateStore from '~zustand/index';
 
-interface IUserState {
+interface ICheckoutState {
   name: string;
   id: number;
   lastName: string;
   phone: string;
-  AddressId: number;
+  AddressToSendId: number;
 }
 
 const initialStore = {
@@ -14,16 +14,16 @@ const initialStore = {
   lastName: '',
   phone: '',
   id: -1,
-  AddressId: -1,
+  AddressToSendId: -1,
 };
 
-export const useUserStore = CreateStore<IUserState>(
+export const useCheckoutStore = CreateStore<ICheckoutState>(
   () => initialStore,
   'cartStore'
 );
 
-export const setIdUser = (state: number) => {
-  useUserStore.setState({
-    id: state,
+export const setAddressToSend = (state: number) => {
+  useCheckoutStore.setState({
+    AddressToSendId: state,
   });
 };

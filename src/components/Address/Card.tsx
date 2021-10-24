@@ -12,7 +12,7 @@ import Typography from '@material-ui/core/Typography';
 
 import { useAddressData } from '~hooks/query/useAddress';
 import { useUserData } from '~hooks/query/useUserData';
-import { setAddressToSend } from '~hooks/store/UseUserStore';
+import { setAddressToSend } from '~hooks/store/UseCheckoutStore';
 
 import ModalFormAddress from './ModalFormAddress/Modal';
 import { IAddress } from './ModalFormAddress/types';

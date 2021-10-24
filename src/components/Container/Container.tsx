@@ -1,6 +1,5 @@
-import { TContainerProps } from './types';
-
 import scss from './Container.module.scss';
+import { TContainerProps } from './types';
 
 const Container: React.FC<TContainerProps> = (props) => {
   const containerClass = [scss.section];

@@ -1,4 +1,5 @@
 /* eslint-disable camelcase */
+
 export interface IPartnerData {
   id: number;
   name: string;
@@ -11,4 +12,8 @@ export interface IPartnerData {
   delivery: boolean;
   open: boolean;
   take_away: boolean;
+}
+
+export interface IPaymentMethodsData {
+  name: string;
 }
