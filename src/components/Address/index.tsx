@@ -69,11 +69,6 @@ export default function Address() {
         }}
       >
         {CardToList()}
-        <CardActions style={{ flexDirection: 'row-reverse' }}>
-          <Button variant="outlined" size="medium">
-            Confirmar
-          </Button>
-        </CardActions>
       </Popover>
     </div>
   );

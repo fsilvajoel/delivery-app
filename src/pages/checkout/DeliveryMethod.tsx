@@ -39,26 +39,24 @@ export default function DeliveryMethod() {
         </div>
       );
     }
-    return (
-      <div>
-        <h1>retirada</h1>
-      </div>
-    );
+    return <></>;
   };
   const renderPaymentMethod = () => {
     return (
       <div>
-        <h1>Selecione o método de pagamento</h1>
-        {paymentTypes?.map((paymentType) => {
-          return (
-            <Button
-              variant="outlined"
-              onClick={() => sePaymentMethod(paymentType)}
-            >
-              {paymentType}
-            </Button>
-          );
-        })}
+        <h3 style={{ textAlign: 'center' }}>Selecione o método de pagamento</h3>
+        <div className={scss.paymentMethods}>
+          {paymentTypes?.map((paymentType) => {
+            return (
+              <Button
+                variant="outlined"
+                onClick={() => sePaymentMethod(paymentType)}
+              >
+                {paymentType}
+              </Button>
+            );
+          })}
+        </div>
       </div>
     );
   };
@@ -80,6 +78,10 @@ export default function DeliveryMethod() {
         {renderTabPanel()}
       </div>
       {renderPaymentMethod()}
+      <div>
+        Observacoes do Estabelecimento:
+        <p>colocar aqui o preco das entregas fixas</p>
+      </div>
     </>
   );
 }

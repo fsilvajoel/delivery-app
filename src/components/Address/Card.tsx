@@ -37,7 +37,7 @@ export default function AdressCard() {
   const classes = useStyles();
   return (
     <div className={scss.container}>
-      <h3>Endereço de Entrega</h3>
+      <h3 style={{ textAlign: 'center' }}>Endereço de Entrega</h3>
       {/* TODO: Refatorar para ser botóes de escolha tipo ifood */}
       <div className={scss.mainAddress}>
         {allAddress?.data
@@ -53,7 +53,11 @@ export default function AdressCard() {
             );
           })}
 
-        <DrawerSection buttonContent="trocar" direction="right" className={scss.btnChange}>
+        <DrawerSection
+          buttonContent="trocar"
+          direction="right"
+          className={scss.btnChange}
+        >
           <ModalFormAddress />
           <div className={scss.selectAddress}>
             {allAddress?.data?.map((address: IAddress) => (

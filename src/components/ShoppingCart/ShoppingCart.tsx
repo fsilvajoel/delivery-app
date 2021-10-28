@@ -34,15 +34,19 @@ export default function ShoppingCart() {
     return (
       <Card className={scss.cardList}>
         <CardContent>
-          <h2>Itens no pedidos</h2>
+          <h3 style={{ textAlign: 'center' }}>Itens no pedido</h3>
           <ListCart fixed={false} />
         </CardContent>
         <CardActions style={{ flexDirection: 'row-reverse' }}>
-          <Link href={links.checkout}>
-            <Button variant="outlined" size="large">
-              Finalizar
-            </Button>
-          </Link>
+          {numberOfItens > 0 && (
+            <Link href={links.checkout}>
+              <>
+                <Button variant="outlined" size="large">
+                  Finalizar
+                </Button>
+              </>
+            </Link>
+          )}
         </CardActions>
       </Card>
     );
