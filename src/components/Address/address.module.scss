@@ -1,10 +1,68 @@
-.flavors-list {
-  p {
-    color: #2cb74a;
-    font-size: 1rem;
-    font-weight: 400;
+// .flavors-list {
+//   p {
+//     color: #2cb74a;
+//     font-size: 1rem;
+//     font-weight: 400;
+//   }
+//   span {
+//     font-size: 1.2rem;
+//   }
+// }
+
+.container {
+  .mainAddress {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: red;
+    border-radius: 4px;
+    border: 1px solid #111;
+    .addressInfo {
+      display: flex;
+      flex-direction: column;
+    }
+    .buttonChange {
+      background-color: aquamarine;
+    }
   }
-  span {
-    font-size: 1.2rem;
+}
+
+.selectAddress {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  & button {
+    width: 80%;
+    margin: 1rem;
+    border-radius: 4px;
+    background-color: white;
+    border: 1px solid #d5d5d5;
+    box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%),
+      0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
+
+    .name {
+      font-size: 1.8rem;
+      font-weight: 300;
+      line-height: 2.4rem;
+    }
+    .street {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+    .district {
+      font-size: 1.2rem;
+    }
+  }
+  & button:hover {
+    transform: scale(0.99);
+    border: 0;
+  }
+  .novoEnde {
+    font-size: 1.8rem;
+    font-weight: 300;
+    line-height: 2.4rem;
+    position: absolute;
+    bottom: 5px;
   }
 }

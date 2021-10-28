@@ -10,7 +10,7 @@ export const getAllDataPartner = async () => {
   return response.data;
 };
 export const getPaymentMethodsPartner = async () => {
-  const response = await instance.get<any>(
+  const response = await instance.get<IPaymentMethodsData>(
     `${apiUrl}/parceiros/zeferino/paymentsmethods/`
   );
   // console.log('payment', response);

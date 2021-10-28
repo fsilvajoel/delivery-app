@@ -46,13 +46,13 @@ export const setQuantityItens = () => {
 export const setProductsInCart = (state: IProductsInCart) => {
   useCartStore.setState((prevState) => ({
     cart: [...prevState.cart, state],
-    totalPrice: prevState.totalPrice + state.quantity * state.unitaryValue,
+    totalPrice: prevState.totalPrice + state.quantity * state.unitary_value,
   }));
   setQuantityItens();
 };
 export const removeProductsInCart = (id: any) => {
   useCartStore.setState((prevState) => ({
-    cart: prevState.cart.filter((i) => i.productId !== id),
+    cart: prevState.cart.filter((i) => i.product !== id),
   }));
   setQuantityItens();
 };

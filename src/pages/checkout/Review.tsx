@@ -46,7 +46,7 @@ export default function Review() {
       user: userData?.data!.id,
       obs: '',
       address: 1,
-      delivery: deliveryMethod,
+      delivery: false,
       paymentmethod,
       products: productsInCart,
     };

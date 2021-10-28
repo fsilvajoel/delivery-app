@@ -2,7 +2,9 @@ import { useState } from 'react';
 
 import { Button, Paper, Tab, Tabs } from '@material-ui/core';
 import AdressCard from '~components/Address/Card';
-import { getPaymentMethodsPartner } from '~services/Api/Partner/partner';
+// import { getPaymentMethodsPartner } from '~services/Api/Partner/partner';
+
+import { usePaymentMethod } from '~hooks/query/usePartner';
 
 import scss from './Checkout.module.scss';
 
@@ -13,11 +15,13 @@ import scss from './Checkout.module.scss';
 // }
 
 export default function DeliveryMethod() {
-  const paymentTypes = getPaymentMethodsPartner();
+  // const paymentTypes = usePaymentMethod();
+  const paymentTypes = ['Dinheiro', 'debito', 'crédito'];
   console.log('forma de pgto', paymentTypes);
   const [deliveryMethod, setDeliveryMethod] = useState('');
   const [paymentMethod, sePaymentMethod] = useState('');
-  console.log('deliveryMethod', deliveryMethod);
+  // console.log('deliveryMethod', deliveryMethod);
+  console.log('paymentMethod', paymentMethod);
 
   const [TabValue, setTabValue] = useState(0);
 
@@ -45,12 +49,16 @@ export default function DeliveryMethod() {
     return (
       <div>
         <h1>Selecione o método de pagamento</h1>
-        {/* {paymentTypes?.map((paymentType) => {
-          return <h1>teste</h1>;
-        })} */}
-        <Button variant="outlined" onClick={() => sePaymentMethod('lala')}>
-          Primary
-        </Button>
+        {paymentTypes?.map((paymentType) => {
+          return (
+            <Button
+              variant="outlined"
+              onClick={() => sePaymentMethod(paymentType)}
+            >
+              {paymentType}
+            </Button>
+          );
+        })}
       </div>
     );
   };

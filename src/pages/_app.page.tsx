@@ -5,10 +5,11 @@ import 'fontsource-roboto';
 import '~styles/globals.scss';
 import { ReactQueryDevtools } from 'react-query/devtools';
 
-import { instance } from '~services/Api/http';
 import { parseCookies } from 'nookies';
+import { instance } from '~services/Api/http';
 
 import { setIsLogged } from '~hooks/store/UseLoginStore';
+// import { setDeliveryMethod } from '~hooks/store/UsePartnerStore';
 
 const queryClient = new QueryClient();
 function App({ Component, pageProps }: { Component: any; pageProps: any }) {

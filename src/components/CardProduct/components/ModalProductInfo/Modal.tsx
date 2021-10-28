@@ -37,12 +37,12 @@ function ModalProductInfo({ data }: any) {
   };
   const handleSelectProduct = () => {
     const item: IProductsInCart = {
-      productId: data.id,
+      product: data.id,
       name: data.name,
-      unitaryValue: data.price,
+      unitary_value: data.price,
       quantity: qtdItens,
       observation,
-      unity: 'quantasVem',
+      unity: 'integer',
     };
     setProductsInCart(item);
   };

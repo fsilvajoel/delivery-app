@@ -1,8 +1,11 @@
+/* eslint-disable camelcase */
 export interface IProductsInCart {
   name: string;
-  productId: number;
-  unitaryValue: number;
+  product: number;
+  unitary_value: number;
   quantity: number;
-  observation: string;
+  observation?: string;
   unity: string;
 }
+
+// unity ==  (fractioned ou integer)

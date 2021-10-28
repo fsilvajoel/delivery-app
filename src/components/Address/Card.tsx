@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import { CardActions, CardContent, Checkbox } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
@@ -9,11 +11,13 @@ import ListItemText from '@material-ui/core/ListItemText';
 import { makeStyles } from '@material-ui/core/styles';
 // import CardContent from "@material-ui/core/CardContent";
 import Typography from '@material-ui/core/Typography';
+import DrawerSection from '~components/Layout/Drawer/Drawer';
 
 import { useAddressData } from '~hooks/query/useAddress';
 import { useUserData } from '~hooks/query/useUserData';
 import { setAddressToSend } from '~hooks/store/UseCheckoutStore';
 
+import scss from './address.module.scss';
 import ModalFormAddress from './ModalFormAddress/Modal';
 import { IAddress } from './ModalFormAddress/types';
 
@@ -32,21 +36,45 @@ export default function AdressCard() {
   const allAddress = useAddressData();
   const classes = useStyles();
   return (
-    <CardContent className={classes.root}>
-      <Typography variant="h6" gutterBottom>
-        Endereço de Entrega
-      </Typography>
-      <ModalFormAddress />
-      <List disablePadding>
-        {/* TODO: Refatorar para ser botóes de escolha tipo ifood */}
-        {allAddress?.data?.map((address: IAddress) => (
-          <ListItem className={classes.listItem} key={address.name}>
-            <Checkbox onChange={() => setAddressToSend(address.id)} />
-            <ListItemText primary={address.name} secondary={address.street} />
-            <Typography variant="body2">{address.district}</Typography>
-          </ListItem>
-        ))}
-      </List>
-    </CardContent>
+    <div className={scss.container}>
+      <h3>Endereço de Entrega</h3>
+      {/* TODO: Refatorar para ser botóes de escolha tipo ifood */}
+      <div className={scss.mainAddress}>
+        {allAddress?.data
+          ?.filter((address) => address.main === true)
+          .map((address) => {
+            return (
+              <div className={scss.addressInfo}>
+                <h2>{address.name}</h2>
+                <h3>
+                  {address.street}, {address.number} {address.district} -
+                  {address.UF}
+                </h3>
+              </div>
+            );
+          })}
+
+        <DrawerSection buttonContent="trocar" direction="right">
+          <ModalFormAddress />
+          <div className={scss.selectAddress}>
+            {allAddress?.data?.map((address: IAddress) => (
+              <button
+                type="button"
+                onClick={() => setAddressToSend(address.id)}
+              >
+                <h4 className={scss.name}>{address.name}</h4>
+                <h5 className={scss.street}>
+                  {address.street}, {address.number} {address.district}
+                </h5>
+                <p className={scss.district}>{address.district}</p>
+              </button>
+            ))}
+            <button type="button" className={scss.novoEnde}>
+              Adicionar Novo Endereço
+            </button>
+          </div>
+        </DrawerSection>
+      </div>
+    </div>
   );
 }

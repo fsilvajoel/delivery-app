@@ -1,3 +1,5 @@
+import { IProductsInCart } from 'src/types/cart';
+
 export interface IDeliverySend {
   partner: string;
   user: number;
@@ -5,5 +7,5 @@ export interface IDeliverySend {
   address: number;
   delivery: boolean;
   paymentmethod: string;
-  products: any;
+  products: IProductsInCart[];
 }
