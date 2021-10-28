@@ -65,7 +65,7 @@ export default function DeliveryMethod() {
 
   return (
     <>
-      <Paper square>
+      <div>
         <h2 className={scss.title}>Selecione o Método de entrega</h2>
         <Tabs
           centered
@@ -78,7 +78,7 @@ export default function DeliveryMethod() {
           <Tab label="Retirada" />
         </Tabs>
         {renderTabPanel()}
-      </Paper>
+      </div>
       {renderPaymentMethod()}
     </>
   );

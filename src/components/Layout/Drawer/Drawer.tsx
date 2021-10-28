@@ -10,7 +10,11 @@ const DrawerSection = (props: IDrawerProps) => {
 
   return (
     <>
-      <button type="button" onClick={() => setState(true)}>
+      <button
+        type="button"
+        className={props.className}
+        onClick={() => setState(true)}
+      >
         {props.buttonContent}
       </button>
       <Drawer

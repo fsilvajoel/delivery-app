@@ -45,16 +45,15 @@ export default function AdressCard() {
           .map((address) => {
             return (
               <div className={scss.addressInfo}>
-                <h2>{address.name}</h2>
-                <h3>
-                  {address.street}, {address.number} {address.district} -
-                  {address.UF}
-                </h3>
+                <h2 className={scss.addressName}>{address.name}</h2>
+                <p className={scss.address}>
+                  {address.street}, {address.number} {address.district}
+                </p>
               </div>
             );
           })}
 
-        <DrawerSection buttonContent="trocar" direction="right">
+        <DrawerSection buttonContent="trocar" direction="right" className={scss.btnChange}>
           <ModalFormAddress />
           <div className={scss.selectAddress}>
             {allAddress?.data?.map((address: IAddress) => (
