@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { Button, Paper, Tab, Tabs } from '@material-ui/core';
+import { Button, Tab, Tabs } from '@material-ui/core';
 import AdressCard from '~components/Address/Card';
 // import { getPaymentMethodsPartner } from '~services/Api/Partner/partner';
 
@@ -15,12 +15,11 @@ import scss from './Checkout.module.scss';
 // }
 
 export default function DeliveryMethod() {
-  // const paymentTypes = usePaymentMethod();
   const paymentTypes = ['Dinheiro', 'debito', 'crédito'];
   console.log('forma de pgto', paymentTypes);
   const [deliveryMethod, setDeliveryMethod] = useState('');
-  const [paymentMethod, sePaymentMethod] = useState('');
-  // console.log('deliveryMethod', deliveryMethod);
+  const [paymentMethod, setPaymentMethod] = useState('');
+
   console.log('paymentMethod', paymentMethod);
 
   const [TabValue, setTabValue] = useState(0);
@@ -39,18 +38,23 @@ export default function DeliveryMethod() {
         </div>
       );
     }
-    return <></>;
+    return (
+      <h3 style={{ textAlign: 'center', fontWeight: '400' }}>
+        Não é necessário inserir o endereço nessa modalidade
+      </h3>
+    );
   };
   const renderPaymentMethod = () => {
     return (
-      <div>
-        <h3 style={{ textAlign: 'center' }}>Selecione o método de pagamento</h3>
-        <div className={scss.paymentMethods}>
+      <div className={scss.paymentMethods}>
+        <h3 className={scss.title}>Selecione o método de pagamento</h3>
+        <div className={scss.content}>
           {paymentTypes?.map((paymentType) => {
             return (
               <Button
                 variant="outlined"
-                onClick={() => sePaymentMethod(paymentType)}
+                className={scss.paymentButton}
+                onClick={() => setPaymentMethod(paymentType)}
               >
                 {paymentType}
               </Button>
@@ -58,6 +62,17 @@ export default function DeliveryMethod() {
           })}
         </div>
       </div>
+    );
+  };
+
+  const renderObservations = () => {
+    return (
+      <>
+        <h3 className={scss.title}>Observacoes do Estabelecimento:</h3>
+        <div className={scss.content}>
+          <p>colocar aqui o preco das entregas fixas</p>
+        </div>
+      </>
     );
   };
 
@@ -78,9 +93,8 @@ export default function DeliveryMethod() {
         {renderTabPanel()}
       </div>
       {renderPaymentMethod()}
-      <div>
-        Observacoes do Estabelecimento:
-        <p>colocar aqui o preco das entregas fixas</p>
+      <div className={scss.establishmentObservations}>
+        {renderObservations()}
       </div>
     </>
   );

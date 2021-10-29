@@ -11,6 +11,7 @@
     .title {
       margin-top: 4rem;
       margin-bottom: 2rem;
+      text-align: center;
     }
 
     .paper {
@@ -18,12 +19,6 @@
       margin-bottom: 3rem;
       padding: 2rem;
       margin: 1rem;
-
-      // [theme.breakpoints.up(600 + 3rem; * 2)]: {
-      //   margin-top: 6rem;
-      //   margin-bottom: 6rem;
-      //   padding: 3rem;
-      // }
     }
 
     .buttons {
@@ -47,18 +42,7 @@
       font-size: 1.6rem;
     }
   }
-  // margin-left: 2rem;
-  // margin-right: 2rem;
-  // [theme.breakpoints.up(600 + theme.spacing(2) * 2)]: {
-  //   width: 600px,
-  //   marginLeft: 'auto',
-  //   marginRight: 'auto'
-  // }
 }
-
-// .stepper {
-//   padding: 3rem 0 5rem;
-// }
 
 .icon {
   display: flex;
@@ -70,6 +54,30 @@
     color: #359217;
   }
 }
+
+.paymentMethods {
+  .title {
+    text-align: center;
+  }
+  .content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    .paymentButton {
+      margin: 2rem;
+    }
+  }
+}
+
+.establishmentObservations {
+  .title {
+    justify-content: center;
+  }
+  .content {
+    display: flex;
+  }
+}
+
 @include from1024 {
   .layout {
     .container {

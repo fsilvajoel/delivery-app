@@ -18,17 +18,18 @@ import scss from './ShoppingCart.module.scss';
 const ListCart = (fixed: boolean) => {
   const cart = useCartStore((state) => state.cart);
   const totalPrice = useCartStore((state) => state.totalPrice);
+  console.log('carrinho', cart);
 
   const ShowListProducts = () => (
     <>
       {cart.map((item, key) => {
         return (
           <>
-            <ListItem className={scss.listItem} key={item.productId}>
+            <ListItem className={scss.listItem} key={item.product}>
               {fixed && (
                 <IconButton
                   className={scss.iconDelete}
-                  onClick={() => removeProductsInCart(item.productId)}
+                  onClick={() => removeProductsInCart(item.product)}
                   aria-label="delete"
                 >
                   <DeleteIcon />
@@ -40,7 +41,7 @@ const ListCart = (fixed: boolean) => {
                 className={scss.listItemText}
               />
               <h5 className={scss.productPrice}>
-                {convertBrlPrice(item.unitaryValue * item.quantity)}
+                {convertBrlPrice(item.unitary_value * item.quantity)}
               </h5>
             </ListItem>
           </>
