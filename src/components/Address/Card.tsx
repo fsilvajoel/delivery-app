@@ -41,8 +41,8 @@ export default function AdressCard() {
       {/* TODO: Refatorar para ser botóes de escolha tipo ifood */}
       <div className={scss.mainAddress}>
         {allAddress?.data
-          ?.filter((address) => address.main === true)
-          .map((address) => {
+          ?.filter((address: any) => address.main === true)
+          .map((address: any) => {
             return (
               <div className={scss.addressInfo}>
                 <h2 className={scss.addressName}>{address.name}</h2>

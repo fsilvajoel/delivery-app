@@ -39,7 +39,7 @@ export default function DeliveryMethod() {
       );
     }
     return (
-      <h3 style={{ textAlign: 'center', fontWeight: '400' }}>
+      <h3 style={{ textAlign: 'center' }}>
         Não é necessário inserir o endereço nessa modalidade
       </h3>
     );

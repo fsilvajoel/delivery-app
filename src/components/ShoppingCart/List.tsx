@@ -15,7 +15,7 @@ import { removeProductsInCart, useCartStore } from '~hooks/store/UseCartStore';
 
 import scss from './ShoppingCart.module.scss';
 
-const ListCart = (fixed: boolean) => {
+const ListCart = (fixed: any) => {
   const cart = useCartStore((state) => state.cart);
   const totalPrice = useCartStore((state) => state.totalPrice);
   console.log('carrinho', cart);

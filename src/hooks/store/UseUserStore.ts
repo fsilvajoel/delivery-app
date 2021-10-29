@@ -22,7 +22,7 @@ export const useUserStore = CreateStore<IUserState>(
   'cartStore'
 );
 
-export const setIdUser = (state: number) => {
+export const setIdUser = (state: any) => {
   useUserStore.setState({
     id: state,
   });
