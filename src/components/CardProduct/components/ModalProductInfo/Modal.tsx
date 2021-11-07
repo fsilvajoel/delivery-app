@@ -65,10 +65,9 @@ function ModalProductInfo({ data }: any) {
       <div className={scss.productDetail}>
         <div className={scss.procuctDetailHeader}>
           <ul>
-            <li>
+            {/* <li>
               <a href="/#">Zeferino / Temperos Frescos/ {data.name}</a>
-              {/* TODO: b */}
-            </li>
+            </li> */}
           </ul>
           <IconButton aria-label="close" component="span" onClick={handleClose}>
             <CloseIcon className={scss.icon} />

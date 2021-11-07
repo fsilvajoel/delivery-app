@@ -23,24 +23,14 @@ import { IAddress, ICepSearch } from './types';
 const AddressForm = () => {
   const userId = useUserStore((store) => store.id);
   const deliveryDistricts = useDelliveryAddress();
-  // const [ufInfo, setUfInfo] = useState(''); // uf
-  // const [streetInfo, setStreetInfo] = useState(''); // rua
-  // const [districtInfo, setDistrictInfo] = useState(''); // bairro
-  // bairro: "Universitário"
-  // cep: "96815-640" //
-  // complemento: ""
-  // localidade: "Santa Cruz do Sul"
-  // logradouro: "Rua Dona Flora"
-  // uf:"RS"
-  // console.log('RETORNO', addressInfo);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
     watch,
-    reset,
-    setValue,
+    // reset,
+    // setValue,
   } = useForm<IAddress>();
 
   const onSubmit = (fields: IAddress) => {

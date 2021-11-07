@@ -16,11 +16,11 @@ import scss from './Checkout.module.scss';
 
 export default function DeliveryMethod() {
   const paymentTypes = ['Dinheiro', 'debito', 'crédito'];
-  console.log('forma de pgto', paymentTypes);
-  const [deliveryMethod, setDeliveryMethod] = useState('');
-  const [paymentMethod, setPaymentMethod] = useState('');
+  // console.log('forma de pgto', paymentTypes);
+  // const [deliveryMethod, setDeliveryMethod] = useState('');
+  const [, setPaymentMethod] = useState('');
 
-  console.log('paymentMethod', paymentMethod);
+  // console.log('paymentMethod', paymentMethod);
 
   const [TabValue, setTabValue] = useState(0);
 

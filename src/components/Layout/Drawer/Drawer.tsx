@@ -7,7 +7,6 @@ import { IDrawerProps } from './types';
 
 const DrawerSection = (props: IDrawerProps) => {
   const [state, setState] = useState(false);
-
   return (
     <>
       <button
@@ -23,11 +22,11 @@ const DrawerSection = (props: IDrawerProps) => {
         onClose={() => setState(false)}
       >
         <Box
-          sx={{ width: 250 }}
+          sx={{ width: props.size }}
           // sx={{` width: ${props.size}` }}
           role="presentation"
-          onClick={() => setState(false)}
-          onKeyDown={() => setState(false)}
+          // onClick={() => setState(false)}
+          // onKeyDown={() => setState(false)}
         >
           {props.children}
         </Box>

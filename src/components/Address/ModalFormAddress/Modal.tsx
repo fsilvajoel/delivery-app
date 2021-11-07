@@ -1,5 +1,3 @@
-// import { useRouter } from 'next/router';
-
 import { useState } from 'react';
 
 import { Button, IconButton, Modal } from '@material-ui/core';
@@ -8,10 +6,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import AddressForm from './Form';
 import scss from './Modal.module.scss';
 
-// import { setProductsInCart } from '~hooks/store/UseCartStore';
-
 function ModalFormAddress() {
-  // const router = useRouter();
   const [open, setOpen] = useState<boolean>(false);
 
   const handleOpen = () => {

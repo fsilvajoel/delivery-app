@@ -3,4 +3,5 @@ export interface IDrawerProps {
   direction: 'left' | 'right' | 'bottom';
   buttonContent: string;
   children: React.ReactNode;
+  size: number;
 }
