@@ -5,7 +5,5 @@ export interface IProductsInCart {
   unitary_value: number;
   quantity: number;
   observation?: string;
-  unity: string;
+  unity: 'fractioned' | 'integer';
 }
-
-// unity ==  (fractioned ou integer)

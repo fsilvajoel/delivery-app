@@ -15,7 +15,7 @@ const CounterItens = (props: ICounterItensProps) => {
   if (props.type === 'Unidade') {
     qtd = 1;
   } else {
-    qtd = 100;
+    qtd = 0.1;
   }
 
   return (
@@ -26,14 +26,14 @@ const CounterItens = (props: ICounterItensProps) => {
           {count > 0 && (
             <IconButton
               aria-label="+"
-              onClick={() => setQtdItens(count > 0 ? count - qtd : count)}
+              onClick={() => setQtdItens(count > 0.01 ? count - qtd : 0)}
             >
               <ExposureNeg1Icon className={scss.icon} />
             </IconButton>
           )}
         </div>
         <div className={scss.counter}>
-          {count} {props.type !== 'Unidade' && <span>g</span>}
+          {count.toFixed(1)} {props.type !== 'Unidade' && <span>Kg</span>}
         </div>
         <div className={scss.button}>
           <IconButton aria-label="-" onClick={() => setQtdItens(count + qtd)}>
