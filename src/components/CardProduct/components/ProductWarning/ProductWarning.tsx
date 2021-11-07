@@ -6,7 +6,7 @@ const ProductWarning = () => {
   return (
     <div className={scss.productWarning}>
       <div className={scss.icon}>
-        <BalanceIcon />
+        <img src={BalanceIcon} alt="balance" />
       </div>
       <div className={scss.textInfo}>
         Atenção: este item tem peso variável e seu valor total pode ser
@@ -19,8 +19,7 @@ const ProductWarning = () => {
           title="photo3idea_studio"
         >
           photo3idea_studio
-        </a>{' '}
-        from{' '}
+        </a>
         <a href="https://www.flaticon.com/br/" title="Flaticon">
           www.flaticon.com
         </a>

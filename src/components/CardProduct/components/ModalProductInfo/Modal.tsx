@@ -7,8 +7,8 @@ import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import CloseIcon from '@material-ui/icons/Close';
 import DoneIcon from '@material-ui/icons/Done';
 import Alert from '@material-ui/lab/Alert';
-import { IProductsInCart } from 'src/types/cart';
 import { convertBrlPrice } from '~utils/convertBrlPrice';
+import { IProductsInCart } from 'src/types/cart';
 
 import {
   setProductsInCart,
@@ -42,7 +42,7 @@ function ModalProductInfo({ data }: any) {
       unitary_value: data.price,
       quantity: qtdItens,
       observation,
-      unity: 'integer',
+      unity: 'integer', // TODO: a
     };
     setProductsInCart(item);
   };
@@ -67,6 +67,7 @@ function ModalProductInfo({ data }: any) {
           <ul>
             <li>
               <a href="/#">Zeferino / Temperos Frescos/ {data.name}</a>
+              {/* TODO: b */}
             </li>
           </ul>
           <IconButton aria-label="close" component="span" onClick={handleClose}>
@@ -99,7 +100,7 @@ function ModalProductInfo({ data }: any) {
               Descrição do produto por Lorem ipsum dolor sit amet consectetur
               adipisicing elit. Delectus, a.{data.description}
             </p> */}
-            <CounterItens />
+            <CounterItens type={data.price_unit} />
             <div className={scss.wrapperObs}>
               <TextField
                 onBlur={handleObservation}
@@ -129,7 +130,9 @@ function ModalProductInfo({ data }: any) {
 
   return (
     <div>
-      <Button onClick={handleOpen}>Ver detalhes</Button>
+      <Button variant="contained" onClick={handleOpen}>
+        Ver detalhes
+      </Button>
       <Modal
         open={open}
         onClose={handleClose}

@@ -1,15 +1,10 @@
-import { ReactNode } from 'react';
-
 import { Card, CardContent, CardActions, CardMedia } from '@material-ui/core';
 // import { IProducts } from 'src/types/products';
 
 import classes from './CardProduct.module.scss';
 import ModalProductInfo from './components/ModalProductInfo/Modal';
+import { ICardProduct } from './types';
 
-interface ICardProduct {
-  data: any;
-  children?: ReactNode;
-}
 const CardProduct: React.FC<ICardProduct> = ({ data }: any) => {
   return (
     <Card className={classes.card}>

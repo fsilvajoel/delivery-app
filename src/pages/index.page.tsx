@@ -26,6 +26,7 @@ export default function Home() {
       )
       .map((product: any) => (
         <Grid item md={4} sm={6} xs={12}>
+          {console.log('procut', product)};
           <CardProduct data={product} />
         </Grid>
       ));

@@ -6,8 +6,18 @@ import { setQtdItens, useSelectItensStore } from '~hooks/store/UseCartStore';
 
 import scss from './CounterItens.module.scss';
 
-const CounterItens = () => {
+interface ICounterItensProps {
+  type: 'kg' | 'Unidade';
+}
+const CounterItens = (props: ICounterItensProps) => {
   const count = useSelectItensStore((store) => store.selectedQtdItens);
+  let qtd = 0;
+  if (props.type === 'Unidade') {
+    qtd = 1;
+  } else {
+    qtd = 100;
+  }
+
   return (
     <>
       <p className={scss.title}>Selecione a quantidade:</p>
@@ -16,15 +26,17 @@ const CounterItens = () => {
           {count > 0 && (
             <IconButton
               aria-label="+"
-              onClick={() => setQtdItens(count > 0 ? count - 1 : count)}
+              onClick={() => setQtdItens(count > 0 ? count - qtd : count)}
             >
               <ExposureNeg1Icon className={scss.icon} />
             </IconButton>
           )}
         </div>
-        <div className={scss.counter}>{count}</div>
+        <div className={scss.counter}>
+          {count} {props.type !== 'Unidade' && <span>g</span>}
+        </div>
         <div className={scss.button}>
-          <IconButton aria-label="-" onClick={() => setQtdItens(count + 1)}>
+          <IconButton aria-label="-" onClick={() => setQtdItens(count + qtd)}>
             <PlusOneIcon className={scss.icon} />
           </IconButton>
         </div>
