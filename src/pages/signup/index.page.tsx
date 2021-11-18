@@ -18,7 +18,8 @@ import TextField from '@material-ui/core/TextField';
 // import Copyright from '../../Components/Layout/Copyright';
 import Input from '~components/Layout/Input/Input';
 import { IRegistersData, registerUser } from '~services/Api/auth';
-import { cepRegex, emailRegex } from '~utils/validation';
+import { ConvertDate } from '~utils/convertBrlDate';
+import { cepRegex, DateRegex, emailRegex } from '~utils/validation';
 
 import LogoZeferino from '../login/components/login/images/logozeferino.png';
 import scss from '../login/components/login/Login.module.scss';
@@ -36,6 +37,7 @@ export default function SignUp() {
   } = useForm<IRegistersData>();
 
   const onSubmit: SubmitHandler<IRegistersData> = (data) => {
+    console.log('convertido', ConvertDate(data.birthday));
     console.log(data);
     const dataSend = data;
     dataSend.legal_identity = 'cpf';
@@ -140,6 +142,15 @@ export default function SignUp() {
               // autoComplete="000.000.000-00"
               type="number"
               name="document_number"
+            />
+            <TextField
+              autoFocus
+              variant="outlined"
+              required
+              inputRef={register}
+              label="Data de Nascimento"
+              type="date"
+              name="birthday"
             />
 
             <div className={scss.termsOfService}>

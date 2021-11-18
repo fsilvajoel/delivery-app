@@ -17,6 +17,7 @@ export interface IRegistersData {
   legal_identity: string;
   document_number: string;
   phone: string;
+  birthday: string;
 }
 
 // TODO: ajustar retorno
