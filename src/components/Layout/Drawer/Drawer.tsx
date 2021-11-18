@@ -25,7 +25,7 @@ const DrawerSection = (props: IDrawerProps) => {
           sx={{ width: props.size }}
           // sx={{` width: ${props.size}` }}
           role="presentation"
-          // onClick={() => setState(false)}
+          onClick={() => setState(false)}
           // onKeyDown={() => setState(false)}
         >
           {props.children}

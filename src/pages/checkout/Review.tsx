@@ -1,9 +1,11 @@
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
+import { IAddress } from '~components/Address/ModalFormAddress/types';
 import ListCart from '~components/ShoppingCart/List';
 import { sendDeliveryRequest } from '~services/Api/Products/productsApi';
 import { IDeliverySend } from '~services/Api/Products/type';
 
+import { useAddressData } from '~hooks/query/useAddress';
 import { useUserData } from '~hooks/query/useUserData';
 import { useCartStore } from '~hooks/store/UseCartStore';
 import { useCheckoutStore } from '~hooks/store/UseCheckoutStore';
@@ -13,15 +15,20 @@ import { useCheckoutStore } from '~hooks/store/UseCheckoutStore';
 import scss from './Checkout.module.scss';
 
 export default function Review() {
+  const allAddress = useAddressData();
   const productsInCart = useCartStore((state) => state.cart);
   const addressToSendId = useCheckoutStore((state) => state.AddressToSendId);
-  const addressToSend = useCheckoutStore((state) => state.name);
+  const addressToSend = allAddress?.data.filter(
+    (adress: IAddress) => adress.id === addressToSendId
+  );
+  console.log('antes para', allAddress?.data);
+  console.log('envio para', addressToSend);
   const userData = useUserData();
   const paymentmethod = 'Dinheiro';
   const partner = 'zeferino';
-  console.log('produtos', productsInCart);
+  // console.log('produtos', productsInCart);
   console.log('endereço', addressToSendId);
-  console.log('user', userData?.data?.first_name);
+  // console.log('user', userData?.data?.first_name);
 
   const handleSend = () => {
     const dataToSend: IDeliverySend = {

@@ -10,6 +10,7 @@ export interface IAddress {
   cep: string;
   district: string;
   id: number;
+  main: boolean;
 }
 
 export interface IDataOfCepSearch {
