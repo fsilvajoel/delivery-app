@@ -77,6 +77,22 @@
     display: flex;
   }
 }
+.finished {
+  .finishedTitle {
+    font-weight: 400;
+    font-size: 2rem;
+    line-height: 2.4rem;
+    text-align: center;
+  }
+  .finishedDetails {
+    .messageCode {
+      font-weight: 400;
+      font-size: 1.4rem;
+      line-height: 1.6rem;
+      text-align: center;
+    }
+  }
+}
 
 @include from1024 {
   .layout {

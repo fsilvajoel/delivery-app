@@ -78,7 +78,7 @@ export default function AdressCard() {
             <button type="button" className={scss.novoEnde}>
               Adicionar Novo Endereço
             </button>
-            <DrawerFormAdress/>
+            <DrawerFormAdress />
           </div>
         </DrawerSection>
       </div>
