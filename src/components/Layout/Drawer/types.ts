@@ -1,7 +1,7 @@
 export interface IDrawerProps {
   className?: string;
   direction: 'left' | 'right' | 'bottom';
-  buttonContent: string;
+  buttonContent: React.ReactFragment;
   children: React.ReactNode;
   size: number;
 }

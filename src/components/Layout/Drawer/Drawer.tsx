@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Box from '@material-ui/core/Box';
 import Drawer from '@material-ui/core/Drawer';
 
+import scss from './Drawer.module.scss';
 import { IDrawerProps } from './types';
 
 const DrawerSection = (props: IDrawerProps) => {
@@ -11,7 +12,7 @@ const DrawerSection = (props: IDrawerProps) => {
     <>
       <button
         type="button"
-        className={props.className}
+        className={scss.buttonDrawer}
         onClick={() => setState(true)}
       >
         {props.buttonContent}
@@ -23,10 +24,9 @@ const DrawerSection = (props: IDrawerProps) => {
       >
         <Box
           sx={{ width: props.size }}
-          // sx={{` width: ${props.size}` }}
           role="presentation"
           onClick={() => setState(false)}
-          // onKeyDown={() => setState(false)}
+          // sx={{` width: ${props.size}` }}
         >
           {props.children}
         </Box>

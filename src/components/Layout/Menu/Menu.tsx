@@ -12,13 +12,11 @@ import MenuItem from '@material-ui/core/MenuItem';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import MoreIcon from '@material-ui/icons/MoreVert';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import Address from '~components/Address/index';
-import ShoppingCart from '~components/ShoppingCart/ShoppingCart';
+import DrawerCart from '~components/ShoppingCart/DrawerCart/DrawerCart';
 import { links } from '~constants/links';
 
 import { usePartner } from '~hooks/query/usePartner';
-import { useCartStore } from '~hooks/store/UseCartStore';
 import { useLoginStore } from '~hooks/store/UseLoginStore';
 import { UseExit } from '~hooks/UseAuthenticated';
 
@@ -33,7 +31,7 @@ export default function MenuApp() {
   const router = useRouter();
   const isLogged = useLoginStore((state) => state.isLogged);
   const { width } = useWindowSize();
-  const contItensCart = useCartStore((state) => state.numberOfItens);
+
   const [isDesktop, setIsDesktop] = useState(false);
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -96,12 +94,7 @@ export default function MenuApp() {
       onClose={handleMobileMenuClose}
     >
       <MenuItem>
-        <IconButton color="inherit">
-          <Badge badgeContent={contItensCart} color="secondary">
-            <ShoppingCartIcon />
-          </Badge>
-        </IconButton>
-        <p>Carrinho</p>
+        <DrawerCart theme="black" />
       </MenuItem>
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
@@ -143,7 +136,7 @@ export default function MenuApp() {
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
               <Address />
-              <ShoppingCart />
+              <DrawerCart theme="white" />
               {isLogged ? (
                 <IconButton
                   edge="end"
