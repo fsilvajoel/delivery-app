@@ -3,20 +3,24 @@ import { useForm, Controller, SubmitHandler } from 'react-hook-form';
 
 import {
   Checkbox,
+  FormControl,
   FormControlLabel,
   FormHelperText,
+  InputLabel,
   Radio,
   RadioGroup,
 } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Grid from '@material-ui/core/Grid';
+import Input from '@material-ui/core/Input';
 import Link from '@material-ui/core/Link';
 import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
-
 // import Copyright from '../../Components/Layout/Copyright';
-import Input from '~components/Layout/Input/Input';
+// import Input from '~components/Layout/Input/Input';
+import { CpfInput } from '~components/Layout/InputMasks/cpf';
+import { PhoneInput } from '~components/Layout/InputMasks/phone';
 import { IRegistersData, registerUser } from '~services/Api/auth';
 import { ConvertDate } from '~utils/convertBrlDate';
 import { cepRegex, DateRegex, emailRegex } from '~utils/validation';
@@ -37,7 +41,7 @@ export default function SignUp() {
   } = useForm<IRegistersData>();
 
   const onSubmit: SubmitHandler<IRegistersData> = (data) => {
-    console.log('convertido', ConvertDate(data.birthday));
+    // console.log('convertido', ConvertDate(data.birthday));
     console.log(data);
     const dataSend = data;
     dataSend.legal_identity = 'cpf';
@@ -45,6 +49,16 @@ export default function SignUp() {
   };
 
   const [loading, setLoading] = useState<boolean>(false);
+  const [phoneValues, setPhoneValues] = useState('');
+  const [cpfValues, setCpfValues] = useState('');
+
+  const handleChangePhone = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setPhoneValues(event.target.value);
+  };
+  const handleChangeCpf = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setCpfValues(event.target.value);
+  };
+
   return (
     <Grid container component="main" className={scss.root}>
       {loading && (
@@ -69,6 +83,7 @@ export default function SignUp() {
               register={register}
               required
             />
+
             <Input
               type="text"
               name="last_name"
@@ -81,6 +96,7 @@ export default function SignUp() {
               register={register}
               required
             />
+
             <Input
               type="text"
               name="email"
@@ -118,16 +134,27 @@ export default function SignUp() {
               register={register}
               required
             />
-            <TextField
-              autoFocus
-              variant="outlined"
-              required
-              inputRef={register}
-              label="Telefone"
-              type="phone"
+            <Input
+              placeholder="Telefone"
+              defaultValue="(00) 0000-0000"
+              value={phoneValues}
               name="phone"
+              onChange={handleChangePhone}
+              inputComponent={PhoneInput as any}
+              inputRef={register}
+              // id="formatted-text-mask-input"
             />
-            <TextField
+            <Input
+              placeholder="CPF"
+              defaultValue="000.000.000-00"
+              value={cpfValues}
+              name="document_number"
+              onChange={handleChangeCpf}
+              inputComponent={CpfInput as any}
+              inputRef={register}
+              // id="formatted-text-mask-input"
+            />
+            {/* <TextField
               autoFocus
               variant="outlined"
               required
@@ -142,10 +169,8 @@ export default function SignUp() {
               // autoComplete="000.000.000-00"
               type="number"
               name="document_number"
-            />
+            /> */}
             <TextField
-              autoFocus
-              variant="outlined"
               required
               inputRef={register}
               label="Data de Nascimento"
