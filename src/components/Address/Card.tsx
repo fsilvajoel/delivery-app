@@ -16,20 +16,20 @@ import { IAddress } from './ModalFormAddress/types';
 export default function AdressCard() {
   const allAddress = useAddressData();
   const addressSelect = useCheckoutStore((data) => data.AddressToSendId);
-  const addressDefault = allAddress?.data?.filter(
-    (address: IAddress) => address.main === true
-  );
-  console.log('adrressDeFAULT', addressDefault[0].id);
-  if (addressSelect === -1) {
-    setAddressToSend(addressDefault[0].id);
-  }
+  // const addressDefault = allAddress?.data?.filter(
+  //   (address: IAddress) => address.main === true
+  // );
+  // // console.log('adrressDeFAULT', addressDefault[0]?.id);
+  // if (addressSelect === -1) {
+  //   setAddressToSend(addressDefault[0]?.id);
+  // }
 
   return (
     <div className={scss.container}>
       <h3 style={{ textAlign: 'center' }}>Endereço de Entrega</h3>
       <div className={scss.mainAddress}>
-        {/* {addressSelect === -1 ? ( */}
-        {/* <>
+        {addressSelect === -1 ? (
+          <>
             {allAddress?.data
               ?.filter((address: any) => address.main === true)
               .map((address: any) => {
@@ -42,23 +42,23 @@ export default function AdressCard() {
                   </div>
                 );
               })}
-          </> */}
-        {/* ) : ( */}
-        <>
-          {allAddress?.data
-            ?.filter((address: IAddress) => address.id === addressSelect)
-            .map((address: IAddress) => {
-              return (
-                <div className={scss.addressInfo}>
-                  <h2 className={scss.addressName}>{address.name}</h2>
-                  <p className={scss.address}>
-                    {address.street}, {address.number} {address.district}
-                  </p>
-                </div>
-              );
-            })}
-        </>
-        {/* )} */}
+          </>
+        ) : (
+          <>
+            {allAddress?.data
+              ?.filter((address: IAddress) => address.id === addressSelect)
+              .map((address: IAddress) => {
+                return (
+                  <div className={scss.addressInfo}>
+                    <h2 className={scss.addressName}>{address.name}</h2>
+                    <p className={scss.address}>
+                      {address.street}, {address.number} {address.district}
+                    </p>
+                  </div>
+                );
+              })}
+          </>
+        )}
 
         <DrawerSection
           size={350}

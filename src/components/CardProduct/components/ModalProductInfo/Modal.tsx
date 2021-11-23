@@ -39,7 +39,7 @@ function ModalProductInfo({ data }: any) {
     const item: IProductsInCart = {
       product: data.id,
       name: data.name,
-      unitary_value: data.price,
+      unitary_value: data.sold_as === 'fractioned' ? 0 : data.price,
       quantity: qtdItens,
       observation,
       unity: data.sold_as,
@@ -94,11 +94,6 @@ function ModalProductInfo({ data }: any) {
               <span className={scss.priceUnit}> por {data.price_unit}</span>
             </p>
             {data.price_unit === 'Kg' && <ProductWarning />}
-
-            {/* <p className={scss.itemDescription}>
-              Descrição do produto por Lorem ipsum dolor sit amet consectetur
-              adipisicing elit. Delectus, a.{data.description}
-            </p> */}
             <CounterItens type={data.price_unit} />
             <div className={scss.wrapperObs}>
               <TextField
