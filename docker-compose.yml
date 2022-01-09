@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   nextjs:
-    image: growtechnologies/zeferino-frontend
+    image: growtechnologies/zeferino-frontend:latest
     container_name: nextjs-zeferino
     restart: always
     networks:
