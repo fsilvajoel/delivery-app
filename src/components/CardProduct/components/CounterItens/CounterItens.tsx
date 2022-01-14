@@ -20,17 +20,36 @@ const CounterItens = (props: ICounterItensProps) => {
   const shortcutButtonsKg = () => {
     return (
       <>
-        <Button variant="outlined">+500g</Button>
-        <Button variant="outlined">+1kg</Button>
+        <Button variant="outlined" onClick={() => setQtdItens(count + qtd * 5)}>
+          +500g
+        </Button>
+        <Button
+          variant="outlined"
+          onClick={() => setQtdItens(count + qtd * 10)}
+        >
+          +1kg
+        </Button>
       </>
     );
   };
   const shortcutButtonsUnit = () => {
     return (
       <>
-        <Button variant="outlined">+5</Button>
-        <Button variant="outlined">+10</Button>
-        <Button variant="outlined">+20</Button>
+        <Button variant="outlined" onClick={() => setQtdItens(count + qtd * 5)}>
+          +5
+        </Button>
+        <Button
+          variant="outlined"
+          onClick={() => setQtdItens(count + qtd * 10)}
+        >
+          +10
+        </Button>
+        <Button
+          variant="outlined"
+          onClick={() => setQtdItens(count + qtd * 20)}
+        >
+          +20
+        </Button>
       </>
     );
   };
