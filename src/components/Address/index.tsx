@@ -2,13 +2,7 @@ import Link from 'next/link';
 
 import { useState } from 'react';
 
-import {
-  IconButton,
-  Popover,
-  Button,
-  Card,
-  CardActions,
-} from '@material-ui/core';
+import { IconButton, Popover, Button, Card } from '@material-ui/core';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 
 // import { links } from '~constants/links';
@@ -40,9 +34,9 @@ export default function Address() {
         {isLogged ? (
           <AdressCard />
         ) : (
-          <h1>
-            Faça <Link href="/login">Login</Link> para Continuar
-          </h1>
+          <p className={scss.loginButton}>
+            <Link href="/login">Faça Login para Continuar</Link>
+          </p>
         )}
       </Card>
     );

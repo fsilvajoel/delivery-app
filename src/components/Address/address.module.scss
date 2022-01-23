@@ -4,8 +4,6 @@
     flex-direction: row;
     justify-content: space-between;
     padding: 2rem;
-    border-radius: 4px;
-    border: 1px solid #d5d5d5;
     .addressInfo {
       display: flex;
       flex-direction: column;
@@ -18,10 +16,6 @@
     .address {
       font-size: 1.4rem;
       font-weight: bold;
-    }
-
-    .buttonChange {
-      background-color: aquamarine;
     }
   }
 }
@@ -76,4 +70,9 @@
     box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%),
       0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
   }
+}
+
+.loginButton {
+  padding: 5px;
+  font-size: 1.4rem;
 }
