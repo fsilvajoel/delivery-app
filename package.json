@@ -8,9 +8,11 @@
     "start": "next start"
   },
   "dependencies": {
-    "@material-ui/core": "^4.12.1",
-    "@material-ui/icons": "^4.11.2",
-    "@material-ui/lab": "^4.0.0-alpha.60",
+    "@emotion/react": "^11.7.1",
+    "@emotion/styled": "^11.6.0",
+    "@mui/icons-material": "^5.3.1",
+    "@mui/lab": "^5.0.0-alpha.66",
+    "@mui/material": "^5.3.1",
     "@svgr/webpack": "^5.5.0",
     "@types/lodash.deburr": "^4.1.6",
     "@types/lodash.get": "^4.4.6",
