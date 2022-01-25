@@ -18,7 +18,7 @@ export const getUserData = async () => {
   if (token) {
     instance.defaults.headers.Authorization = `Token ${token}`;
   }
-  const response = await instance.get<IUser>(`${deliveryRestAuth}/user/`);
+  const response = await instance.get<IUser>(`${deliveryRestAuth}user/`);
   return response.data;
 };
 // export const getUserData = async () => {

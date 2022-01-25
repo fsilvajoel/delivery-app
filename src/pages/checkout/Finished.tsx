@@ -1,4 +1,4 @@
-import CheckCircleOutlineOutlinedIcon from '@material-ui/icons/CheckCircleOutlineOutlined';
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 
 import scss from './Checkout.module.scss';
 
@@ -9,7 +9,7 @@ function Finished() {
         Obrigado pelo seu pedido. Ele já encontra-se em preparação
       </h3>
       <div className={scss.icon}>
-        <CheckCircleOutlineOutlinedIcon />
+        <CheckCircleOutlineIcon />
       </div>
       <div className={scss.finishedDetails}>
         <h5 className={scss.messageCode}>

@@ -1,8 +1,7 @@
 import { useRouter } from 'next/router';
 
-import { Divider } from '@mui/material';
-import Button from '@mui/material/Button';
-import AddIcon from '@material-ui/icons/Add';
+import AddIcon from '@mui/icons-material/Add';
+import { Divider, Button } from '@mui/material';
 import ListCart from '~components/ShoppingCart/List';
 
 import scss from './CheckoutCards.module.scss';
