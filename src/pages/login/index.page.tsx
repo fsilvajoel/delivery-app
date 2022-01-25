@@ -3,7 +3,7 @@ import Router from 'next/router';
 import { useEffect } from 'react';
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
 
-import { Button, Grid, Link, Paper } from '@material-ui/core';
+import { Button, Grid, Link, Paper } from '@mui/material';
 import Input from '~components/Layout/Input/Input';
 import { ICredentialsData } from '~services/Api/auth';
 import { emailRegex } from '~utils/validation';

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { Button, IconButton, Modal } from '@material-ui/core';
+import { Button, IconButton, Modal } from '@mui/material';
 import CloseIcon from '@material-ui/icons/Close';
 
 import AddressForm from './Form';

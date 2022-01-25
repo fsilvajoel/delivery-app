@@ -1,4 +1,8 @@
 .container {
+  .title {
+    text-align: center;
+    padding: 4px 8px;
+  }
   .mainAddress {
     display: flex;
     flex-direction: row;

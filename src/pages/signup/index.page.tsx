@@ -9,14 +9,14 @@ import {
   InputLabel,
   Radio,
   RadioGroup,
-} from '@material-ui/core';
-import Button from '@material-ui/core/Button';
-import CircularProgress from '@material-ui/core/CircularProgress';
-import Grid from '@material-ui/core/Grid';
-import Input from '@material-ui/core/Input';
-import Link from '@material-ui/core/Link';
-import Paper from '@material-ui/core/Paper';
-import TextField from '@material-ui/core/TextField';
+} from '@mui/material';
+import Button from '@mui/material/Button';
+import CircularProgress from '@mui/material/CircularProgress';
+import Grid from '@mui/material/Grid';
+import Input from '@mui/material/Input';
+import Link from '@mui/material/Link';
+import Paper from '@mui/material/Paper';
+import TextField from '@mui/material/TextField';
 // import Copyright from '../../Components/Layout/Copyright';
 // import Input from '~components/Layout/Input/Input';
 import { CpfInput } from '~components/Layout/InputMasks/cpf';

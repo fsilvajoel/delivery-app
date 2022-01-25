@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { Button, Tab, Tabs } from '@material-ui/core';
+import { Button, Tab, Tabs } from '@mui/material';
 import AdressCard from '~components/Address/Card';
 // import { getPaymentMethodsPartner } from '~services/Api/Partner/partner';
 

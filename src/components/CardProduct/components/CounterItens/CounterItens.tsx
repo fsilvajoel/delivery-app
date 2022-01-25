@@ -1,18 +1,18 @@
-import { Button, IconButton } from '@material-ui/core';
-import AddIcon from '@material-ui/icons/Add';
-import RemoveIcon from '@material-ui/icons/Remove';
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
+import { Button, IconButton } from '@mui/material';
 
 import { setQtdItens, useSelectItensStore } from '~hooks/store/UseCartStore';
 
 import scss from './CounterItens.module.scss';
 
 interface ICounterItensProps {
-  type: 'kg' | 'Unidade';
+  type: 'fractioned' | 'integer';
 }
 const CounterItens = (props: ICounterItensProps) => {
   const count = useSelectItensStore((store) => store.selectedQtdItens);
   let qtd = 0;
-  if (props.type === 'Unidade') {
+  if (props.type === 'integer') {
     qtd = 1;
   } else {
     qtd = 100;
@@ -69,7 +69,7 @@ const CounterItens = (props: ICounterItensProps) => {
           )}
         </div>
         <div className={scss.counter}>
-          {count.toFixed()} {props.type !== 'Unidade' && <span>g</span>}
+          {count.toFixed()} {props.type !== 'integer' && <span>g</span>}
         </div>
         <div className={scss.button}>
           <IconButton aria-label="-" onClick={() => setQtdItens(count + qtd)}>
@@ -78,7 +78,7 @@ const CounterItens = (props: ICounterItensProps) => {
         </div>
       </div>
       <div className={scss.shortcutButtons}>
-        {props.type !== 'Unidade' ? shortcutButtonsKg() : shortcutButtonsUnit()}
+        {props.type !== 'integer' ? shortcutButtonsKg() : shortcutButtonsUnit()}
       </div>
     </>
   );

@@ -1,5 +1,5 @@
-import { Badge } from '@material-ui/core';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { Badge } from '@mui/material';
 import DrawerSection from '~components/Layout/Drawer/Drawer';
 
 import { useCartStore } from '~hooks/store/UseCartStore';

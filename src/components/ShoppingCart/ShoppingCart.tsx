@@ -10,7 +10,7 @@ import {
   Card,
   CardContent,
   CardActions,
-} from '@material-ui/core';
+} from '@mui/material';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import { links } from '~constants/links';
 

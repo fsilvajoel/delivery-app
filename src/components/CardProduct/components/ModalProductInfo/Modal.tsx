@@ -2,13 +2,13 @@ import { useRouter } from 'next/router';
 
 import { useState, FocusEvent } from 'react';
 
-import { Button, IconButton, TextField, Modal } from '@material-ui/core';
-import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
-import CloseIcon from '@material-ui/icons/Close';
-import DoneIcon from '@material-ui/icons/Done';
-import Alert from '@material-ui/lab/Alert';
-import { IProductsInCart } from 'src/types/cart';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import CloseIcon from '@mui/icons-material/Close';
+import DoneIcon from '@mui/icons-material/Done';
+import { Button, IconButton, TextField, Modal } from '@mui/material';
+import Alert from '@mui/material/Alert';
 import { convertBrlPrice } from '~utils/convertBrlPrice';
+import { IProductsInCart } from 'src/types/cart';
 
 import {
   setProductsInCart,
@@ -19,7 +19,6 @@ import {
 import CounterItens from '../CounterItens/CounterItens';
 import ProductWarning from '../ProductWarning/ProductWarning';
 import scss from './Modal.module.scss';
-
 import NoPhoto from '~public/images/nophoto.png';
 
 function ModalProductInfo({ data }: any) {
@@ -93,8 +92,8 @@ function ModalProductInfo({ data }: any) {
               {convertBrlPrice(data.price)}
               <span className={scss.priceUnit}> por {data.price_unit}</span>
             </p>
-            {data.price_unit === 'Kg' && <ProductWarning />}
-            <CounterItens type={data.price_unit} />
+            {data.sold_as === 'fractioned' && <ProductWarning />}
+            <CounterItens type={data.sold_as} />
             <div className={scss.wrapperObs}>
               <TextField
                 onBlur={handleObservation}

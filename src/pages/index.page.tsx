@@ -2,7 +2,7 @@ import Head from 'next/head';
 
 import { useCallback } from 'react';
 
-import { Container, Grid } from '@material-ui/core';
+import { Container, Grid } from '@mui/material';
 import CardProduct from '~components/CardProduct/CardProduct';
 import CarrrouselCategories from '~components/CarouselCategories/CarouselCategories';
 import MenuApp from '~components/Layout/Menu/Menu';

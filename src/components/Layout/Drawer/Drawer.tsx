@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-import Box from '@material-ui/core/Box';
-import Drawer from '@material-ui/core/Drawer';
+import Box from '@mui/material/Box';
+import Drawer from '@mui/material/Drawer';
 
 import scss from './Drawer.module.scss';
 import { IDrawerProps } from './types';

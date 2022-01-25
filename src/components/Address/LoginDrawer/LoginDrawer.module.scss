@@ -1,0 +1,52 @@
+@use "styles/breakpoints" as *;
+
+.container {
+  height: 100%;
+  padding: 4rem 2rem;
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  .loginFormContainer,
+  .registerFormContainer {
+    button {
+      background-color: #27ae60;
+      font-size: 1.4rem;
+    }
+  }
+
+  .closeButton {
+    position: absolute;
+    top: 0.5rem;
+    right: 0;
+    color: #27ae60;
+  }
+
+  .errorMessage {
+    margin-top: 3px;
+    color: #d32f2f;
+  }
+
+  .changeStepButton {
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    flex-grow: 1;
+
+    padding-top: 4rem;
+
+    button {
+      font-size: 1.1rem;
+    }
+  }
+}
+
+@include from720 {
+  .container {
+    width: 40rem;
+  }
+}

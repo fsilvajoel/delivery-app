@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 
-import { Divider } from '@material-ui/core';
-import Button from '@material-ui/core/Button';
+import { Divider } from '@mui/material';
+import Button from '@mui/material/Button';
 import AddIcon from '@material-ui/icons/Add';
 import ListCart from '~components/ShoppingCart/List';
 

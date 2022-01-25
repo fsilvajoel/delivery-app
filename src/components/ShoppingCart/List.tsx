@@ -1,4 +1,7 @@
+import ClearIcon from '@mui/icons-material/Clear';
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import {
+  Alert,
   Divider,
   IconButton,
   List,
@@ -6,10 +9,7 @@ import {
   ListItemText,
   Tooltip,
   Typography,
-} from '@material-ui/core';
-import InfoOutlinedIcon from '@material-ui/icons//InfoOutlined';
-import DeleteIcon from '@material-ui/icons/Delete';
-import { Alert } from '@material-ui/lab';
+} from '@mui/material';
 import { convertBrlPrice } from '~utils/convertBrlPrice';
 
 import { removeProductsInCart, useCartStore } from '~hooks/store/UseCartStore';
@@ -36,7 +36,7 @@ const ListCart = (fixed: boolean) => {
                 onClick={() => removeProductsInCart(item.product)}
                 aria-label="delete"
               >
-                <DeleteIcon />
+                <ClearIcon />
               </IconButton>
             )}
             <ListItemText

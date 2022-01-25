@@ -2,7 +2,7 @@ import { FocusEvent, useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { useQuery } from 'react-query';
 
-import { Button, IconButton, TextField, Modal } from '@material-ui/core';
+import { Button, IconButton, TextField, Modal } from '@mui/material';
 import Input from '~components/Layout/Input/Input';
 import Option from '~components/Layout/Select/Option/Option';
 import Select from '~components/Layout/Select/Select';

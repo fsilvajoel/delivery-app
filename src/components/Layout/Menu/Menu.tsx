@@ -4,14 +4,10 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { useWindowSize } from 'react-use';
 
-import AppBar from '@material-ui/core/AppBar';
-import Badge from '@material-ui/core/Badge';
-import IconButton from '@material-ui/core/IconButton';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import MoreIcon from '@material-ui/icons/MoreVert';
+import { AccountCircle } from '@mui/icons-material';
+import AddIcon from '@mui/icons-material/Add';
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import { AppBar, MenuItem, Menu, IconButton, Badge } from '@mui/material';
 import Address from '~components/Address/index';
 import DrawerCart from '~components/ShoppingCart/DrawerCart/DrawerCart';
 import { links } from '~constants/links';
@@ -169,7 +165,7 @@ export default function MenuApp() {
                 onClick={handleMobileMenuOpen}
                 color="inherit"
               >
-                <MoreIcon />
+                <AddIcon />
               </IconButton>
             </div>
           </div>

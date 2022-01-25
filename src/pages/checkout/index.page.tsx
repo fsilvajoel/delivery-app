@@ -2,16 +2,16 @@ import Router from 'next/router';
 
 import { useEffect, useState } from 'react';
 
-// import CssBaseline from '@material-ui/core/CssBaseline';
-// import AppBar from '@material-ui/core/AppBar';
+// import CssBaseline from '@mui/material/CssBaseline';
+// import AppBar from '@mui/material/AppBar';
 // import Navbar from '../../Components/Layout/Navbar';
-import Button from '@material-ui/core/Button';
-import Link from '@material-ui/core/Link';
-import Paper from '@material-ui/core/Paper';
-import Step from '@material-ui/core/Step';
-import StepLabel from '@material-ui/core/StepLabel';
-import Stepper from '@material-ui/core/Stepper';
-import Typography from '@material-ui/core/Typography';
+import Button from '@mui/material/Button';
+import Link from '@mui/material/Link';
+import Paper from '@mui/material/Paper';
+import Step from '@mui/material/Step';
+import StepLabel from '@mui/material/StepLabel';
+import Stepper from '@mui/material/Stepper';
+import Typography from '@mui/material/Typography';
 import MenuApp from '~components/Layout/Menu/Menu';
 
 import { useLoginStore } from '~hooks/store/UseLoginStore';
