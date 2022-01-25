@@ -10,11 +10,9 @@ export const UseAuthenticated = async (info: ICredentialsData) => {
   const { 'deliveryApp-accessToken': token } = parseCookies();
   if (token) {
     setIsLogged(true);
-    console.log('retorna dados do usuário n:', token);
-    // getAllUserData().then(response =>{setStateUser}) pega infos do usuário e no response seta
   }
-  const response = await authLogin(info);
   try {
+    const response = await authLogin(info);
     setCookie(undefined, ACCESS_TOKEN, response, {
       maxAge: 604800 * 1, // semana * qtdSemanas
     });

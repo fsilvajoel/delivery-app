@@ -5,6 +5,7 @@ import CreateStore from '~zustand/index';
 interface IProductsState {
   numberOfItens: number;
   totalPrice: number;
+  isFrationed: boolean;
   cart: Array<IProductsInCart>;
 }
 
@@ -17,6 +18,7 @@ const initialStore = {
   totalPrice: 0,
   numberOfItens: 0,
   selectedQtdItens: 0,
+  isFrationed: false,
 };
 const initialSelectedStore = {
   selectedQtdItens: 0,
@@ -41,6 +43,10 @@ export const setQuantityItens = () => {
   useCartStore.setState((prevState) => ({
     numberOfItens: prevState.cart.length,
   }));
+};
+
+export const setIsFrationed = (state: boolean) => {
+  useCartStore.setState({ isFrationed: state });
 };
 
 export const setProductsInCart = (state: IProductsInCart) => {
