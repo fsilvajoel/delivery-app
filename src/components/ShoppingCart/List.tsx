@@ -109,7 +109,7 @@ const ListCart = (fixed: boolean) => {
       ) : (
         <>
           <ShowListProducts />
-          <div>
+          <div className={scss.finishButton}>
             <Button onClick={() => handleFinish()}>Finalizar</Button>
           </div>
         </>
