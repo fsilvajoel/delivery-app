@@ -104,12 +104,12 @@ function ModalProductInfo({ data }: any) {
             </div>
             {qtdItens > 0 && (
               <div className={scss.productDetailActions}>
-                <Button variant="contained" onClick={handleAddList}>
+                <Button variant="outlined" onClick={handleAddList}>
                   <AddShoppingCartIcon className={scss.icon} />
                   Adicionar a lista
                 </Button>
 
-                <Button variant="contained" onClick={handleFinish}>
+                <Button variant="outlined" onClick={handleFinish}>
                   <DoneIcon className={scss.icon} />
                   Adicionar e finalizar
                 </Button>
@@ -123,7 +123,7 @@ function ModalProductInfo({ data }: any) {
 
   return (
     <div>
-      <Button variant="contained" onClick={handleOpen}>
+      <Button variant="outlined" onClick={handleOpen}>
         Ver detalhes
       </Button>
       <Modal
