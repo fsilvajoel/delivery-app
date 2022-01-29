@@ -23,7 +23,9 @@ import {
 
 import scss from './ShoppingCart.module.scss';
 
-const ListCart = (fixed: boolean) => {
+type ListCartProps = { fixed: boolean };
+
+const ListCart = ({ fixed }: ListCartProps) => {
   const cart = useCartStore((state) => state.cart);
   const totalPrice = useCartStore((state) => state.totalPrice);
   const isFrationed = useCartStore((state) => state.isFrationed);

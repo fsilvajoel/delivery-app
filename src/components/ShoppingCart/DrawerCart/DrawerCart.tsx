@@ -1,8 +1,10 @@
+import { useState } from 'react';
+
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { Badge } from '@mui/material';
 import DrawerSection from '~components/Layout/Drawer/Drawer';
 
-import { useCartStore } from '~hooks/store/UseCartStore';
+import { getCartLength, useCartStore } from '~hooks/store/UseCartStore';
 
 import ListCart from '../List';
 
@@ -10,12 +12,14 @@ interface DrawerCartProps {
   theme: 'white' | 'black';
 }
 const DrawerCart = ({ theme = 'black' }: DrawerCartProps) => {
-  const numberOfItens = useCartStore((state) => state.numberOfItens);
+  const [state, setState] = useState<number>(getCartLength());
 
-  const buttonDrawer = () => {
+  useCartStore.subscribe((st) => setState(st.cart.length));
+
+  const ShoppingCartDrawerIcon = () => {
     return (
       <div style={{ color: theme }}>
-        <Badge badgeContent={numberOfItens} color="secondary">
+        <Badge badgeContent={state} color="secondary">
           <ShoppingCartIcon />
           <span>carrinho</span>
         </Badge>
@@ -24,7 +28,11 @@ const DrawerCart = ({ theme = 'black' }: DrawerCartProps) => {
   };
 
   return (
-    <DrawerSection size={350} buttonContent={buttonDrawer()} direction="right">
+    <DrawerSection
+      size={350}
+      buttonContent={<ShoppingCartDrawerIcon />}
+      direction="right"
+    >
       <ListCart fixed={false} />
     </DrawerSection>
   );

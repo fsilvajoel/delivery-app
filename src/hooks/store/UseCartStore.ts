@@ -1,6 +1,6 @@
 import { IProductsInCart } from 'src/types/cart';
 // eslint-disable-next-line import-helpers/order-imports
-import CreateStore from '~zustand/index';
+import CreateStore, { createPersistStore } from 'src/zustand';
 
 interface IProductsState {
   numberOfItens: number;
@@ -24,13 +24,14 @@ const initialSelectedStore = {
   selectedQtdItens: 0,
 };
 
-export const useCartStore = CreateStore<IProductsState>(
+export const useCartStore = createPersistStore<IProductsState>(
   () => initialStore,
   'cartStore'
 );
+
 export const useSelectItensStore = CreateStore<ISelectItensStore>(
   () => initialSelectedStore,
-  'cartStore'
+  'selectedItensStore'
 );
 
 export const setQtdItens = (state: number) => {
@@ -38,6 +39,8 @@ export const setQtdItens = (state: number) => {
     selectedQtdItens: state,
   });
 };
+
+export const getCartLength = () => useCartStore.getState().cart.length;
 
 export const setQuantityItens = () => {
   useCartStore.setState((prevState) => ({
