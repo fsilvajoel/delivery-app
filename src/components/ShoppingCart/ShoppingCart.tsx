@@ -2,6 +2,7 @@ import Link from 'next/link';
 
 import { useState } from 'react';
 
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import {
   IconButton,
   Popover,
@@ -11,17 +12,16 @@ import {
   CardContent,
   CardActions,
 } from '@mui/material';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import { links } from '~constants/links';
 
-import { useCartStore } from '~hooks/store/UseCartStore';
+import { getCartLength } from '~hooks/store/UseCartStore';
 
 import ListCart from './List';
 import scss from './ShoppingCart.module.scss';
 
 export default function ShoppingCart() {
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
-  const numberOfItens = useCartStore((state) => state.numberOfItens);
+  const numberOfItens = getCartLength();
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
