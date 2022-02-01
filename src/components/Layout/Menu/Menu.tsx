@@ -7,8 +7,9 @@ import { useWindowSize } from 'react-use';
 import { AccountCircle } from '@mui/icons-material';
 import AddIcon from '@mui/icons-material/Add';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 import { AppBar, MenuItem, Menu, IconButton, Badge } from '@mui/material';
-import Address from '~components/Address/index';
+import AddressDrawer from '~components/Address/AddressDrawer';
 import DrawerCart from '~components/ShoppingCart/DrawerCart/DrawerCart';
 import { links } from '~constants/links';
 
@@ -25,12 +26,23 @@ export default function MenuApp() {
     useState<null | HTMLElement>(null);
   const partner = usePartner();
   const router = useRouter();
-  const isLogged = useLoginStore((state) => state.isLogged);
+  const isLogged = useLoginStore((state: any) => state.isLogged);
   const { width } = useWindowSize();
 
   const [isDesktop, setIsDesktop] = useState(false);
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+  const [isAddressDrawerOpen, setIsAddressDrawerOpen] =
+    useState<boolean>(false);
+
+  const handleClickAddressButton = () => {
+    setIsAddressDrawerOpen(true);
+  };
+
+  const onRequestDrawerClose = () => {
+    setIsAddressDrawerOpen(false);
+  };
+
   useEffect(() => {
     setIsDesktop(() => width >= 1280);
   }, [width]);
@@ -131,7 +143,18 @@ export default function MenuApp() {
           <div>
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
-              <Address />
+              <IconButton
+                onClick={handleClickAddressButton}
+                aria-label="Endereço"
+                color="inherit"
+              >
+                <LocationOnIcon />
+                <span>endereços</span>
+              </IconButton>
+              <AddressDrawer
+                isAddressDrawerOpen={isAddressDrawerOpen}
+                onRequestClose={onRequestDrawerClose}
+              />
               <DrawerCart theme="white" />
               {isLogged ? (
                 <IconButton

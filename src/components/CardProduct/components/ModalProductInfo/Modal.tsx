@@ -16,10 +16,10 @@ import {
   useSelectItensStore,
 } from '~hooks/store/UseCartStore';
 
+import NoPhoto from '~public/images/nophoto.png';
 import CounterItens from '../CounterItens/CounterItens';
 import ProductWarning from '../ProductWarning/ProductWarning';
 import scss from './Modal.module.scss';
-import NoPhoto from '~public/images/nophoto.png';
 
 function ModalProductInfo({ data }: any) {
   const router = useRouter();

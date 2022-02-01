@@ -1,10 +1,13 @@
+import Link from 'next/link';
+
 import { useWindowSize } from 'react-use';
 
 import CloseIcon from '@mui/icons-material/Close';
 import { Button, Container, Drawer } from '@mui/material';
 
-// import { Button, Container, Drawer } from '@mui/material';
-// import AddressForm from '../ModalFormAddress/Form';
+import { useLoginStore } from '~hooks/store/UseLoginStore';
+
+import AdressCard from '../Card';
 import scss from './AddressDrawer.module.scss';
 import { IAddressDrawerProps } from './types';
 
@@ -12,7 +15,15 @@ const AddressDrawer = ({
   isAddressDrawerOpen,
   onRequestClose,
 }: IAddressDrawerProps) => {
+  const isLogged = useLoginStore(
+    (state: { isLogged: boolean }) => state.isLogged
+  );
   const { width } = useWindowSize();
+  const renderNeedLogin = () => (
+    <p className={scss.loginButton}>
+      <Link href="/login">Faça Login para Continuar</Link>
+    </p>
+  );
   return (
     <Drawer
       open={isAddressDrawerOpen}
@@ -24,7 +35,7 @@ const AddressDrawer = ({
         <Button className={scss.closeButton} onClick={onRequestClose}>
           <CloseIcon sx={{ fontSize: 32 }} />
         </Button>
-        {/* {isLogged ? renderUserInfo() : renderForm()} */}
+        {isLogged ? <AdressCard /> : renderNeedLogin()}
       </Container>
     </Drawer>
   );

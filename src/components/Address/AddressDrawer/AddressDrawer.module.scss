@@ -1,0 +1,14 @@
+@use 'styles/breakpoints' as *;
+
+.drawer {
+  .container {
+    width: 300px;
+  }
+}
+@include from1024 {
+  .drawer {
+    .container {
+      width: 32rem;
+    }
+  }
+}

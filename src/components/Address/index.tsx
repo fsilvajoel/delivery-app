@@ -63,7 +63,7 @@ export default function Address() {
         isAddressDrawerOpen={isAddressDrawerOpen}
         onRequestClose={onRequestDrawerClose}
       />
-      <Popover
+      {/* <Popover
         id={id}
         open={open}
         anchorEl={anchorEl}
@@ -78,7 +78,7 @@ export default function Address() {
         }}
       >
         {CardToList()}
-      </Popover>
+      </Popover> */}
     </div>
   );
 }

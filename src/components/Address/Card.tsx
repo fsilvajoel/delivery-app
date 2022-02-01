@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { Container } from '@mui/material';
+import { Button, Container } from '@mui/material';
 import DrawerSection from '~components/Layout/Drawer/Drawer';
 
 import { useAddressData } from '~hooks/query/useAddress';
@@ -82,18 +82,44 @@ export default function AdressCard() {
 
   return (
     <div className={scss.container}>
-      <h3 className={scss.title}>Endereço de Entrega</h3>
-      <div className={scss.mainAddress}>
-        {addressSelect === -1 ? showDefaultAddress() : showSelectedAddress()}
-
-        <DrawerSection
+      {isSelect ? (
+        <div className={scss.mainAddress}>
+          <h3 className={scss.title}>Endereço de Entrega</h3>
+          {addressSelect === -1 ? showDefaultAddress() : showSelectedAddress()}
+          <>{changeAddress()}</>
+        </div>
+      ) : (
+        <>
+          <p>cadastrar novo endereço</p>
+          <AddressForm />
+        </>
+      )}
+      ;
+      <Button
+        onClick={() => setIsSelect(!isSelect)}
+        className={scss.novoEnde}
+        color="primary"
+        fullWidth
+        type="submit"
+        variant="contained"
+      >
+        {isSelect ? 'Adicionar Novo endereço' : 'Ver endereços'}
+      </Button>
+      {/* <button
+        type="button"
+        className={scss.novoEnde}
+        onClick={() => setIsSelect(!isSelect)}
+      >
+        {isSelect ? 'Adicionar Novo endereço' : 'Ver endereços'}
+      </button> */}
+      {/* <DrawerSection
           size={350}
           buttonContent="trocar"
           direction="right"
           className={scss.btnChange}
         >
           <Container>
-            {changeAddress()}
+           
             <button
               type="button"
               className={scss.novoEnde}
@@ -102,9 +128,8 @@ export default function AdressCard() {
               {isSelect ? 'Adicionar Novo endereço' : 'Ver endereços'}
             </button>
           </Container>
-          {/* <AddressForm /> */}
-        </DrawerSection>
-      </div>
+        
+      {/* </DrawerSection> */}
     </div>
   );
 }

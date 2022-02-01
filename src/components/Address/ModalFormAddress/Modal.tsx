@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
+import CloseIcon from '@mui/icons-material/Close';
 import { Button, IconButton, Modal } from '@mui/material';
-import CloseIcon from '@material-ui/icons/Close';
 
 import AddressForm from './Form';
 import scss from './Modal.module.scss';
