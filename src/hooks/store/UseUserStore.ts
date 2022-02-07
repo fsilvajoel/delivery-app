@@ -1,5 +1,5 @@
 // eslint-disable-next-line import-helpers/order-imports
-import { createPersistStore } from '~zustand/index';
+import CreateStore from '~zustand/index';
 
 interface IUserState {
   name: string;
@@ -17,7 +17,7 @@ const initialStore = {
   AddressId: -1,
 };
 
-export const useUserStore = createPersistStore<IUserState>(
+export const useUserStore = CreateStore<IUserState>(
   () => initialStore,
   'cartStore'
 );
