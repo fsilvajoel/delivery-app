@@ -6,7 +6,7 @@ import { useForm, Controller, SubmitHandler } from 'react-hook-form';
 import { Button, Grid, Link, Paper } from '@mui/material';
 import Input from '~components/Layout/Input/Input';
 import { ICredentialsData } from '~services/Api/auth';
-import { emailRegex } from '~utils/validation';
+import { MAIL_REGEX } from '~utils/validation';
 
 import { useLoginStore } from '~hooks/store/UseLoginStore';
 import { UseAuthenticated } from '~hooks/UseAuthenticated';
@@ -64,7 +64,7 @@ const Login = () => {
               requiredMsg="E-mail é um campo obrigatório"
               patternMsg="É necessário ser um e-mail válido"
               register={register}
-              pattern={emailRegex}
+              pattern={MAIL_REGEX}
               value={watch('email')}
               errors={errors.email && true}
               errorMessage={errors.email?.message}
