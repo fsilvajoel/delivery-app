@@ -25,6 +25,5 @@ export const registerUserAddress = async (data: IAddressData) => {
 
 export const getIsDeliveryAddress = async () => {
   const response = await instance.get(`/parceiros/zeferino/districttax/`);
-  console.log('enderecos disponiveis', response.data);
   return response.data;
 };

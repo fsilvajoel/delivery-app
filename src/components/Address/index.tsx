@@ -1,84 +1,107 @@
-import Link from 'next/link';
-
 import { useState } from 'react';
 
-import LocationOnIcon from '@mui/icons-material/LocationOn';
-import { Popover, Card, IconButton } from '@mui/material';
+import { Button, Container } from '@mui/material';
+import { IAddressData } from '~services/Api/Address/types';
 
-import { useUserData } from '~hooks/query/useUserData';
-import { useLoginStore } from '~hooks/store/UseLoginStore';
-import { setIdUser } from '~hooks/store/UseUserStore';
+import { useAddressData } from '~hooks/query/useAddress';
+import {
+  setAddressToSend,
+  useCheckoutStore,
+} from '~hooks/store/UseCheckoutStore';
 
 import scss from './address.module.scss';
-import AddressDrawer from './AddressDrawer';
-import AdressCard from './Card';
+import AddressForm from './RegisterFormAddress/Form';
 
-export default function Address() {
-  const isLogged = useLoginStore((state) => state.isLogged);
-  const [isAddressDrawerOpen, setIsAddressDrawerOpen] =
-    useState<boolean>(false);
-  const allUserData = useUserData();
-  setIdUser(allUserData?.data?.id);
-  //
-  const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
-  const open = Boolean(anchorEl);
-  const id = open ? 'adressPop' : undefined;
+export default function AddressContent() {
+  const allAddress = useAddressData();
+  console.log('endereços usuario', allAddress);
+  const addressSelect = useCheckoutStore((data) => data.AddressToSendId);
+  const [isSelect, setIsSelect] = useState(true);
+  // const addressDefault = allAddress?.data?.filter(
+  //   (address: IAddress) => address.main === true
+  // );
+  // // console.log('adrressDeFAULT', addressDefault[0]?.id);
+  // if (addressSelect === -1) {
+  //   setAddressToSend(addressDefault[0]?.id);
+  // }
 
-  const handleClickAddressButton = () => {
-    setIsAddressDrawerOpen(true);
-  };
+  const showDefaultAddress = () => (
+    <>
+      {allAddress?.data
+        ?.filter((address: any) => address.main === true)
+        .map((address: any) => {
+          return (
+            <div className={scss.addressInfo}>
+              <h2 className={scss.addressName}>{address.name}</h2>
+              <p className={scss.address}>
+                {address.street}, {address.number} {address.district}
+              </p>
+            </div>
+          );
+        })}
+    </>
+  );
 
-  const onRequestDrawerClose = () => {
-    setIsAddressDrawerOpen(false);
-  };
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
+  const showSelectedAddress = () => (
+    <>
+      {allAddress?.data
+        ?.filter((address: IAddressData) => address.id === addressSelect)
+        .map((address: IAddressData) => {
+          return (
+            <div className={scss.addressInfo}>
+              <h2 className={scss.addressName}>{address.name}</h2>
+              <p className={scss.address}>
+                {address.street}, {address.number} {address.district}
+              </p>
+            </div>
+          );
+        })}
+    </>
+  );
 
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  const CardToList = () => {
+  const changeAddress = () => {
     return (
-      <Card className={scss.root}>
-        {isLogged ? (
-          <AdressCard />
-        ) : (
-          <p className={scss.loginButton}>
-            <Link href="/login">Faça Login para Continuar</Link>
-          </p>
-        )}
-      </Card>
+      <div className={scss.selectAddress}>
+        {allAddress?.data?.map((address: IAddressData) => (
+          <button type="button" onClick={() => setAddressToSend(address.id)}>
+            <div>
+              <h4 className={scss.name}>{address.name}</h4>
+              <h5 className={scss.street}>
+                {address.street}, {address.number} {address.district}
+              </h5>
+              <p className={scss.district}>{address.district}</p>
+            </div>
+          </button>
+        ))}
+      </div>
     );
   };
 
   return (
-    <div>
-      <IconButton onClick={handleClick} aria-label="Endereço" color="inherit">
-        <LocationOnIcon />
-        <span>endereços</span>
-      </IconButton>
-      <AddressDrawer
-        isAddressDrawerOpen={isAddressDrawerOpen}
-        onRequestClose={onRequestDrawerClose}
-      />
-      {/* <Popover
-        id={id}
-        open={open}
-        anchorEl={anchorEl}
-        onClose={handleClose}
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'center',
-        }}
-        transformOrigin={{
-          vertical: 'top',
-          horizontal: 'center',
-        }}
+    <div className={scss.container}>
+      {isSelect ? (
+        <div className={scss.mainAddress}>
+          <h3 className={scss.title}>Endereço de Entrega</h3>
+          {addressSelect === -1 ? showDefaultAddress() : showSelectedAddress()}
+          <>{changeAddress()}</>
+        </div>
+      ) : (
+        <>
+          <p>cadastrar novo endereço</p>
+          <AddressForm />
+        </>
+      )}
+      ;
+      <Button
+        onClick={() => setIsSelect(!isSelect)}
+        className={scss.novoEnde}
+        color="primary"
+        fullWidth
+        type="submit"
+        variant="contained"
       >
-        {CardToList()}
-      </Popover> */}
+        {isSelect ? 'Adicionar Novo endereço' : 'Ver endereços'}
+      </Button>
     </div>
   );
 }

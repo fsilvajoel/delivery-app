@@ -22,14 +22,12 @@ import { CEP_REGEX } from '~utils/validation';
 import { useDelliveryAddress } from '~hooks/query/useAddress';
 import { useUserStore } from '~hooks/store/UseUserStore';
 
-import scss from './Modal.module.scss';
 import { ICepSearch } from './types';
 
 const AddressForm = () => {
   const deliveryDistricts = useDelliveryAddress();
   const { register, handleSubmit, control, errors } = useForm<IAddressData>();
   const userId = useUserStore((store: { id: number }) => store.id);
-  console.log('deliveryDistricts', deliveryDistricts);
 
   const renderSelectOptions = (options: IAddressDeliveryDistrict[]) =>
     options.map((option: IAddressDeliveryDistrict) => (
@@ -56,7 +54,7 @@ const AddressForm = () => {
   // };
 
   return (
-    <form className={scss.form} onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <Stack spacing={1}>
         <TextField
           required
@@ -78,9 +76,7 @@ const AddressForm = () => {
             },
           })}
         />
-        {errors.cep && (
-          <div className={scss.errorMessage}>Insira um CEP válido</div>
-        )}
+        {errors.cep && <p>Insira um CEP válido</p>}
         <TextField
           required
           name="city"
@@ -129,7 +125,6 @@ const AddressForm = () => {
           variant="outlined"
           inputRef={register}
         />
-        {/* codigo para selecionar district */}
         <Controller
           name="district"
           control={control}
@@ -157,21 +152,7 @@ const AddressForm = () => {
             </FormControl>
           )}
         />
-        {/* <TextField
-          required
-          name="district"
-          label="Bairro"
-          type="text"
-          variant="outlined"
-          inputRef={register}
-        /> */}
-        <Button
-          className={scss.submit}
-          color="primary"
-          fullWidth
-          type="submit"
-          variant="contained"
-        >
+        <Button color="primary" fullWidth type="submit" variant="contained">
           Pronto
         </Button>
       </Stack>

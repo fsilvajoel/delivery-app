@@ -1,8 +1,10 @@
 import { useState } from 'react';
 
 import { Button, Tab, Tabs } from '@mui/material';
-import AdressCard from '~components/Address/Card';
+
 // import { getPaymentMethodsPartner } from '~services/Api/Partner/partner';
+
+import AddressContent from '~components/Address';
 
 import { usePaymentMethod } from '~hooks/query/usePartner';
 
@@ -33,7 +35,7 @@ export default function DeliveryMethod() {
     if (TabValue === 0) {
       return (
         <div>
-          <AdressCard />
+          <AddressContent />
           {/* testa endereço ao selecionar e retorna se pode ou náo enviar para tal */}
         </div>
       );
