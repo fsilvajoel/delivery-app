@@ -1,8 +1,8 @@
 import axios from 'axios';
-import { IAddress } from '~components/Address/ModalFormAddress/types';
 
 import { deliveryAddress, deliveryparner } from '../apiConstants';
 import { instance } from '../http';
+import { IAddressData } from './types';
 
 export const getAllUserAddress = async () => {
   const response = await instance.get<any>(`${deliveryAddress}`, {
@@ -18,12 +18,13 @@ export const discoveryInfoAdress = async (cep: string) => {
   return response.data;
 };
 
-export const registerUserAddress = async (data: IAddress) => {
+export const registerUserAddress = async (data: IAddressData) => {
   const response = await instance.post<string>(`${deliveryAddress}`, data);
   return response.data;
 };
 
 export const getIsDeliveryAddress = async () => {
-  const response = await instance.get(`${deliveryparner}zeferino/districttax/`);
+  const response = await instance.get(`/parceiros/zeferino/districttax/`);
+  console.log('enderecos disponiveis', response.data);
   return response.data;
 };

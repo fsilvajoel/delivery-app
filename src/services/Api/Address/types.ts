@@ -13,8 +13,18 @@ export interface IAddressData {
   reference: string;
   street: string;
   user: number;
+  customer: number;
 }
 
 export interface IPaymentMethodsData {
   name: string;
+}
+
+export interface IAddressDeliveryDistrict {
+  delivery: boolean;
+  district: number;
+  district_name: string;
+  id: number;
+  tax: number;
+  tax_value: number;
 }

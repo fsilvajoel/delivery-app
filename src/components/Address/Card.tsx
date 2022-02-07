@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 import { Button, Container } from '@mui/material';
 import DrawerSection from '~components/Layout/Drawer/Drawer';
+import { IAddressData } from '~services/Api/Address/types';
 
 import { useAddressData } from '~hooks/query/useAddress';
 import {
@@ -10,9 +11,7 @@ import {
 } from '~hooks/store/UseCheckoutStore';
 
 import scss from './address.module.scss';
-// import { DrawerFormAdress } from './DrawerAddress/DrawerFormAddress';
-import AddressForm from './ModalFormAddress/Form';
-import { IAddress } from './ModalFormAddress/types';
+import AddressForm from './RegisterFormAddress/Form';
 
 export default function AdressCard() {
   const allAddress = useAddressData();
@@ -47,8 +46,8 @@ export default function AdressCard() {
   const showSelectedAddress = () => (
     <>
       {allAddress?.data
-        ?.filter((address: IAddress) => address.id === addressSelect)
-        .map((address: IAddress) => {
+        ?.filter((address: IAddressData) => address.id === addressSelect)
+        .map((address: IAddressData) => {
           return (
             <div className={scss.addressInfo}>
               <h2 className={scss.addressName}>{address.name}</h2>
@@ -64,9 +63,8 @@ export default function AdressCard() {
   const changeAddress = () => {
     return (
       <div className={scss.selectAddress}>
-        {allAddress?.data?.map((address: IAddress) => (
+        {allAddress?.data?.map((address: IAddressData) => (
           <button type="button" onClick={() => setAddressToSend(address.id)}>
-            <div>llala</div>
             <div>
               <h4 className={scss.name}>{address.name}</h4>
               <h5 className={scss.street}>

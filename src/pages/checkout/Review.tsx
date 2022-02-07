@@ -1,7 +1,7 @@
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
-import { IAddress } from '~components/Address/ModalFormAddress/types';
 import ListCart from '~components/ShoppingCart/List';
+import { IAddressData } from '~services/Api/Address/types';
 import { sendDeliveryRequest } from '~services/Api/Products/productsApi';
 import { IDeliverySend } from '~services/Api/Products/type';
 
@@ -19,7 +19,7 @@ export default function Review() {
   const productsInCart = useCartStore((state) => state.cart);
   const addressToSendId = useCheckoutStore((state) => state.AddressToSendId);
   const addressToSend = allAddress?.data.filter(
-    (adress: IAddress) => adress.id === addressToSendId
+    (adress: IAddressData) => adress.id === addressToSendId
   );
   console.log('antes para', allAddress?.data);
   console.log('envio para', addressToSend);

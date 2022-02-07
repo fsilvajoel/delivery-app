@@ -10,8 +10,24 @@ export function useAddressData() {
   return addressData;
 }
 export function useDelliveryAddress() {
-  const deliveryDistricts = useQuery('deliveryDistricts', () =>
+  const { isLoading, error, data } = useQuery('deliveryDistricts', () =>
     getIsDeliveryAddress()
   );
-  return deliveryDistricts;
+
+  if (isLoading)
+    return [
+      {
+        id: 0,
+        district_name: 'Loading...',
+        delivery: false,
+        district: 0,
+        tax: 0,
+        tax_value: 0,
+      },
+    ];
+
+  if (error)
+    return console.log('Error in useAllEventCategories fetch hook:', error);
+
+  return data;
 }

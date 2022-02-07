@@ -11,7 +11,7 @@ export const CPF_REGEX =
 
 export const passwordRegex =
   /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#!%()_=?;:.])[0-9a-zA-Z$*&@#!%()_?=;:.]{8,}$/;
-export const cepRegex = /^[0-9]{2}[0-9]{3}[0-9]{3}$/;
+export const CEP_REGEX = /^[0-9]{2}[0-9]{3}[0-9]{3}$/;
 export const cepRegex1 = /^[0-9]{2}.[0-9]{3}-[0-9]{3}$/;
 export const DateRegex =
   /^(0?[1-9]|[12][0-9]|3[01])[/-](0?[1-9]|1[012])[/-]\d{4}$/;
