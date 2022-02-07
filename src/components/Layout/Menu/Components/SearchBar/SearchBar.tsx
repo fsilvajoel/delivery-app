@@ -1,7 +1,7 @@
+import SearchIcon from '@mui/icons-material/Search';
 import IconButton from '@mui/material/IconButton';
 import InputBase from '@mui/material/InputBase';
 import Paper from '@mui/material/Paper';
-import SearchIcon from '@material-ui/icons/Search';
 // import MenuIcon from '@material-ui/icons/Menu';
 
 import scss from './SearchBar.module.scss';
